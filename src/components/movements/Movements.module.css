@@ -1,0 +1,9 @@
+.movements {
+  display: grid;
+  grid-gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 30rem;
+  margin: 0 auto;
+}
