@@ -1,10 +1,11 @@
 import './App.css';
+import TheHeader from './ui/header/TheHeader';
 
 function App() {
   return (
     <div>
-      <h1>Spearny.</h1>
-      <p>Keep track of your spent and earned money.</p>
+      <TheHeader />
+      <main></main>
     </div>
   );
 }
