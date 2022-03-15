@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './MovementAddForm.module.scss';
+import BaseButton from '../BaseButton';
 
 const MovementAddForm = (props) => {
   const [newMovementType, setNewMovementType] = useState('income');
@@ -49,7 +50,10 @@ const MovementAddForm = (props) => {
   };
 
   return (
-    <form className="v-grid-space-between" onSubmit={formOnSubmitClickHandler}>
+    <form
+      className={`${styles['add-form']} v-grid-space-between`}
+      onSubmit={formOnSubmitClickHandler}
+    >
       <div className="v-grid-gap-small">
         <select value={newMovementType} onChange={typeOnChangeHandler}>
           <option value="income">+</option>
@@ -68,9 +72,13 @@ const MovementAddForm = (props) => {
           onChange={amountOnChangeHandler}
         />
       </div>
-      <button type="submit" onClick={formOnSubmitClickHandler}>
-        Add
-      </button>
+      <BaseButton
+        type="submit"
+        text="Add"
+        mode="button"
+        priority="primary"
+        onClick={formOnSubmitClickHandler}
+      />
     </form>
   );
 };

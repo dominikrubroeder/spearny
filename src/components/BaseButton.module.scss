@@ -1,0 +1,24 @@
+button {
+  color: hsla(100, 100%, 100%, 1);
+  font-weight: bold;
+  padding: 1rem;
+  border: none;
+  background-color: hsla(0, 0%, 0%, 1);
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.button--primary {
+  color: var(--white);
+  background-color: var(--light-accent);
+}
+
+.link--default {
+  color: var(--black);
+  background-color: transparent;
+}
+
+.link--primary {
+  color: var(--light-accent);
+  background-color: transparent;
+}
