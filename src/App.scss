@@ -118,3 +118,7 @@ body {
 .v-grid-space-between {
   @include v-grid-sb();
 }
+
+.v-grid-item-expand {
+  flex: 1;
+}

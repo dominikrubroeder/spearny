@@ -50,22 +50,25 @@ const MovementAddForm = (props) => {
   };
 
   return (
-    <form
-      className={`${styles['add-form']} v-grid-space-between`}
-      onSubmit={formOnSubmitClickHandler}
-    >
+    <form className="v-grid-space-between" onSubmit={formOnSubmitClickHandler}>
       <div className="v-grid-gap-small">
-        <select value={newMovementType} onChange={typeOnChangeHandler}>
+        <select
+          className={styles.filled}
+          value={newMovementType}
+          onChange={typeOnChangeHandler}
+        >
           <option value="income">+</option>
           <option value="expense">-</option>
         </select>
         <input
+          className={styles.filled}
           type="text"
           placeholder="Title..."
           value={newMovementTitle}
           onChange={titleOnChangeHandler}
         />
         <input
+          className={`${styles.amount} ${styles.filled}`}
           type="number"
           placeholder="Amount..."
           value={newMovementAmount}

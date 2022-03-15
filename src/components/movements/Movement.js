@@ -90,51 +90,12 @@ const Movement = (props) => {
 
   const headMarkup = (
     <div className={`${styles.head} ${editMode && 'edit-mode'}`}>
-      {!editMode && (
-        <h3 className={styles.title} onClick={toggleDetails}>
-          {title}
-        </h3>
-      )}
-      {editMode && (
-        <BaseLabel
-          title={
-            <input
-              type="text"
-              value={title}
-              placeholder="Add title..."
-              onChange={titleOnChangeHandler}
-              autoFocus
-            />
-          }
-        />
-      )}
-      {!editMode && (
-        <div className={styles.amount}>
-          {plusMinus} {amount}€
-        </div>
-      )}
-      {editMode && (
-        <BaseLabel
-          title={
-            <select value={type} onChange={typeOnChangeHandler}>
-              <option value="income">+</option>
-              <option value="expense">-</option>
-            </select>
-          }
-        />
-      )}
-      {editMode && (
-        <BaseLabel
-          title={
-            <input
-              type="text"
-              value={amount}
-              placeholder="Amount value"
-              onChange={amountOnChangeHandler}
-            />
-          }
-        />
-      )}
+      <h3 className={styles.title} onClick={toggleDetails}>
+        {title}
+      </h3>
+      <div className={styles.amount}>
+        {plusMinus} {amount}€
+      </div>
     </div>
   );
 
@@ -240,6 +201,7 @@ const Movement = (props) => {
               value={description}
               placeholder="Some notes..."
               onChange={descriptionOnChangeHandler}
+              autoFocus
             />
           }
         />
@@ -249,6 +211,43 @@ const Movement = (props) => {
 
   const detailsMarkup = (
     <div className={`h-grid-gap-small ${editMode ? 'edit-mode' : ''}`}>
+      <div className="v-grid-gap-small">
+        {editMode && (
+          <BaseLabel
+            title={
+              <select value={type} onChange={typeOnChangeHandler}>
+                <option value="income">+</option>
+                <option value="expense">-</option>
+              </select>
+            }
+          />
+        )}
+        {editMode && (
+          <BaseLabel
+            title={
+              <input
+                type="text"
+                value={title}
+                placeholder="Add title..."
+                onChange={titleOnChangeHandler}
+              />
+            }
+            classes="v-grid-item-expand"
+          />
+        )}
+        {editMode && (
+          <BaseLabel
+            title={
+              <input
+                type="text"
+                value={amount}
+                placeholder="Amount value"
+                onChange={amountOnChangeHandler}
+              />
+            }
+          />
+        )}
+      </div>
       {descriptionMarkup}
       {tagsMarkup}
       {type === 'expense' && expenseOnlyMarkup}
