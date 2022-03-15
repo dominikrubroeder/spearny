@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MovementAddForm from './MovementAddForm';
 import Movement from './Movement';
-import styles from './Movements.module.css';
+import styles from './Movements.module.scss';
 
 const Movements = () => {
   const movementPlaceholder = [
@@ -60,9 +60,9 @@ const Movements = () => {
   };
 
   return (
-    <div>
+    <div className={styles.movements}>
       <MovementAddForm onAddNewMovement={addNewMovement} />
-      <ul className={`h-grid-gap-small ${styles.movements}`}>
+      <ul className={`h-grid-gap-small ${styles['movement__list']}`}>
         {movements.map((movement) => (
           <Movement movement={movement} key={movement.id} />
         ))}

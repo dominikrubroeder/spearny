@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './MovementAddForm.module.scss';
 
 const MovementAddForm = (props) => {
   const [newMovementType, setNewMovementType] = useState('income');
@@ -36,6 +37,8 @@ const MovementAddForm = (props) => {
       tags: [],
       paidBy: '',
       paidTo: '',
+      showDetails: true,
+      editMode: true,
     };
 
     props.onAddNewMovement(newMovement);
@@ -46,23 +49,25 @@ const MovementAddForm = (props) => {
   };
 
   return (
-    <form className="v-grid-gap-small" onSubmit={formOnSubmitClickHandler}>
-      <select value={newMovementType} onChange={typeOnChangeHandler}>
-        <option value="income">+</option>
-        <option value="expense">-</option>
-      </select>
-      <input
-        type="text"
-        placeholder="Title..."
-        value={newMovementTitle}
-        onChange={titleOnChangeHandler}
-      />
-      <input
-        type="number"
-        placeholder="Amount..."
-        value={newMovementAmount}
-        onChange={amountOnChangeHandler}
-      />
+    <form className="v-grid-space-between" onSubmit={formOnSubmitClickHandler}>
+      <div className="v-grid-gap-small">
+        <select value={newMovementType} onChange={typeOnChangeHandler}>
+          <option value="income">+</option>
+          <option value="expense">-</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Title..."
+          value={newMovementTitle}
+          onChange={titleOnChangeHandler}
+        />
+        <input
+          type="number"
+          placeholder="Amount..."
+          value={newMovementAmount}
+          onChange={amountOnChangeHandler}
+        />
+      </div>
       <button type="submit" onClick={formOnSubmitClickHandler}>
         Add
       </button>

@@ -1,3 +1,20 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
 @mixin h-grid($grid-gap: 1rem) {
   display: grid;
   grid-gap: $grid-gap;
@@ -8,6 +25,13 @@
   align-items: center;
   gap: $gap;
   flex-wrap: wrap;
+}
+
+@mixin v-grid-sb() {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .h-grid {
@@ -24,4 +48,8 @@
 
 .v-grid-gap-small {
   @include v-grid($gap: 0.5rem);
+}
+
+.v-grid-space-between {
+  @include v-grid-sb();
 }

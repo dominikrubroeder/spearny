@@ -10,8 +10,8 @@ const Movement = (props) => {
       : styles['type--income'];
 
   const plusMinus = props.movement.type === 'expense' ? '-' : '+';
-  const [showDetails, setShowDetails] = useState(false);
-  const [editMode, setEditMode] = useState(false);
+  const [showDetails, setShowDetails] = useState(props.movement.showDetails);
+  const [editMode, setEditMode] = useState(props.movement.editMode);
   const [type, setType] = useState(props.movement.type);
   const [title, setTitle] = useState(props.movement.title);
   const [amount, setAmount] = useState(props.movement.amount);
@@ -96,7 +96,17 @@ const Movement = (props) => {
         </h3>
       )}
       {editMode && (
-        <input type="text" value={title} onChange={titleOnChangeHandler} />
+        <BaseLabel
+          title={
+            <input
+              type="text"
+              value={title}
+              placeholder="Add title..."
+              onChange={titleOnChangeHandler}
+              autoFocus
+            />
+          }
+        />
       )}
       {!editMode && (
         <div className={styles.amount}>
@@ -104,97 +114,134 @@ const Movement = (props) => {
         </div>
       )}
       {editMode && (
-        <select value={type} onChange={typeOnChangeHandler}>
-          <option value="income">+</option>
-          <option value="expense">-</option>
-        </select>
+        <BaseLabel
+          title={
+            <select value={type} onChange={typeOnChangeHandler}>
+              <option value="income">+</option>
+              <option value="expense">-</option>
+            </select>
+          }
+        />
       )}
       {editMode && (
-        <input type="text" value={amount} onChange={amountOnChangeHandler} />
+        <BaseLabel
+          title={
+            <input
+              type="text"
+              value={amount}
+              placeholder="Amount value"
+              onChange={amountOnChangeHandler}
+            />
+          }
+        />
       )}
     </div>
   );
 
   const expenseOnlyMarkup = (
     <div className="h-grid-gap-small">
-      {!editMode && (
-        <div>
-          Paid to: <BaseLabel title={paidTo} />
-        </div>
-      )}
-      {editMode && (
-        <input type="text" value={paidTo} onChange={paidToOnChangeHandler} />
-      )}
-      {!editMode && (
-        <div>
-          Paid by: <BaseLabel title={paidBy} />
-        </div>
-      )}
-      {editMode && (
-        <input type="text" value={paidBy} onChange={paidByOnChangeHandler} />
-      )}
+      <div className="v-grid-gap-small">
+        <label>Paid to:</label>
+        {!editMode && <BaseLabel title={paidTo} />}
+        {editMode && (
+          <BaseLabel
+            title={
+              <input
+                type="text"
+                value={paidTo}
+                placeholder="To whom did I make the payment?"
+                onChange={paidToOnChangeHandler}
+              />
+            }
+          />
+        )}
+      </div>
+      <div className="v-grid-gap-small">
+        <label>Paid by:</label>
+        {!editMode && <BaseLabel title={paidBy} />}
+        {editMode && (
+          <BaseLabel
+            title={
+              <input
+                type="text"
+                value={paidBy}
+                placeholder="Which payment method did I use to make the payment?"
+                onChange={paidByOnChangeHandler}
+              />
+            }
+          />
+        )}
+      </div>
     </div>
   );
 
   const incomeOnlyMarkup = (
     <div className="h-grid-gap-small">
-      {!editMode && (
-        <div>
-          Received from: <BaseLabel title={receivedFrom} />
-        </div>
-      )}
-      {editMode && (
-        <input
-          type="text"
-          value={receivedFrom}
-          onChange={receivedFromOnChangeHandler}
-        />
-      )}
-      {!editMode && (
-        <div>
-          Received by: <BaseLabel title={receivedBy} />
-        </div>
-      )}
-      {editMode && (
-        <input
-          type="text"
-          value={receivedBy}
-          onChange={receivedByOnChangeHandler}
-        />
-      )}
+      <div className="v-grid-gap-small">
+        <label>Received from:</label>
+        {!editMode && <BaseLabel title={receivedFrom} />}
+        {editMode && (
+          <input
+            type="text"
+            value={receivedFrom}
+            placeholder="From whom did I receive this payment?"
+            onChange={receivedFromOnChangeHandler}
+          />
+        )}
+      </div>
+      <div className="v-grid-gap-small">
+        <label>Received by:</label>
+        {!editMode && <BaseLabel title={receivedBy} />}
+        {editMode && (
+          <input
+            type="text"
+            value={receivedBy}
+            placeholder="By which payment method did I receive this payment?"
+            onChange={receivedByOnChangeHandler}
+          />
+        )}
+      </div>
     </div>
   );
 
   const tagsMarkup = (
-    <div>
+    <div className="v-grid-gap-small">
+      <label>Tags:</label>
       {!editMode && (
-        <div className="v-grid-gap-small">
-          Tags:
-          <span className="v-grid-gap-small">
-            {tags.map((tag) => (
-              <BaseLabel key={tag} title={tag} />
-            ))}
-          </span>
-        </div>
+        <span className="v-grid-gap-small">
+          {tags.map((tag) => (
+            <BaseLabel key={tag} title={tag} />
+          ))}
+        </span>
       )}
       {editMode && (
-        <input value={tags.join(', ')} onChange={tagsOnChangeHandler} />
+        <BaseLabel
+          title={
+            <input
+              value={tags.join(', ')}
+              onChange={tagsOnChangeHandler}
+              placeholder="How do i categorize this movement? (comma seperated values like: Food, Zalando)"
+            />
+          }
+        />
       )}
     </div>
   );
 
   const descriptionMarkup = (
-    <div>
-      {!editMode && (
-        <div>
-          Notes: <BaseLabel title={description} />
-        </div>
-      )}
+    <div className="v-grid-gap-small">
+      <label>Notes:</label>
+      {!editMode && <BaseLabel title={description} />}
       {editMode && (
-        <textarea
-          rows="3"
-          value={description}
-          onChange={descriptionOnChangeHandler}
+        <BaseLabel
+          title={
+            <textarea
+              rows="3"
+              value={description}
+              placeholder="Some notes..."
+              onChange={descriptionOnChangeHandler}
+            />
+          }
         />
       )}
     </div>
@@ -210,7 +257,7 @@ const Movement = (props) => {
   );
 
   return (
-    <div className={`${styles.movement} ${typeStyles}`}>
+    <li className={`${styles.movement} ${typeStyles}`}>
       <BaseDropdown
         isOpen={showDetails}
         head={headMarkup}
@@ -220,7 +267,7 @@ const Movement = (props) => {
         enableEditMode={enableEditMode}
         hideDetails={toggleDetails}
       />
-    </div>
+    </li>
   );
 };
 
