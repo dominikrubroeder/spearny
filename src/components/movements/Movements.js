@@ -1,8 +1,10 @@
+import { useState } from 'react';
+import MovementAddForm from './MovementAddForm';
 import Movement from './Movement';
 import styles from './Movements.module.css';
 
 const Movements = () => {
-  const movements = [
+  const movementPlaceholder = [
     {
       id: new Date().toISOString() + Math.random(),
       type: 'expense',
@@ -49,12 +51,23 @@ const Movements = () => {
     },
   ];
 
+  const [movements, setMovements] = useState(movementPlaceholder);
+
+  const addNewMovement = (newMovement) => {
+    setMovements((previousState) => {
+      return [newMovement, ...previousState];
+    });
+  };
+
   return (
-    <ul className={styles.movements}>
-      {movements.map((movement) => (
-        <Movement movement={movement} key={movement.id} />
-      ))}
-    </ul>
+    <div>
+      <MovementAddForm onAddNewMovement={addNewMovement} />
+      <ul className={`h-grid-gap-small ${styles.movements}`}>
+        {movements.map((movement) => (
+          <Movement movement={movement} key={movement.id} />
+        ))}
+      </ul>
+    </div>
   );
 };
 
