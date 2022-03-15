@@ -1,0 +1,27 @@
+@mixin h-grid($grid-gap: 1rem) {
+  display: grid;
+  grid-gap: $grid-gap;
+}
+
+@mixin v-grid($gap: 1rem) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+  flex-wrap: wrap;
+}
+
+.h-grid {
+  @include h-grid();
+}
+
+.h-grid-gap-small {
+  @include h-grid($grid-gap: 0.5rem);
+}
+
+.v-grid {
+  @include v-grid();
+}
+
+.v-grid-gap-small {
+  @include v-grid($gap: 0.5rem);
+}

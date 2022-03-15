@@ -4,19 +4,24 @@ import styles from './BaseDropdown.module.scss';
 const BaseDropdown = (props) => {
   const hasEditActions = props.hasEditActions;
   const editMode = props.editModeState;
+
   const [isOpen, setIsOpen] = useState(props.isOpen);
-  const toggleIsOpenState = (e) => {
-    if (e.target == '') return;
+
+  const toggleIsOpenState = () => {
+    // If movement item is currently in editMode, do not toggle the dropdown
+    if (editMode) return;
 
     setIsOpen((previousState) => {
       return !previousState;
     });
   };
 
+  // enableEditMode function was passed into this component by the parent Movement.js as prop
   const onClickEditHandler = () => {
     props.enableEditMode();
   };
 
+  // hideDetails function was passed into this component by the parent Movement.js as prop
   const onClickDoneHandler = () => {
     props.hideDetails();
   };
