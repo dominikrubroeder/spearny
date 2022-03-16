@@ -7,7 +7,7 @@ const TheHeader = () => {
       <div className={classes.branding}>
         <div className={`${classes.logo} v-grid-gap-small`}>
           <Logo />
-          <div class="v-grid-gap-small">
+          <div className="v-grid-gap-small">
             <h1>Spearny.</h1>
           </div>
         </div>

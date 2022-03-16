@@ -1,7 +1,24 @@
-.tag {
+.card {
+  padding: 2rem;
+}
+
+.label {
   font-size: 1.2rem;
   display: inline-block;
   padding: 0.5rem 0.75rem;
-  background-color: var(--lightest-background);
   border-radius: 0.25rem;
+}
+
+.transparent {
+  padding: 0;
+  background-color: transparent;
+  background: transparent;
+}
+
+.white {
+  background-color: var(--white);
+}
+
+.light {
+  background-color: var(--lightest-background);
 }

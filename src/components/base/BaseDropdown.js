@@ -17,16 +17,6 @@ const BaseDropdown = (props) => {
     });
   };
 
-  // enableEditMode function was passed into this component by the parent Movement.js as prop
-  const onClickEditHandler = () => {
-    props.enableEditMode();
-  };
-
-  // hideDetails function was passed into this component by the parent Movement.js as prop
-  const onClickDoneHandler = () => {
-    props.hideDetails();
-  };
-
   return (
     <div className="dropdown">
       <div className={classes.head}>
@@ -36,20 +26,12 @@ const BaseDropdown = (props) => {
         {hasEditActions && isOpen && (
           <span className={classes.actions}>
             {!editMode && (
-              <BaseButton
-                mode="link"
-                priority="primary"
-                onClick={onClickEditHandler}
-              >
+              <BaseButton mode="link" priority="primary" onClick={props.onEdit}>
                 Edit
               </BaseButton>
             )}
             {editMode && (
-              <BaseButton
-                mode="link"
-                priority="primary"
-                onClick={onClickDoneHandler}
-              >
+              <BaseButton mode="link" priority="primary" onClick={props.onDone}>
                 Done
               </BaseButton>
             )}
