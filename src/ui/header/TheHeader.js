@@ -1,4 +1,4 @@
-import { ReactComponent as Logo } from './spearny-logo.svg';
+import { ReactComponent as Logo } from '../../assets/svgs/spearny-logo.svg';
 import classes from './TheHeader.module.css';
 
 const TheHeader = () => {
