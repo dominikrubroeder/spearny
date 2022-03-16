@@ -1,8 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styles from './MovementAddForm.module.scss';
 import BaseButton from '../BaseButton';
 
 const MovementAddForm = (props) => {
+  const [placeholderIsVisible, setPlaceholderIsVisible] = useState(false);
+  const [placeholder, setPlaceholder] = useState('');
   const newMovementType = useRef();
   const newMovementTitle = useRef();
   const newMovementAmount = useRef();
@@ -31,6 +33,15 @@ const MovementAddForm = (props) => {
     newMovementAmount.current.value = '';
   };
 
+  const showPlaceholder = (e) => {
+    setPlaceholder(() => e.target.placeholder);
+    setPlaceholderIsVisible(() => true);
+  };
+
+  const hidePlaceholder = () => {
+    setPlaceholderIsVisible(() => false);
+  };
+
   return (
     <form className="v-grid-space-between" onSubmit={addNewMovement}>
       <div className="v-grid-gap-small">
@@ -38,12 +49,19 @@ const MovementAddForm = (props) => {
           <option value="expense">-</option>
           <option value="income">+</option>
         </select>
-        <input
-          className={styles.filled}
-          type="text"
-          placeholder="Title..."
-          ref={newMovementTitle}
-        />
+        <div className={styles.formControl}>
+          {placeholderIsVisible && (
+            <span className={styles.placeholder}>{placeholder}</span>
+          )}
+          <input
+            className={styles.filled}
+            type="text"
+            placeholder="Title..."
+            ref={newMovementTitle}
+            onClick={showPlaceholder}
+            onBlur={hidePlaceholder}
+          />
+        </div>
         <input
           className={`${styles.amount} ${styles.filled}`}
           type="number"
