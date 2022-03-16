@@ -2,9 +2,9 @@ import styles from './BaseButton.module.scss';
 
 const BaseButton = (props) => {
   // button, link, ...
-  const mode = props.mode === undefined ? 'button' : props.mode;
+  const mode = props.mode || 'button';
   // primary, secondary, tertiary, ...
-  const priority = props.priority;
+  const priority = props.priority || 'default';
 
   const classes = `${mode}--${priority}`;
 

@@ -57,20 +57,12 @@ const BaseDropdown = (props) => {
         )}
         <span>
           {!isOpen && (
-            <BaseButton
-              mode="link"
-              priority="default"
-              onClick={toggleIsOpenState}
-            >
+            <BaseButton mode="link" onClick={toggleIsOpenState}>
               +
             </BaseButton>
           )}
           {isOpen && (
-            <BaseButton
-              mode="link"
-              priority="default"
-              onClick={toggleIsOpenState}
-            >
+            <BaseButton mode="link" onClick={toggleIsOpenState}>
               -
             </BaseButton>
           )}

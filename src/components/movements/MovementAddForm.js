@@ -51,12 +51,7 @@ const MovementAddForm = (props) => {
           ref={newMovementAmount}
         />
       </div>
-      <BaseButton
-        type="submit"
-        mode="button"
-        priority="primary"
-        onClick={addNewMovement}
-      >
+      <BaseButton type="submit" priority="primary" onClick={addNewMovement}>
         Add
       </BaseButton>
     </form>
