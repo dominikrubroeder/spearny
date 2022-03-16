@@ -4,19 +4,17 @@ import classes from './TheHeader.module.css';
 const TheHeader = () => {
   return (
     <header>
-      <span className={classes.branding}>
-        <span className={classes.logo}>
+      <div className={classes.branding}>
+        <div className={`${classes.logo} v-grid-gap-small`}>
           <Logo />
-          <span>
-            <b>
-              <span>Spearny.</span>
-            </b>
-            <span className={classes.claim}>
-              Keep track of your spent and earned money everywhere.
-            </span>
-          </span>
-        </span>
-      </span>
+          <div class="v-grid-gap-small">
+            <h1>Spearny.</h1>
+          </div>
+        </div>
+        <div className={classes.claim}>
+          Keep track of your spent and earned money everywhere.
+        </div>
+      </div>
     </header>
   );
 };

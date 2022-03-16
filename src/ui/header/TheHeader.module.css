@@ -1,15 +1,12 @@
 header {
   padding: 1rem;
   margin: 1rem;
+  margin-bottom: 2rem;
 }
 
-.branding,
-.logo {
+.logo,
+.claim {
   width: max-content;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
   margin: 0 auto;
 }
 

@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import './font/font.scss';
 import './App.scss';
 import TheHeader from './ui/header/TheHeader';
 import Movements from './components/movements/Movements';
