@@ -37,28 +37,46 @@ const BaseDropdown = (props) => {
           <span className={styles.actions}>
             {!editMode && (
               <BaseButton
-                text="Edit"
                 mode="link"
                 priority="primary"
                 onClick={onClickEditHandler}
-              />
+              >
+                Edit
+              </BaseButton>
             )}
             {editMode && (
               <BaseButton
-                text="Done"
                 mode="link"
                 priority="primary"
                 onClick={onClickDoneHandler}
-              />
+              >
+                Done
+              </BaseButton>
             )}
           </span>
         )}
-        <span onClick={toggleIsOpenState}>
-          {!isOpen && <BaseButton icon="+" mode="link" priority="default" />}
-          {isOpen && <BaseButton icon="-" mode="link" priority="default" />}
+        <span>
+          {!isOpen && (
+            <BaseButton
+              mode="link"
+              priority="default"
+              onClick={toggleIsOpenState}
+            >
+              +
+            </BaseButton>
+          )}
+          {isOpen && (
+            <BaseButton
+              mode="link"
+              priority="default"
+              onClick={toggleIsOpenState}
+            >
+              -
+            </BaseButton>
+          )}
         </span>
       </div>
-      <div className={styles.content}>{isOpen && props.content}</div>
+      <div className={styles.content}>{isOpen && props.children}</div>
     </div>
   );
 };

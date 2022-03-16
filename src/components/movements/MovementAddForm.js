@@ -1,38 +1,20 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import styles from './MovementAddForm.module.scss';
 import BaseButton from '../BaseButton';
 
 const MovementAddForm = (props) => {
-  const [newMovementType, setNewMovementType] = useState('income');
-  const [newMovementTitle, setNewMovementTitle] = useState('');
-  const [newMovementAmount, setNewMovementAmount] = useState(0);
+  const newMovementType = useRef();
+  const newMovementTitle = useRef();
+  const newMovementAmount = useRef();
 
-  const typeOnChangeHandler = (e) => {
-    setNewMovementType(() => {
-      return e.target.value;
-    });
-  };
-
-  const titleOnChangeHandler = (e) => {
-    setNewMovementTitle(() => {
-      return e.target.value;
-    });
-  };
-
-  const amountOnChangeHandler = (e) => {
-    setNewMovementAmount(() => {
-      return e.target.value;
-    });
-  };
-
-  const formOnSubmitClickHandler = (e) => {
+  const addNewMovement = (e) => {
     e.preventDefault();
 
     const newMovement = {
       id: new Date().toISOString() + Math.random(),
-      type: newMovementType,
-      title: newMovementTitle,
-      amount: newMovementAmount,
+      type: newMovementType.current.value,
+      title: newMovementTitle.current.value,
+      amount: +newMovementAmount.current.value,
       description: '',
       dateAdded: new Date(),
       tags: [],
@@ -44,44 +26,39 @@ const MovementAddForm = (props) => {
 
     props.onAddNewMovement(newMovement);
 
-    setNewMovementType(() => 'income');
-    setNewMovementTitle(() => '');
-    setNewMovementAmount(() => 0);
+    newMovementType.current.value = 'expense';
+    newMovementTitle.current.value = '';
+    newMovementAmount.current.value = '';
   };
 
   return (
-    <form className="v-grid-space-between" onSubmit={formOnSubmitClickHandler}>
+    <form className="v-grid-space-between" onSubmit={addNewMovement}>
       <div className="v-grid-gap-small">
-        <select
-          className={styles.filled}
-          value={newMovementType}
-          onChange={typeOnChangeHandler}
-        >
-          <option value="income">+</option>
+        <select className={styles.filled} ref={newMovementType}>
           <option value="expense">-</option>
+          <option value="income">+</option>
         </select>
         <input
           className={styles.filled}
           type="text"
           placeholder="Title..."
-          value={newMovementTitle}
-          onChange={titleOnChangeHandler}
+          ref={newMovementTitle}
         />
         <input
           className={`${styles.amount} ${styles.filled}`}
           type="number"
           placeholder="Amount..."
-          value={newMovementAmount}
-          onChange={amountOnChangeHandler}
+          ref={newMovementAmount}
         />
       </div>
       <BaseButton
         type="submit"
-        text="Add"
         mode="button"
         priority="primary"
-        onClick={formOnSubmitClickHandler}
-      />
+        onClick={addNewMovement}
+      >
+        Add
+      </BaseButton>
     </form>
   );
 };

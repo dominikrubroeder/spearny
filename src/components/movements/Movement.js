@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './Movement.module.scss';
 import BaseDropdown from '../BaseDropdown';
-import BaseLabel from '../BaseLabel';
+import BaseCard from '../BaseCard';
 
 const Movement = (props) => {
   const typeStyles =
@@ -103,9 +103,9 @@ const Movement = (props) => {
     <div className="h-grid-gap-small">
       <div className="v-grid-gap-small">
         <label>Paid to:</label>
-        {!editMode && <BaseLabel title={paidTo} />}
+        {!editMode && <BaseCard>{paidTo}</BaseCard>}
         {editMode && (
-          <BaseLabel
+          <BaseCard
             title={
               <input
                 type="text"
@@ -119,18 +119,16 @@ const Movement = (props) => {
       </div>
       <div className="v-grid-gap-small">
         <label>Paid by:</label>
-        {!editMode && <BaseLabel title={paidBy} />}
+        {!editMode && <BaseCard>{paidBy}</BaseCard>}
         {editMode && (
-          <BaseLabel
-            title={
-              <input
-                type="text"
-                value={paidBy}
-                placeholder="Which payment method did I use to make the payment?"
-                onChange={paidByOnChangeHandler}
-              />
-            }
-          />
+          <BaseCard>
+            <input
+              type="text"
+              value={paidBy}
+              placeholder="Which payment method did I use to make the payment?"
+              onChange={paidByOnChangeHandler}
+            />
+          </BaseCard>
         )}
       </div>
     </div>
@@ -140,26 +138,30 @@ const Movement = (props) => {
     <div className="h-grid-gap-small">
       <div className="v-grid-gap-small">
         <label>Received from:</label>
-        {!editMode && <BaseLabel title={receivedFrom} />}
+        {!editMode && <BaseCard>{receivedFrom}</BaseCard>}
         {editMode && (
-          <input
-            type="text"
-            value={receivedFrom}
-            placeholder="From whom did I receive this payment?"
-            onChange={receivedFromOnChangeHandler}
-          />
+          <BaseCard>
+            <input
+              type="text"
+              value={receivedFrom}
+              placeholder="From whom did I receive this payment?"
+              onChange={receivedFromOnChangeHandler}
+            />
+          </BaseCard>
         )}
       </div>
       <div className="v-grid-gap-small">
         <label>Received by:</label>
-        {!editMode && <BaseLabel title={receivedBy} />}
+        {!editMode && <BaseCard>{receivedBy}</BaseCard>}
         {editMode && (
-          <input
-            type="text"
-            value={receivedBy}
-            placeholder="By which payment method did I receive this payment?"
-            onChange={receivedByOnChangeHandler}
-          />
+          <BaseCard>
+            <input
+              type="text"
+              value={receivedBy}
+              placeholder="By which payment method did I receive this payment?"
+              onChange={receivedByOnChangeHandler}
+            />
+          </BaseCard>
         )}
       </div>
     </div>
@@ -171,20 +173,18 @@ const Movement = (props) => {
       {!editMode && (
         <span className="v-grid-gap-small">
           {tags.map((tag) => (
-            <BaseLabel key={tag} title={tag} />
+            <BaseCard key={tag}>{tag}</BaseCard>
           ))}
         </span>
       )}
       {editMode && (
-        <BaseLabel
-          title={
-            <input
-              value={tags.join(', ')}
-              onChange={tagsOnChangeHandler}
-              placeholder="How do i categorize this movement? (comma seperated values like: Food, Zalando)"
-            />
-          }
-        />
+        <BaseCard>
+          <input
+            value={tags.join(', ')}
+            onChange={tagsOnChangeHandler}
+            placeholder="How do i categorize this movement? (comma seperated values like: Food, Zalando)"
+          />
+        </BaseCard>
       )}
     </div>
   );
@@ -192,19 +192,17 @@ const Movement = (props) => {
   const descriptionMarkup = (
     <div className="v-grid-gap-small">
       <label>Notes:</label>
-      {!editMode && <BaseLabel title={description} />}
+      {!editMode && <BaseCard>{description}</BaseCard>}
       {editMode && (
-        <BaseLabel
-          title={
-            <textarea
-              rows="3"
-              value={description}
-              placeholder="Some notes..."
-              onChange={descriptionOnChangeHandler}
-              autoFocus
-            />
-          }
-        />
+        <BaseCard>
+          <textarea
+            rows="3"
+            value={description}
+            placeholder="Some notes..."
+            onChange={descriptionOnChangeHandler}
+            autoFocus
+          />
+        </BaseCard>
       )}
     </div>
   );
@@ -213,39 +211,32 @@ const Movement = (props) => {
     <div className={`h-grid-gap-small ${editMode ? 'edit-mode' : ''}`}>
       <div className="v-grid-gap-small">
         {editMode && (
-          <BaseLabel
-            title={
-              <select value={type} onChange={typeOnChangeHandler}>
-                <option value="income">+</option>
-                <option value="expense">-</option>
-              </select>
-            }
-          />
+          <BaseCard>
+            <select value={type} onChange={typeOnChangeHandler}>
+              <option value="income">+</option>
+              <option value="expense">-</option>
+            </select>
+          </BaseCard>
         )}
         {editMode && (
-          <BaseLabel
-            title={
-              <input
-                type="text"
-                value={title}
-                placeholder="Add title..."
-                onChange={titleOnChangeHandler}
-              />
-            }
-            classes="v-grid-item-expand"
-          />
+          <BaseCard classes="v-grid-item-expand">
+            <input
+              type="text"
+              value={title}
+              placeholder="Add title..."
+              onChange={titleOnChangeHandler}
+            />
+          </BaseCard>
         )}
         {editMode && (
-          <BaseLabel
-            title={
-              <input
-                type="text"
-                value={amount}
-                placeholder="Amount value"
-                onChange={amountOnChangeHandler}
-              />
-            }
-          />
+          <BaseCard>
+            <input
+              type="text"
+              value={amount}
+              placeholder="Amount value"
+              onChange={amountOnChangeHandler}
+            />
+          </BaseCard>
         )}
       </div>
       {descriptionMarkup}
@@ -260,12 +251,13 @@ const Movement = (props) => {
       <BaseDropdown
         isOpen={showDetails}
         head={headMarkup}
-        content={detailsMarkup}
         hasEditActions={true}
         editModeState={editMode}
         enableEditMode={enableEditMode}
         hideDetails={toggleDetails}
-      />
+      >
+        {detailsMarkup}
+      </BaseDropdown>
     </li>
   );
 };

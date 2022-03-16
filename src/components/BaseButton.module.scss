@@ -1,6 +1,5 @@
 button {
   color: hsla(100, 100%, 100%, 1);
-  font-weight: bold;
   padding: 1rem;
   border: none;
   background-color: hsla(0, 0%, 0%, 1);
@@ -13,12 +12,15 @@ button {
   background-color: var(--light-accent);
 }
 
+button[class^='BaseButton_link'] {
+  padding: 0.25rem;
+  background-color: transparent;
+}
+
 .link--default {
   color: var(--black);
-  background-color: transparent;
 }
 
 .link--primary {
   color: var(--light-accent);
-  background-color: transparent;
 }
