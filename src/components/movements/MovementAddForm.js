@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import styles from './MovementAddForm.module.scss';
-import BaseButton from '../BaseButton';
+import classes from './MovementAddForm.module.scss';
+import BaseButton from '../base/BaseButton';
 
 const MovementAddForm = (props) => {
   const [placeholderIsVisible, setPlaceholderIsVisible] = useState(false);
@@ -45,16 +45,16 @@ const MovementAddForm = (props) => {
   return (
     <form className="v-grid-space-between" onSubmit={addNewMovement}>
       <div className="v-grid-gap-small">
-        <select className={styles.filled} ref={newMovementType}>
+        <select className={classes.filled} ref={newMovementType}>
           <option value="expense">-</option>
           <option value="income">+</option>
         </select>
-        <div className={styles.formControl}>
+        <div className={classes.formControl}>
           {placeholderIsVisible && (
-            <span className={styles.placeholder}>{placeholder}</span>
+            <span className={classes.placeholder}>{placeholder}</span>
           )}
           <input
-            className={styles.filled}
+            className={classes.filled}
             type="text"
             placeholder="Title..."
             ref={newMovementTitle}
@@ -63,7 +63,7 @@ const MovementAddForm = (props) => {
           />
         </div>
         <input
-          className={`${styles.amount} ${styles.filled}`}
+          className={`${classes.amount} ${classes.filled}`}
           type="number"
           placeholder="Amount..."
           ref={newMovementAmount}

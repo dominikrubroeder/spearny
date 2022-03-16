@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import styles from './Movement.module.scss';
-import BaseDropdown from '../BaseDropdown';
-import BaseCard from '../BaseCard';
+import classes from './Movement.module.scss';
+import BaseDropdown from '../base/BaseDropdown';
+import BaseCard from '../base/BaseCard';
 
 const Movement = (props) => {
-  const typeStyles =
+  const typeclasses =
     props.movement.type === 'expense'
-      ? styles['type--expense']
-      : styles['type--income'];
+      ? classes['type--expense']
+      : classes['type--income'];
 
   const plusMinus = props.movement.type === 'expense' ? '-' : '+';
   const [showDetails, setShowDetails] = useState(props.movement.showDetails);
@@ -89,11 +89,11 @@ const Movement = (props) => {
   };
 
   const headMarkup = (
-    <div className={`${styles.head} ${editMode && 'edit-mode'}`}>
-      <h3 className={styles.title} onClick={toggleDetails}>
+    <div className={`${classes.head} ${editMode && 'edit-mode'}`}>
+      <h3 className={classes.title} onClick={toggleDetails}>
         {title}
       </h3>
-      <div className={styles.amount}>
+      <div className={classes.amount}>
         {plusMinus} {amount}€
       </div>
     </div>
@@ -247,7 +247,7 @@ const Movement = (props) => {
   );
 
   return (
-    <li className={`${styles.movement} ${typeStyles}`}>
+    <li className={`${classes.movement} ${typeclasses}`}>
       <BaseDropdown
         isOpen={showDetails}
         head={headMarkup}

@@ -1,17 +1,17 @@
 import { ReactComponent as Logo } from './spearny-logo.svg';
-import styles from './TheHeader.module.css';
+import classes from './TheHeader.module.css';
 
 const TheHeader = () => {
   return (
     <header>
-      <span className={styles.branding}>
-        <span className={styles.logo}>
+      <span className={classes.branding}>
+        <span className={classes.logo}>
           <Logo />
           <span>
             <b>
               <span>Spearny.</span>
             </b>
-            <span className={styles.claim}>
+            <span className={classes.claim}>
               Keep track of your spent and earned money everywhere.
             </span>
           </span>

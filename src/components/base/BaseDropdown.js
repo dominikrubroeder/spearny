@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './BaseDropdown.module.scss';
+import classes from './BaseDropdown.module.scss';
 import BaseButton from './BaseButton';
 
 const BaseDropdown = (props) => {
@@ -29,12 +29,12 @@ const BaseDropdown = (props) => {
 
   return (
     <div className="dropdown">
-      <div className={styles.head}>
-        <div className={styles.heading} onClick={toggleIsOpenState}>
+      <div className={classes.head}>
+        <div className={classes.heading} onClick={toggleIsOpenState}>
           {props.head && props.head}
         </div>
         {hasEditActions && isOpen && (
-          <span className={styles.actions}>
+          <span className={classes.actions}>
             {!editMode && (
               <BaseButton
                 mode="link"
@@ -68,7 +68,7 @@ const BaseDropdown = (props) => {
           )}
         </span>
       </div>
-      <div className={styles.content}>{isOpen && props.children}</div>
+      <div className={classes.content}>{isOpen && props.children}</div>
     </div>
   );
 };

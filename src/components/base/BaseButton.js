@@ -1,4 +1,4 @@
-import styles from './BaseButton.module.scss';
+import classes from './BaseButton.module.scss';
 
 const BaseButton = (props) => {
   // button, link, ...
@@ -6,10 +6,10 @@ const BaseButton = (props) => {
   // primary, secondary, tertiary, ...
   const priority = props.priority || 'default';
 
-  const classes = `${mode}--${priority}`;
+  const classList = `${mode}--${priority}`;
 
   return (
-    <button className={styles[`${classes}`]} onClick={props.onClick}>
+    <button className={classes[`${classList}`]} onClick={props.onClick}>
       {props.children}
     </button>
   );
