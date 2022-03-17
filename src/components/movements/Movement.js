@@ -207,23 +207,33 @@ const Movement = (props) => {
 
   const descriptionMarkup = (
     <div className="h-grid-gap-small">
-      <label>Notes:</label>
-      {!editMode && (
-        <BaseCard background="white" isLabel={true}>
-          {description}
-        </BaseCard>
-      )}
-      {editMode && (
-        <BaseCard background="white" isLabel={true}>
-          <textarea
-            rows="3"
-            value={description}
-            placeholder="Some notes..."
-            onChange={descriptionOnChangeHandler}
-            autoFocus
-          />
-        </BaseCard>
-      )}
+      <BaseDropdown
+        isOpen={description && true}
+        head={<label>Notes:</label>}
+        hasEditActions={true}
+        editModeState={editMode}
+        onEdit={enableEditMode}
+        onDone={toggleDetails}
+        hasToggle={true}
+        toggleEnabled={description && true}
+      >
+        {!editMode && (
+          <BaseCard background="white" isLabel={true}>
+            {description}
+          </BaseCard>
+        )}
+        {editMode && (
+          <BaseCard background="white" isLabel={true}>
+            <textarea
+              rows="3"
+              value={description}
+              placeholder="Some notes..."
+              onChange={descriptionOnChangeHandler}
+              autoFocus
+            />
+          </BaseCard>
+        )}
+      </BaseDropdown>
     </div>
   );
 

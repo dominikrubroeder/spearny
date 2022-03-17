@@ -1,0 +1,28 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  width: 3rem;
+  border-radius: 10rem;
+  padding: 0.25rem;
+  background-color: var(--white);
+  transition: all 0.2s;
+}
+
+.indicator {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  border-radius: 5rem;
+  background-color: var(--lightest-background);
+  transition: all 0.2s;
+}
+
+.toggle.enabled {
+  background-color: var(--light-accent);
+}
+
+.toggle.enabled .indicator {
+  background-color: var(--white);
+  transform: translateX(100%);
+}
