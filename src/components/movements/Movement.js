@@ -2,6 +2,7 @@ import { useState, Fragment } from 'react';
 import classes from './Movement.module.scss';
 import BaseDropdown from '../base/BaseDropdown';
 import BaseCard from '../base/BaseCard';
+import TagsList from '../tags/TagsList';
 
 const Movement = (props) => {
   const typeclasses =
@@ -99,7 +100,8 @@ const Movement = (props) => {
 
   const tagsMarkup = (
     <BaseDropdown head={<label>Tags:</label>} hasToggle={true}>
-      {!editMode && (
+      <TagsList tagBackground="white" />
+      {/* {!editMode && (
         <span className="v-grid-gap-small">
           {tags.map((tag) => (
             <BaseCard key={tag} isLabel={true} background="white">
@@ -116,7 +118,7 @@ const Movement = (props) => {
             placeholder="How do i categorize this movement? (comma seperated values like: Food, Zalando)"
           />
         </BaseCard>
-      )}
+      )} */}
     </BaseDropdown>
   );
 
@@ -126,59 +128,38 @@ const Movement = (props) => {
       hasToggle={true}
       hasHelpText={true}
     >
-      {!editMode && (
-        <BaseCard background="white" isLabel={true}>
-          {description}
-        </BaseCard>
-      )}
-      {editMode && (
-        <BaseCard background="white" isLabel={true}>
-          <textarea
-            rows="3"
-            value={description}
-            placeholder="Some notes..."
-            onChange={descriptionOnChangeHandler}
-          />
-        </BaseCard>
-      )}
+      <BaseCard background="white" isLabel={true}>
+        <textarea
+          rows="3"
+          value={description}
+          placeholder="Some notes..."
+          onChange={descriptionOnChangeHandler}
+        />
+      </BaseCard>
     </BaseDropdown>
   );
 
   const expenseOnlyMarkup = (
     <Fragment>
       <BaseDropdown head={<label>Paid to:</label>} hasToggle={true}>
-        {!editMode && (
-          <BaseCard background="white" isLabel={true}>
-            {paidTo}
-          </BaseCard>
-        )}
-        {editMode && (
-          <BaseCard background="white" isLabel={true}>
-            <input
-              type="text"
-              value={paidTo}
-              placeholder="To whom did I make the payment?"
-              onChange={paidToOnChangeHandler}
-            />
-          </BaseCard>
-        )}
+        <BaseCard background="white" isLabel={true}>
+          <input
+            type="text"
+            value={paidTo}
+            placeholder="To whom did I make the payment?"
+            onChange={paidToOnChangeHandler}
+          />
+        </BaseCard>
       </BaseDropdown>
       <BaseDropdown head={<label>Paid by:</label>} hasToggle={true}>
-        {!editMode && (
-          <BaseCard background="white" isLabel={true}>
-            {paidBy}
-          </BaseCard>
-        )}
-        {editMode && (
-          <BaseCard background="white" isLabel={true}>
-            <input
-              type="text"
-              value={paidBy}
-              placeholder="Which payment method did I use to make the payment?"
-              onChange={paidByOnChangeHandler}
-            />
-          </BaseCard>
-        )}
+        <BaseCard background="white" isLabel={true}>
+          <input
+            type="text"
+            value={paidBy}
+            placeholder="Which payment method did I use to make the payment?"
+            onChange={paidByOnChangeHandler}
+          />
+        </BaseCard>
       </BaseDropdown>
     </Fragment>
   );
@@ -186,38 +167,24 @@ const Movement = (props) => {
   const incomeOnlyMarkup = (
     <Fragment>
       <BaseDropdown head={<label>Received from:</label>} hasToggle={true}>
-        {!editMode && (
-          <BaseCard background="white" isLabel={true}>
-            {receivedFrom}
-          </BaseCard>
-        )}
-        {editMode && (
-          <BaseCard background="white" isLabel={true}>
-            <input
-              type="text"
-              value={receivedFrom}
-              placeholder="From whom did I receive this payment?"
-              onChange={receivedFromOnChangeHandler}
-            />
-          </BaseCard>
-        )}
+        <BaseCard background="white" isLabel={true}>
+          <input
+            type="text"
+            value={receivedFrom}
+            placeholder="From whom did I receive this payment?"
+            onChange={receivedFromOnChangeHandler}
+          />
+        </BaseCard>
       </BaseDropdown>
       <BaseDropdown head={<label>Received by:</label>} hasToggle={true}>
-        {!editMode && (
-          <BaseCard background="white" isLabel={true}>
-            {receivedBy}
-          </BaseCard>
-        )}
-        {editMode && (
-          <BaseCard background="white" isLabel={true}>
-            <input
-              type="text"
-              value={receivedBy}
-              placeholder="By which payment method did I receive this payment?"
-              onChange={receivedByOnChangeHandler}
-            />
-          </BaseCard>
-        )}
+        <BaseCard background="white" isLabel={true}>
+          <input
+            type="text"
+            value={receivedBy}
+            placeholder="By which payment method did I receive this payment?"
+            onChange={receivedByOnChangeHandler}
+          />
+        </BaseCard>
       </BaseDropdown>
     </Fragment>
   );
