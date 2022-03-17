@@ -79,7 +79,7 @@ const BaseDropdown = (props) => {
             {hasToggle && (
               <BaseToggle
                 onClick={toggleIsOpenState}
-                enabled={props.toggleEnabled}
+                enabled={isOpen ? true : false}
               />
             )}
           </div>
