@@ -8,6 +8,8 @@ const BaseDropdown = (props) => {
   const hasEditActions = props.hasEditActions;
   const hasToggle = props.hasToggle;
   const hasHelpText = props.hasHelpText;
+  const hasAddAction = props.hasAddAction;
+  const addActionTitle = props.addActionTitle;
   const editMode = props.editModeState;
 
   const [isOpen, setIsOpen] = useState(props.isOpen);
@@ -50,6 +52,18 @@ const BaseDropdown = (props) => {
               )}
             </div>
           )}
+          <div className="v-grid-gap-small">
+            {isOpen && hasAddAction && (
+              <BaseButton
+                mode="link"
+                priority="primary"
+                size="small"
+                onClick={props.onAdd}
+              >
+                {`Add new ${addActionTitle}`}
+              </BaseButton>
+            )}
+          </div>
           {hasHelpText && <BaseHelpText>Testing</BaseHelpText>}
           <div className="v-grid-gap-small-no-wrap">
             {!isOpen && !hasToggle && (

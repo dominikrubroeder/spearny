@@ -214,6 +214,11 @@ const Movement = (props) => {
         hasToggle={true}
         toggleEnabled={description && true}
         hasHelpText={true}
+        hasAddAction={true}
+        addActionTitle="description"
+        onAdd={() => {
+          console.log('added...');
+        }}
       >
         {!editMode && (
           <BaseCard background="white" isLabel={true}>
@@ -227,7 +232,6 @@ const Movement = (props) => {
               value={description}
               placeholder="Some notes..."
               onChange={descriptionOnChangeHandler}
-              autoFocus
             />
           </BaseCard>
         )}

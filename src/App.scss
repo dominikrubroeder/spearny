@@ -138,6 +138,12 @@ h6,
   flex-wrap: nowrap;
 }
 
+.v-grid-gap-small-no-wrap-flex-end {
+  @include v-grid($gap: 0.5rem);
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
 .v-grid-space-between {
   @include v-grid-sb();
 }
