@@ -133,10 +133,24 @@ h6,
   @include v-grid($gap: 0.5rem);
 }
 
+.v-grid-gap-small-no-wrap {
+  @include v-grid($gap: 0.5rem);
+  flex-wrap: nowrap;
+}
+
 .v-grid-space-between {
   @include v-grid-sb();
 }
 
+.v-grid-space-between-no-wrap {
+  @include v-grid-sb();
+  flex-wrap: nowrap;
+}
+
 .v-grid-item-expand {
   flex: 1;
+}
+
+.w-100 {
+  width: 100%;
 }

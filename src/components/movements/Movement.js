@@ -210,12 +210,10 @@ const Movement = (props) => {
       <BaseDropdown
         isOpen={description && true}
         head={<label>Notes:</label>}
-        hasEditActions={true}
         editModeState={editMode}
-        onEdit={enableEditMode}
-        onDone={toggleDetails}
         hasToggle={true}
         toggleEnabled={description && true}
+        hasHelpText={true}
       >
         {!editMode && (
           <BaseCard background="white" isLabel={true}>

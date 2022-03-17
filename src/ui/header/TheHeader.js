@@ -3,7 +3,7 @@ import classes from './TheHeader.module.css';
 
 const TheHeader = () => {
   return (
-    <header>
+    <header className={classes.theHeader}>
       <div className={classes.branding}>
         <div className={`${classes.logo} v-grid-gap-small`}>
           <Logo />
