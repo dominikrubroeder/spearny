@@ -24,8 +24,8 @@ const BaseDropdown = (props) => {
   };
 
   return (
-    <div className="dropdown">
-      <div className="v-grid-gap-small-no-wrap">
+    <div className="h-grid">
+      <div className={`${classes['dropdown--head']} v-grid-gap-small-no-wrap`}>
         <div className="w-100" onClick={toggleIsOpenState}>
           {props.head && props.head}
         </div>
@@ -85,9 +85,7 @@ const BaseDropdown = (props) => {
           </div>
         </div>
       </div>
-      <div className={`${classes.content} h-grid`}>
-        {isOpen && props.children}
-      </div>
+      {isOpen && <div className="h-grid">{props.children}</div>}
     </div>
   );
 };

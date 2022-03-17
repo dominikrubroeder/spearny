@@ -89,10 +89,8 @@ const Movement = (props) => {
   };
 
   const headMarkup = (
-    <div className={`${classes.head} ${editMode && 'edit-mode'}`}>
-      <h3 className={classes.title} onClick={toggleDetails}>
-        {title}
-      </h3>
+    <div className="v-grid-space-between w-100">
+      <h3 onClick={toggleDetails}>{title}</h3>
       <div className={classes.amount}>
         {plusMinus} {amount}€
       </div>

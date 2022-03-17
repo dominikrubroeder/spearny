@@ -60,7 +60,7 @@ const Movements = () => {
   };
 
   return (
-    <div className={classes.movements}>
+    <div className="h-grid">
       <MovementAddForm onAddNewMovement={addNewMovement} />
       <div className="h-grid-gap-small">
         {movements.map((movement) => (
