@@ -9,7 +9,7 @@ const BaseCard = (props) => {
     props.classes
   } ${classes[background]}`;
 
-  return <span className={classList}>{props.children}</span>;
+  return <div className={classList}>{props.children}</div>;
 };
 
 export default BaseCard;

@@ -71,7 +71,7 @@ const BaseDropdown = (props) => {
           </div>
         </div>
       </div>
-      <div className={`${classes.content} h-grid-gap-small`}>
+      <div className={`${classes.content} h-grid`}>
         {isOpen && props.children}
       </div>
     </div>

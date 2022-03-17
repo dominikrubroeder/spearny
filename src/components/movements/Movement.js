@@ -100,7 +100,7 @@ const Movement = (props) => {
   );
 
   const expenseOnlyMarkup = (
-    <div className="h-grid-gap-small">
+    <div className="h-grid">
       <div className="h-grid-gap-small">
         <label>Paid to:</label>
         {!editMode && (
@@ -141,7 +141,7 @@ const Movement = (props) => {
   );
 
   const incomeOnlyMarkup = (
-    <div className="h-grid-gap-small">
+    <div className="h-grid">
       <div className="h-grid-gap-small">
         <label>Received from:</label>
         {!editMode && (
@@ -236,8 +236,8 @@ const Movement = (props) => {
   );
 
   const detailsMarkup = (
-    <div className={`h-grid-gap-small ${editMode ? 'edit-mode' : ''}`}>
-      <div className="h-grid-gap-small">
+    <div className={`h-grid ${editMode ? 'edit-mode' : ''}`}>
+      <div className="v-grid-gap-small">
         {editMode && (
           <BaseCard background="white" isLabel={true}>
             <select value={type} onChange={typeOnChangeHandler}>

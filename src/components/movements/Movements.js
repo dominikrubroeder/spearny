@@ -62,11 +62,11 @@ const Movements = () => {
   return (
     <div className={classes.movements}>
       <MovementAddForm onAddNewMovement={addNewMovement} />
-      <ul className={`h-grid-gap-small ${classes['movement__list']}`}>
+      <div className="h-grid-gap-small">
         {movements.map((movement) => (
           <Movement movement={movement} key={movement.id} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
