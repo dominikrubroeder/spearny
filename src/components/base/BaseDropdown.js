@@ -5,17 +5,31 @@ import BaseToggle from '../base/BaseToggle';
 import BaseHelpText from '../base/BaseHelpText';
 
 const BaseDropdown = (props) => {
-  const hasEditActions = props.hasEditActions;
-  const hasToggle = props.hasToggle;
-  const hasHelpText = props.hasHelpText;
-  const hasAddAction = props.hasAddAction;
-  const addActionTitle = props.addActionTitle;
   const editMode = props.editModeState;
+  const head = props.head || <h3>Title</h3>;
+  const hasToggle = props.hasToggle;
+  const helpTitle = props.helpTitle;
+  const helpText = props.helpText;
+  const addAction = props.onAdd;
+  const addActionText = props.addActionText;
+  const doneAction = props.onDone;
+  const editAction = props.onEdit;
+  const hasEditActions = addAction || doneAction || editAction ? true : false;
+  const hasHelp = helpTitle || helpText ? true : false;
 
   const [isOpen, setIsOpen] = useState(props.isOpen);
 
   const toggleIsOpenState = () => {
     // If movement item is currently in editMode, do not toggle the dropdown
+    if (editMode) return;
+    if (hasToggle) return;
+
+    setIsOpen((previousState) => {
+      return !previousState;
+    });
+  };
+
+  const activateSection = () => {
     if (editMode) return;
 
     setIsOpen((previousState) => {
@@ -25,46 +39,40 @@ const BaseDropdown = (props) => {
 
   return (
     <div className="h-grid">
-      <div className={`${classes['dropdown--head']} v-grid-gap-small-no-wrap`}>
+      <div
+        className={`${
+          !hasToggle ? classes['dropdown--head'] : ''
+        } v-grid-gap-small-no-wrap`}
+      >
         <div className="w-100" onClick={toggleIsOpenState}>
-          {props.head && props.head}
+          {head}
         </div>
         <div className="v-grid-gap-small-no-wrap">
           {hasEditActions && isOpen && (
             <div className="v-grid-gap-small-no-wrap">
               {!editMode && (
-                <BaseButton
-                  mode="link"
-                  priority="primary"
-                  onClick={props.onEdit}
-                >
+                <BaseButton mode="link" priority="primary" onClick={editAction}>
                   Edit
                 </BaseButton>
               )}
               {editMode && (
+                <BaseButton mode="link" priority="primary" onClick={doneAction}>
+                  Done
+                </BaseButton>
+              )}
+              {addActionText && (
                 <BaseButton
                   mode="link"
                   priority="primary"
-                  onClick={props.onDone}
+                  size="small"
+                  onClick={addAction}
                 >
-                  Done
+                  {`Add new ${addActionText}`}
                 </BaseButton>
               )}
             </div>
           )}
-          <div className="v-grid-gap-small">
-            {isOpen && hasAddAction && (
-              <BaseButton
-                mode="link"
-                priority="primary"
-                size="small"
-                onClick={props.onAdd}
-              >
-                {`Add new ${addActionTitle}`}
-              </BaseButton>
-            )}
-          </div>
-          {hasHelpText && <BaseHelpText>Testing</BaseHelpText>}
+          {hasHelp && <BaseHelpText title={helpTitle}>{helpText}</BaseHelpText>}
           <div className="v-grid-gap-small-no-wrap">
             {!isOpen && !hasToggle && (
               <BaseButton mode="link" onClick={toggleIsOpenState}>
@@ -78,7 +86,7 @@ const BaseDropdown = (props) => {
             )}
             {hasToggle && (
               <BaseToggle
-                onClick={toggleIsOpenState}
+                onClick={activateSection}
                 enabled={isOpen ? true : false}
               />
             )}

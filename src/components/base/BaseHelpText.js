@@ -4,6 +4,7 @@ import BaseCard from './BaseCard';
 import BaseButton from './BaseButton';
 
 const BaseHelpText = (props) => {
+  const title = props.title || 'Info';
   const [helptextVisible, setHelptextVisible] = useState(false);
 
   const showHelptext = () => {
@@ -22,7 +23,7 @@ const BaseHelpText = (props) => {
       {helptextVisible && (
         <BaseCard background="white" classes={classes.helpboxContent}>
           <header className="v-grid-space-between">
-            Help{' '}
+            {title}
             <BaseButton mode="link" priority="primary" onClick={hideHelptext}>
               x
             </BaseButton>

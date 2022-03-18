@@ -98,8 +98,26 @@ const Movement = (props) => {
     </div>
   );
 
+  const descriptionMarkup = (
+    <BaseDropdown head={<label>Notes:</label>} hasToggle={true}>
+      <BaseCard background="white" isLabel={true}>
+        <textarea
+          rows="3"
+          value={description}
+          placeholder="Some notes..."
+          onChange={descriptionOnChangeHandler}
+        />
+      </BaseCard>
+    </BaseDropdown>
+  );
+
   const tagsMarkup = (
-    <BaseDropdown head={<label>Tags:</label>} hasToggle={true}>
+    <BaseDropdown
+      head={<label>Tags:</label>}
+      hasToggle={true}
+      helpTitle="Tags"
+      helpText="Tags help text"
+    >
       <TagsList tagBackground="white" />
       {/* {!editMode && (
         <span className="v-grid-gap-small">
@@ -122,26 +140,14 @@ const Movement = (props) => {
     </BaseDropdown>
   );
 
-  const descriptionMarkup = (
-    <BaseDropdown
-      head={<label>Notes:</label>}
-      hasToggle={true}
-      hasHelpText={true}
-    >
-      <BaseCard background="white" isLabel={true}>
-        <textarea
-          rows="3"
-          value={description}
-          placeholder="Some notes..."
-          onChange={descriptionOnChangeHandler}
-        />
-      </BaseCard>
-    </BaseDropdown>
-  );
-
   const expenseOnlyMarkup = (
     <Fragment>
-      <BaseDropdown head={<label>Paid to:</label>} hasToggle={true}>
+      <BaseDropdown
+        head={<label>Paid to:</label>}
+        hasToggle={true}
+        helpTitle="Paid to"
+        helpText="Paid to help text"
+      >
         <BaseCard background="white" isLabel={true}>
           <input
             type="text"
@@ -151,7 +157,12 @@ const Movement = (props) => {
           />
         </BaseCard>
       </BaseDropdown>
-      <BaseDropdown head={<label>Paid by:</label>} hasToggle={true}>
+      <BaseDropdown
+        head={<label>Paid by:</label>}
+        hasToggle={true}
+        helpTitle="Paid by"
+        helpText="Paid by help text"
+      >
         <BaseCard background="white" isLabel={true}>
           <input
             type="text"
@@ -166,7 +177,12 @@ const Movement = (props) => {
 
   const incomeOnlyMarkup = (
     <Fragment>
-      <BaseDropdown head={<label>Received from:</label>} hasToggle={true}>
+      <BaseDropdown
+        head={<label>Received from:</label>}
+        hasToggle={true}
+        helpTitle="Received from"
+        helpText="Received from help text"
+      >
         <BaseCard background="white" isLabel={true}>
           <input
             type="text"
@@ -176,7 +192,12 @@ const Movement = (props) => {
           />
         </BaseCard>
       </BaseDropdown>
-      <BaseDropdown head={<label>Received by:</label>} hasToggle={true}>
+      <BaseDropdown
+        head={<label>Received by:</label>}
+        hasToggle={true}
+        helpTitle="Received by"
+        helpText="Received by help text"
+      >
         <BaseCard background="white" isLabel={true}>
           <input
             type="text"
@@ -237,7 +258,6 @@ const Movement = (props) => {
       <BaseDropdown
         isOpen={showDetails}
         head={headMarkup}
-        hasEditActions={true}
         editModeState={editMode}
         onEdit={enableEditMode}
         onDone={toggleDetails}
