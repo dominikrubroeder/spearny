@@ -5,6 +5,7 @@ import classes from './Movement.module.scss';
 import BaseDropdown from '../base/BaseDropdown';
 import BaseCard from '../base/BaseCard';
 import TagsList from '../tags/TagsList';
+import MovementDescription from './details/MovementDescription';
 
 const Movement = (props) => {
   const dispatch = useDispatch();
@@ -49,16 +50,6 @@ const Movement = (props) => {
         id: id,
         updatedProperty: 'amount',
         updatedValue: +e.target.value,
-      })
-    );
-  };
-
-  const descriptionOnChangeHandler = (e) => {
-    dispatch(
-      movementsActions.update({
-        id: id,
-        updatedProperty: 'description',
-        updatedValue: e.target.value,
       })
     );
   };
@@ -118,23 +109,6 @@ const Movement = (props) => {
     </div>
   );
 
-  const descriptionMarkup = (
-    <BaseDropdown
-      head={<label>Notes:</label>}
-      hasToggle={true}
-      isOpen={props.movement.description && true}
-    >
-      <BaseCard background="white" isLabel={true}>
-        <textarea
-          rows="3"
-          value={props.movement.description}
-          placeholder="Some notes..."
-          onChange={descriptionOnChangeHandler}
-        />
-      </BaseCard>
-    </BaseDropdown>
-  );
-
   const tagsMarkup = (
     <BaseDropdown
       head={<label>Tags:</label>}
@@ -144,24 +118,6 @@ const Movement = (props) => {
       isOpen={props.movement.tags && true}
     >
       <TagsList tagBackground="white" />
-      {/* {!editMode && (
-        <span className="v-grid-gap-small">
-          {tags.map((tag) => (
-            <BaseCard key={tag} isLabel={true} background="white">
-              {tag}
-            </BaseCard>
-          ))}
-        </span>
-      )}
-      {editMode && (
-        <BaseCard background="white" isLabel={true}>
-          <input
-            value={tags.join(', ')}
-            onChange={tagsOnChangeHandler}
-            placeholder="How do i categorize this movement? (comma seperated values like: Food, Zalando)"
-          />
-        </BaseCard>
-      )} */}
     </BaseDropdown>
   );
 
@@ -293,7 +249,10 @@ const Movement = (props) => {
           />
         </BaseCard>
       </div>
-      {descriptionMarkup}
+      <MovementDescription
+        id={props.movement.id}
+        description={props.movement.description}
+      />
       {tagsMarkup}
       {props.movement.type === 'expense' && expenseOnlyMarkup}
       {props.movement.type === 'income' && incomeOnlyMarkup}
