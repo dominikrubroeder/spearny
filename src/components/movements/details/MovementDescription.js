@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../../store/movements';
 import BaseDropdown from '../../base/BaseDropdown';
@@ -19,22 +18,20 @@ const MovementDescription = (props) => {
   };
 
   return (
-    <Fragment>
-      <BaseDropdown
-        head={<label>Notes:</label>}
-        hasToggle={true}
-        isOpen={props.description && true}
-      >
-        <BaseCard background="white" isLabel={true}>
-          <textarea
-            rows="3"
-            value={props.description}
-            placeholder="Some notes..."
-            onChange={descriptionOnChangeHandler}
-          />
-        </BaseCard>
-      </BaseDropdown>
-    </Fragment>
+    <BaseDropdown
+      head={<label>Notes:</label>}
+      hasToggle={true}
+      isOpen={props.description && true}
+    >
+      <BaseCard background="white" isLabel={true}>
+        <textarea
+          rows="3"
+          value={props.description}
+          placeholder="Some notes..."
+          onChange={descriptionOnChangeHandler}
+        />
+      </BaseCard>
+    </BaseDropdown>
   );
 };
 
