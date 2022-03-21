@@ -14,6 +14,8 @@ const initialMovementsState = {
       receivedFrom: null,
       paidBy: 'PayPal',
       paidTo: 'Zalando GmbH',
+      showDetails: false,
+      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -27,6 +29,8 @@ const initialMovementsState = {
       receivedFrom: null,
       paidBy: 'VISA',
       paidTo: 'Apple Inc.',
+      showDetails: false,
+      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -35,11 +39,13 @@ const initialMovementsState = {
       amount: 100,
       description: 'Movement description/notes...',
       dateAdded: new Date().toDateString(),
-      tags: [],
+      tags: null,
       receivedBy: 'Cash',
       receivedFrom: 'Parents',
       paidBy: null,
       paidTo: null,
+      showDetails: false,
+      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -53,6 +59,8 @@ const initialMovementsState = {
       receivedFrom: 'Mustermann GmbH',
       paidBy: null,
       paidTo: null,
+      showDetails: false,
+      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -66,6 +74,8 @@ const initialMovementsState = {
       receivedFrom: null,
       paidBy: 'Cash',
       paidTo: 'Restaurant Il Soprano',
+      showDetails: false,
+      editMode: false,
     },
   ],
 };
@@ -74,7 +84,10 @@ const movementsSlice = createSlice({
   name: 'movements',
   initialState: initialMovementsState,
   reducers: {
-    getMovementById(state, action) {},
+    getMovementById(state, action) {
+      const movementId = action.payload.id;
+      return state.movements.find((movement) => movement.id === movementId);
+    },
     add(state, action) {
       const newMovement = action.payload;
       state.movements.unshift(newMovement);

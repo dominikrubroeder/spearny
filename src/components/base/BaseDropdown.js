@@ -5,23 +5,18 @@ import BaseToggle from '../base/BaseToggle';
 import BaseHelpText from '../base/BaseHelpText';
 
 const BaseDropdown = (props) => {
-  const editMode = props.editModeState;
   const head = props.head || <h3>Title</h3>;
   const hasToggle = props.hasToggle;
   const helpTitle = props.helpTitle;
   const helpText = props.helpText;
   const addAction = props.onAdd;
   const addActionText = props.addActionText;
-  const doneAction = props.onDone;
-  const editAction = props.onEdit;
-  const hasEditActions = addAction || doneAction || editAction ? true : false;
+  const hasEditActions = addAction ? true : false;
   const hasHelp = helpTitle || helpText ? true : false;
 
   const [isOpen, setIsOpen] = useState(props.isOpen);
 
   const toggleIsOpenState = () => {
-    // If movement item is currently in editMode, do not toggle the dropdown
-    if (editMode) return;
     if (hasToggle) return;
 
     setIsOpen((previousState) => {
@@ -30,8 +25,6 @@ const BaseDropdown = (props) => {
   };
 
   const activateSection = () => {
-    if (editMode) return;
-
     setIsOpen((previousState) => {
       return !previousState;
     });
@@ -50,16 +43,6 @@ const BaseDropdown = (props) => {
         <div className="v-grid-gap-small-no-wrap">
           {hasEditActions && isOpen && (
             <div className="v-grid-gap-small-no-wrap">
-              {!editMode && (
-                <BaseButton mode="link" priority="primary" onClick={editAction}>
-                  Edit
-                </BaseButton>
-              )}
-              {editMode && (
-                <BaseButton mode="link" priority="primary" onClick={doneAction}>
-                  Done
-                </BaseButton>
-              )}
               {addActionText && (
                 <BaseButton
                   mode="link"
