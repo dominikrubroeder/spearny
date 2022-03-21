@@ -39,6 +39,14 @@ h6,
   font-weight: 600;
 }
 
+form,
+input,
+textarea,
+select {
+  border: none;
+  background-color: transparent;
+}
+
 :root {
   /**
 * APPLE

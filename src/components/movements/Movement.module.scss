@@ -26,14 +26,10 @@
 }
 
 .details {
-  display: grid;
-  grid-gap: 1rem;
-}
-
-form,
-input,
-textarea,
-select {
-  border: none;
-  background-color: transparent;
+  form,
+  input,
+  textarea,
+  select {
+    width: 100%;
+  }
 }

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { movementsActions } from '../../../store/movements';
-import BaseCard from '../../base/BaseCard';
+import { movementsActions } from '../../../../store/movements';
+import BaseCard from '../../../base/BaseCard';
 
 const MovementTitle = (props) => {
   const dispatch = useDispatch();

@@ -1,12 +1,10 @@
 import { useState, Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { movementsActions } from '../../store/movements';
 import classes from './Movement.module.scss';
 import BaseDropdown from '../base/BaseDropdown';
 import BaseCard from '../base/BaseCard';
-import MovementType from './details/MovementType';
-import MovementTitle from './details/MovementTitle';
-import MovementAmount from './details/MovementAmount';
+import MovementType from './details/main/MovementType';
+import MovementTitle from './details/main/MovementTitle';
+import MovementAmount from './details/main/MovementAmount';
 import MovementDescription from './details/MovementDescription';
 import MovementTags from './details/MovementTags';
 import MovementPaidTo from './details/type-expense/MovementPaidTo';
@@ -15,7 +13,6 @@ import MovementReceivedFrom from './details/type-income/MovementReceivedFrom';
 import MovementReceivedBy from './details/type-income/MovementReceivedBy';
 
 const Movement = (props) => {
-  const dispatch = useDispatch();
   const id = props.movement.id;
   const typeclasses =
     props.movement.type === 'expense'
@@ -67,7 +64,7 @@ const Movement = (props) => {
   );
 
   const detailsMarkup = (
-    <div className="h-grid">
+    <div className={`h-grid ${classes.details}`}>
       <div className="v-grid-gap-small">
         <MovementType
           id={props.movement.id}
