@@ -1,10 +1,14 @@
 import { useState, Fragment } from 'react';
+import { useDispatch } from 'react-redux';
+import { movementsActions } from '../../store/movements';
 import classes from './Movement.module.scss';
 import BaseDropdown from '../base/BaseDropdown';
 import BaseCard from '../base/BaseCard';
 import TagsList from '../tags/TagsList';
 
 const Movement = (props) => {
+  const dispatch = useDispatch();
+  const id = props.movement.id;
   const typeclasses =
     props.movement.type === 'expense'
       ? classes['type--expense']
@@ -75,6 +79,13 @@ const Movement = (props) => {
     setPaidTo(() => {
       return e.target.value;
     });
+    dispatch(
+      movementsActions.update({
+        id: id,
+        updatedProperty: 'paidTo',
+        updatedValue: e.target.value,
+      })
+    );
   };
 
   const receivedByOnChangeHandler = (e) => {
@@ -149,12 +160,19 @@ const Movement = (props) => {
         helpText="Paid to help text"
       >
         <BaseCard background="white" isLabel={true}>
-          <input
-            type="text"
+          <select
             value={paidTo}
             placeholder="To whom did I make the payment?"
             onChange={paidToOnChangeHandler}
-          />
+          >
+            <option value="Zalando GmbH">Zalando GmbH</option>
+            <option value="Luca Walther">Luca Walther</option>
+            <option value="Patrick Rubroeder">Patrick Rubröder</option>
+            <option value="Apple Inc.">Apple Inc.</option>
+            <option value="Starbucks">Starbucks</option>
+            <option value="Restaurant Il Soprano">Restaurant Il Soprano</option>
+            <option value="Amazon.com Inc.">Amazon.com Inc.</option>
+          </select>
         </BaseCard>
       </BaseDropdown>
       <BaseDropdown
@@ -164,12 +182,20 @@ const Movement = (props) => {
         helpText="Paid by help text"
       >
         <BaseCard background="white" isLabel={true}>
-          <input
+          <select
             type="text"
             value={paidBy}
             placeholder="Which payment method did I use to make the payment?"
             onChange={paidByOnChangeHandler}
-          />
+          >
+            <option value="Cash">Cash</option>
+            <option value="PayPal">PayPal</option>
+            <option value="invoice">By Invoice</option>
+            <option value="VISA">VISA</option>
+            <option value="Mastercard">Mastercard</option>
+            <option value="Klarna">Klarna</option>
+            <option value="American Express">American Express</option>
+          </select>
         </BaseCard>
       </BaseDropdown>
     </Fragment>
