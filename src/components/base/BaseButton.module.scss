@@ -28,3 +28,11 @@ button[class^='BaseButton_link'] {
 .size--small {
   font-size: 1.2rem;
 }
+
+.type--destructive {
+  color: var(--light-red);
+}
+
+button[class*='BaseButton_destructive'] {
+  color: var(--light-red);
+}

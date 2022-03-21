@@ -7,13 +7,16 @@ const BaseButton = (props) => {
   const priority = props.priority || 'default';
   // small, default, medium, large, ...
   const size = props.size || 'default';
+  // default, desctructive, ...
+  const ofType = props.ofType || 'default';
 
   const classList = `${mode}--${priority}`;
   const withSize = `size--${size}`;
+  const isType = `type--${ofType}`;
 
   return (
     <button
-      className={`${classes[classList]} ${classes[withSize]}`}
+      className={`${classes[classList]} ${classes[withSize]} ${classes[isType]}`}
       onClick={props.onClick}
     >
       {props.children}

@@ -103,9 +103,12 @@ const movementsSlice = createSlice({
 
       state.movements[movementIndex][updatedProperty] = updatedValue;
     },
-    // delete(state, action) {
-    //   const tagId = action.payload;
-    // },
+    delete(state, action) {
+      const movementId = action.payload;
+      state.movements = state.movements.filter(
+        (movement) => movement.id !== movementId
+      );
+    },
     // update(state, action) {
     //   const updatedTag = action.payload;
     //   // index, update Tag...

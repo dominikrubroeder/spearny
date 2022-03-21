@@ -11,6 +11,7 @@ import MovementPaidTo from './details/type-expense/MovementPaidTo';
 import MovementPaidBy from './details/type-expense/MovementPaidBy';
 import MovementReceivedFrom from './details/type-income/MovementReceivedFrom';
 import MovementReceivedBy from './details/type-income/MovementReceivedBy';
+import MovementDelete from './details/actions/MovementDelete';
 
 const Movement = (props) => {
   const id = props.movement.id;
@@ -86,6 +87,9 @@ const Movement = (props) => {
       <MovementTags id={props.movement.id} tags={props.movement.tags} />
       {props.movement.type === 'expense' && expenseOnlyMarkup}
       {props.movement.type === 'income' && incomeOnlyMarkup}
+      <div className={`${classes.actions} v-grid-gap-small-centered`}>
+        <MovementDelete id={props.movement.id} />
+      </div>
     </div>
   );
 

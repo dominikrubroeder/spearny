@@ -171,6 +171,11 @@ select {
   flex: 1;
 }
 
+.v-grid-gap-small-centered {
+  @include v-grid($gap: 0.5rem);
+  justify-content: center;
+}
+
 .w-100 {
   width: 100%;
 }
