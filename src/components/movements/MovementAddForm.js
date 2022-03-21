@@ -1,8 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { movementsActions } from '../../store/movements';
 import { useRef, useState } from 'react';
 import classes from './MovementAddForm.module.scss';
 import BaseButton from '../base/BaseButton';
 
 const MovementAddForm = (props) => {
+  const dispatch = useDispatch();
   const [placeholderIsVisible, setPlaceholderIsVisible] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
   const newMovementType = useRef();
@@ -18,7 +21,7 @@ const MovementAddForm = (props) => {
       title: newMovementTitle.current.value,
       amount: +newMovementAmount.current.value,
       description: '',
-      dateAdded: new Date(),
+      dateAdded: new Date().toDateString(),
       tags: [],
       paidBy: '',
       paidTo: '',
@@ -26,7 +29,7 @@ const MovementAddForm = (props) => {
       editMode: true,
     };
 
-    props.onAddNewMovement(newMovement);
+    dispatch(movementsActions.add(newMovement));
 
     newMovementType.current.value = 'expense';
     newMovementTitle.current.value = '';
