@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux';
 
-import TagsProvider from './store/TagsProvider';
+import App from './App';
+import store from './store/index';
 
 ReactDOM.render(
-  <TagsProvider>
+  <Provider store={store}>
     <App />
-  </TagsProvider>,
+  </Provider>,
   document.getElementById('root')
 );

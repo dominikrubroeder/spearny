@@ -1,10 +1,11 @@
-import { useContext, useRef } from 'react';
-import TagsContext from '../../store/tags-context';
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { tagsActions } from '../../store/tags';
 import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
 
 const TagsAddForm = () => {
-  const tagsCtx = useContext(TagsContext);
+  const dispatch = useDispatch();
   const newTagTitle = useRef();
 
   const addTag = (e) => {
@@ -14,7 +15,7 @@ const TagsAddForm = () => {
       id: Math.random().toString(),
       title: newTagTitle.current.value,
     };
-    tagsCtx.addTag(newTag);
+    dispatch(tagsActions.add(newTag));
 
     newTagTitle.current.value = '';
   };

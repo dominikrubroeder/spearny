@@ -1,11 +1,11 @@
-import { useState, useContext } from 'react';
-import TagsContext from '../../store/tags-context';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import TagsAddForm from './TagsAddForm';
 import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
 
 const TagsList = (props) => {
-  const tagsCtx = useContext(TagsContext);
+  const tags = useSelector((state) => state.tags.tags);
   const [showAddForm, setShowAddForm] = useState(false);
   const tagBackground = props.tagBackground || 'light';
 
@@ -15,7 +15,7 @@ const TagsList = (props) => {
 
   return (
     <div className="v-grid-gap-small">
-      {tagsCtx.tags.map((tag) => (
+      {tags.map((tag) => (
         <BaseCard background={tagBackground} key={tag.id}>
           {tag.title}
         </BaseCard>
