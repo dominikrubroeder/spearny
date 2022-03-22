@@ -1,13 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../store/movements';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import classes from './MovementAddForm.module.scss';
 import BaseButton from '../base/BaseButton';
 
-const MovementAddForm = (props) => {
+const MovementAddForm = () => {
   const dispatch = useDispatch();
-  const [placeholderIsVisible, setPlaceholderIsVisible] = useState(false);
-  const [placeholder, setPlaceholder] = useState('');
   const newMovementType = useRef();
   const newMovementTitle = useRef();
   const newMovementAmount = useRef();
@@ -17,14 +15,14 @@ const MovementAddForm = (props) => {
 
     const newMovement = {
       id: new Date().toISOString() + Math.random(),
+      dateAdded: new Date().toDateString(),
       type: newMovementType.current.value,
       title: newMovementTitle.current.value,
       amount: +newMovementAmount.current.value,
-      description: '',
-      dateAdded: new Date().toDateString(),
-      tags: [],
-      paidBy: '',
-      paidTo: '',
+      description: null,
+      tags: null,
+      paidBy: null,
+      paidTo: null,
       showDetails: true,
       editMode: true,
     };
@@ -36,15 +34,6 @@ const MovementAddForm = (props) => {
     newMovementAmount.current.value = '';
   };
 
-  const showPlaceholder = (e) => {
-    setPlaceholder(() => e.target.placeholder);
-    setPlaceholderIsVisible(() => true);
-  };
-
-  const hidePlaceholder = () => {
-    setPlaceholderIsVisible(() => false);
-  };
-
   return (
     <form className="v-grid-space-between" onSubmit={addNewMovement}>
       <div className="v-grid-gap-small">
@@ -53,16 +42,11 @@ const MovementAddForm = (props) => {
           <option value="income">+</option>
         </select>
         <div className={classes.formControl}>
-          {placeholderIsVisible && (
-            <span className={classes.placeholder}>{placeholder}</span>
-          )}
           <input
             className={classes.filled}
             type="text"
             placeholder="Title..."
             ref={newMovementTitle}
-            onClick={showPlaceholder}
-            onBlur={hidePlaceholder}
           />
         </div>
         <input
