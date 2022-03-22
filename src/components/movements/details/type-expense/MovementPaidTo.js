@@ -25,7 +25,7 @@ const MovementPaidTo = (props) => {
       helpText="To whom did I make the payment?"
       isOpen={props.initialValue && true}
     >
-      <BaseCard background="white" isLabel={true}>
+      <BaseCard mode="form-control" background="white">
         <select value={props.initialValue} onChange={paidToOnChangeHandler}>
           <option value="Zalando GmbH">Zalando GmbH</option>
           <option value="Luca Walther">Luca Walther</option>

@@ -94,7 +94,10 @@ const Movement = (props) => {
   );
 
   return (
-    <BaseCard classes={`${classes.movement} ${typeclasses}`} background="light">
+    <BaseCard
+      className={`${classes.movement} ${typeclasses}`}
+      background="light"
+    >
       <BaseDropdown isOpen={showDetails} head={headMarkup}>
         {detailsMarkup}
       </BaseDropdown>

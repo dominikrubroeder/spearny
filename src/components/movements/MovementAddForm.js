@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../store/movements';
 import { useRef } from 'react';
 import classes from './MovementAddForm.module.scss';
+import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
 
 const MovementAddForm = () => {
@@ -35,26 +36,25 @@ const MovementAddForm = () => {
   };
 
   return (
-    <form className="v-grid-space-between" onSubmit={addNewMovement}>
+    <form className="v-grid-space-between np" onSubmit={addNewMovement}>
       <div className="v-grid-gap-small">
-        <select className={classes.filled} ref={newMovementType}>
-          <option value="expense">-</option>
-          <option value="income">+</option>
-        </select>
-        <div className={classes.formControl}>
+        <BaseCard mode="form-control" background="light">
+          <select ref={newMovementType}>
+            <option value="expense">-</option>
+            <option value="income">+</option>
+          </select>
+        </BaseCard>
+        <BaseCard mode="form-control" background="light">
+          <input type="text" placeholder="Title..." ref={newMovementTitle} />
+        </BaseCard>
+        <BaseCard mode="form-control" background="light">
           <input
-            className={classes.filled}
-            type="text"
-            placeholder="Title..."
-            ref={newMovementTitle}
+            className={classes.amount}
+            type="number"
+            placeholder="Amount..."
+            ref={newMovementAmount}
           />
-        </div>
-        <input
-          className={`${classes.amount} ${classes.filled}`}
-          type="number"
-          placeholder="Amount..."
-          ref={newMovementAmount}
-        />
+        </BaseCard>
       </div>
       <BaseButton type="submit" priority="primary" onClick={addNewMovement}>
         Add

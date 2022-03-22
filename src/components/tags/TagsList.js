@@ -16,12 +16,12 @@ const TagsList = (props) => {
   return (
     <div className="v-grid-gap-small">
       {tags.map((tag) => (
-        <BaseCard background={tagBackground} key={tag.id}>
+        <BaseCard key={tag.id} mode="tag" background={tagBackground}>
           {tag.title}
         </BaseCard>
       ))}
       {showAddForm && <TagsAddForm />}
-      <BaseCard background={tagBackground}>
+      <BaseCard mode="tag" background={tagBackground}>
         <BaseButton mode="link" priority="primary" onClick={enableAdding}>
           +Add new tag
         </BaseButton>

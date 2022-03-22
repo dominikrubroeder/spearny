@@ -4,6 +4,7 @@
   font-family: 'Poppins';
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -43,7 +44,10 @@ form,
 input,
 textarea,
 select {
+  height: 100%;
   border: none;
+  padding: 1rem;
+  border-radius: 1rem;
   background-color: transparent;
 }
 
@@ -184,4 +188,8 @@ select {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.np {
+  padding: 0;
 }

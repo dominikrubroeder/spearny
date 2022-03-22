@@ -23,9 +23,8 @@ const MovementDescription = (props) => {
       hasToggle={true}
       isOpen={props.description && true}
     >
-      <BaseCard background="white" isLabel={true}>
+      <BaseCard mode="form-control" background="white">
         <textarea
-          rows="3"
           value={props.description}
           placeholder="Some notes..."
           onChange={descriptionOnChangeHandler}

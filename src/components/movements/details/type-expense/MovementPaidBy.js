@@ -25,7 +25,7 @@ const MovementPaidBy = (props) => {
       helpText="Which payment method did I use to make the payment??"
       isOpen={props.initialValue && true}
     >
-      <BaseCard background="white" isLabel={true}>
+      <BaseCard mode="form-control" background="white">
         <select value={props.initialValue} onChange={paidByOnChangeHandler}>
           <option value="Cash">Cash</option>
           <option value="PayPal">PayPal</option>

@@ -17,7 +17,7 @@ const MovementType = (props) => {
   };
 
   return (
-    <BaseCard background="white" isLabel={true}>
+    <BaseCard mode="form-control" background="white">
       <select value={props.initialValue} onChange={typeOnChangeHandler}>
         <option value="income">+</option>
         <option value="expense">-</option>

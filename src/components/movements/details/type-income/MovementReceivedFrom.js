@@ -25,7 +25,7 @@ const MovementReceivedBy = (props) => {
       helpText="From whom did I receive this payment?"
       isOpen={props.initialValue && true}
     >
-      <BaseCard background="white" isLabel={true}>
+      <BaseCard mode="form-control" background="white">
         <select
           value={props.initialValue}
           onChange={receivedFromOnChangeHandler}
