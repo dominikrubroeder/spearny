@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import classes from './BaseDropdown.module.scss';
 import BaseButton from './BaseButton';
 import BaseToggle from '../base/BaseToggle';
@@ -19,60 +19,67 @@ const BaseDropdown = (props) => {
   const toggleIsOpenState = () => {
     if (hasToggle) return;
 
-    setIsOpen((previousState) => {
-      return !previousState;
-    });
+    setIsOpen((previousState) => !previousState);
   };
 
   const activateSection = () => {
-    setIsOpen((previousState) => {
-      return !previousState;
-    });
+    setIsOpen((previousState) => !previousState);
   };
+
+  const headClassNames = `${
+    !hasToggle ? classes['dropdown--head'] : ''
+  } v-grid-gap-small-no-wrap`;
+
+  const openCloseComp = (
+    <Fragment>
+      {!isOpen && !hasToggle && (
+        <BaseButton mode="link" onClick={toggleIsOpenState}>
+          +
+        </BaseButton>
+      )}
+      {isOpen && !hasToggle && (
+        <BaseButton mode="link" onClick={toggleIsOpenState}>
+          -
+        </BaseButton>
+      )}
+    </Fragment>
+  );
+
+  const switchComp = hasToggle && (
+    <BaseToggle onClick={activateSection} enabled={isOpen ? true : false} />
+  );
+
+  const editActionsComp = hasEditActions && isOpen && (
+    <div className="v-grid-gap-small-no-wrap">
+      {
+        <BaseButton
+          mode="link"
+          priority="primary"
+          size="small"
+          onClick={addAction}
+        >
+          {`Add new ${addActionText}`}
+        </BaseButton>
+      }
+    </div>
+  );
+
+  const helpTextComp = hasHelp && (
+    <BaseHelpText title={helpTitle}>{helpText}</BaseHelpText>
+  );
 
   return (
     <div className="h-grid">
-      <div
-        className={`${
-          !hasToggle ? classes['dropdown--head'] : ''
-        } v-grid-gap-small-no-wrap`}
-      >
+      <div className={headClassNames}>
         <div className="w-100" onClick={toggleIsOpenState}>
           {head}
         </div>
         <div className="v-grid-gap-small-no-wrap">
-          {hasEditActions && isOpen && (
-            <div className="v-grid-gap-small-no-wrap">
-              {addActionText && (
-                <BaseButton
-                  mode="link"
-                  priority="primary"
-                  size="small"
-                  onClick={addAction}
-                >
-                  {`Add new ${addActionText}`}
-                </BaseButton>
-              )}
-            </div>
-          )}
-          {hasHelp && <BaseHelpText title={helpTitle}>{helpText}</BaseHelpText>}
+          {editActionsComp}
+          {helpTextComp}
           <div className="v-grid-gap-small-no-wrap">
-            {!isOpen && !hasToggle && (
-              <BaseButton mode="link" onClick={toggleIsOpenState}>
-                +
-              </BaseButton>
-            )}
-            {isOpen && !hasToggle && (
-              <BaseButton mode="link" onClick={toggleIsOpenState}>
-                -
-              </BaseButton>
-            )}
-            {hasToggle && (
-              <BaseToggle
-                onClick={activateSection}
-                enabled={isOpen ? true : false}
-              />
-            )}
+            {openCloseComp}
+            {switchComp}
           </div>
         </div>
       </div>
