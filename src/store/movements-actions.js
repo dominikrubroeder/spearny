@@ -2,7 +2,7 @@ import { movementsActions } from './movements';
 
 export const sendNewMovement = (newMovement) => {
   return async (dispatch) => {
-    const sendRequest = async () => {
+    const sendAddRequest = async () => {
       const response = await fetch(
         'https://react-spearny-default-rtdb.firebaseio.com/movements.json',
         {
@@ -17,7 +17,7 @@ export const sendNewMovement = (newMovement) => {
     };
 
     try {
-      await sendRequest();
+      await sendAddRequest();
       // Do some other stuff...
     } catch (error) {
       console.log(error.message);
@@ -56,6 +56,8 @@ export const fetchMovements = () => {
           tags: responseData[key].tags || null,
           paidBy: responseData[key].paidBy || null,
           paidTo: responseData[key].paidTo || null,
+          receivedBy: responseData[key].receivedBy || null,
+          receivedFrom: responseData[key].receivedFrom || null,
           showDetails: false,
         };
         movements.unshift(movement);
@@ -67,3 +69,49 @@ export const fetchMovements = () => {
     }
   };
 };
+
+/**
+export const updateMovement = (updatedMovementId) => {
+  return async (dispatch) => {
+    const sendUpdateRequest = async () => {
+        
+      // This not working yet (get the movement by id)
+      const updatedMovement = dispatch(
+        movementsActions.getMovementById({ id: updatedMovementId })
+      );
+
+      console.log(updatedMovement);
+
+      const response = await fetch(
+        `https://react-spearny-default-rtdb.firebaseio.com/movements/${updatedMovementId}.json`,
+        {
+          method: 'PATCH',
+          body: JSON.stringify({
+            dateAdded: updatedMovement.dateAdded,
+            type: updatedMovement.type,
+            title: updatedMovement.title,
+            amount: updatedMovement.amount,
+            description: updatedMovement.description,
+            tags: updatedMovement.tags,
+            paidBy: updatedMovement.paidBy,
+            paidTo: updatedMovement.paidTo,
+            receivedBy: updatedMovement.receivedBy,
+            receivedFrom: updatedMovement.receivedFrom,
+            showDetails: false,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Updating movement ${updatedMovement.id} failed.`);
+      }
+    };
+
+    try {
+      await sendUpdateRequest();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+*/

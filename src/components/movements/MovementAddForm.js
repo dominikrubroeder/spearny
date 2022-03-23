@@ -32,6 +32,8 @@ const MovementAddForm = () => {
       tags: null,
       paidBy: null,
       paidTo: null,
+      receivedBy: null,
+      receivedFrom: null,
       showDetails: true,
     };
 

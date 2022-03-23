@@ -6,6 +6,7 @@ import Movement from './Movement';
 const MovementList = () => {
   const dispatch = useDispatch();
   const movements = useSelector((state) => state.movements.movements);
+  const movementsExists = movements.length > 0;
 
   /** useEffect() hook to only trigger this dispatch action once
    * the dispatch function will never change, so it won't recall this block again
@@ -16,9 +17,10 @@ const MovementList = () => {
 
   return (
     <div className="h-grid-gap-small">
-      {movements.map((movement) => (
-        <Movement movement={movement} key={movement.id} />
-      ))}
+      {movementsExists &&
+        movements.map((movement) => (
+          <Movement movement={movement} key={movement.id} />
+        ))}
     </div>
   );
 };

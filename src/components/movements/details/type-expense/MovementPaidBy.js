@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../../../store/movements';
 import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
+// import { updateMovement } from '../../../../store/movements-actions';
 
 const MovementPaidBy = (props) => {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const MovementPaidBy = (props) => {
         updatedValue: e.target.value,
       })
     );
+
+    // dispatch(updateMovement(id));
   };
 
   return (

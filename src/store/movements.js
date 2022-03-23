@@ -103,10 +103,11 @@ const movementsSlice = createSlice({
         (movement) => movement.id !== movementId
       );
     },
-    getMovementById(state, action) {
-      const movementId = action.payload.id;
-      return state.movements.find((movement) => movement.id === movementId);
-    },
+    // This is not working yet (get movement by id, createSelector/useSelector hook?)
+    // getMovementById(state, action) {
+    //   const movementId = action.payload.id;
+    //   return state.movements.find((movement) => movement.id === movementId);
+    // },
   },
 });
 
