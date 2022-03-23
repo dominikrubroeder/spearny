@@ -10,9 +10,16 @@ const MovementAddForm = () => {
   const newMovementType = useRef();
   const newMovementTitle = useRef();
   const newMovementAmount = useRef();
+  let invalidBackground = 'red';
 
   const addNewMovement = (e) => {
     e.preventDefault();
+
+    if (
+      newMovementTitle.current.value.trim() === '' ||
+      newMovementAmount.current.value.trim() === ''
+    )
+      return;
 
     const newMovement = {
       id: new Date().toISOString() + Math.random(),
