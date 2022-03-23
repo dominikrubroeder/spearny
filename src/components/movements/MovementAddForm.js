@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../store/movements';
 import { useRef } from 'react';
+import { sendNewMovement } from '../../store/movements-actions';
 import classes from './MovementAddForm.module.scss';
 import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
@@ -32,10 +33,10 @@ const MovementAddForm = () => {
       paidBy: null,
       paidTo: null,
       showDetails: true,
-      editMode: true,
     };
 
     dispatch(movementsActions.add(newMovement));
+    dispatch(sendNewMovement(newMovement));
 
     newMovementType.current.value = 'expense';
     newMovementTitle.current.value = '';

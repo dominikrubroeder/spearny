@@ -15,7 +15,6 @@ const initialMovementsState = {
       paidBy: 'PayPal',
       paidTo: 'Zalando GmbH',
       showDetails: false,
-      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -30,7 +29,6 @@ const initialMovementsState = {
       paidBy: 'VISA',
       paidTo: 'Apple Inc.',
       showDetails: false,
-      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -45,7 +43,6 @@ const initialMovementsState = {
       paidBy: null,
       paidTo: null,
       showDetails: false,
-      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -60,7 +57,6 @@ const initialMovementsState = {
       paidBy: null,
       paidTo: null,
       showDetails: false,
-      editMode: false,
     },
     {
       id: new Date().toISOString() + Math.random(),
@@ -75,7 +71,6 @@ const initialMovementsState = {
       paidBy: 'Cash',
       paidTo: 'Restaurant Il Soprano',
       showDetails: false,
-      editMode: false,
     },
   ],
 };
@@ -84,9 +79,8 @@ const movementsSlice = createSlice({
   name: 'movements',
   initialState: initialMovementsState,
   reducers: {
-    getMovementById(state, action) {
-      const movementId = action.payload.id;
-      return state.movements.find((movement) => movement.id === movementId);
+    setMovements(state, action) {
+      state.movements = action.payload;
     },
     add(state, action) {
       const newMovement = action.payload;
@@ -109,10 +103,10 @@ const movementsSlice = createSlice({
         (movement) => movement.id !== movementId
       );
     },
-    // update(state, action) {
-    //   const updatedTag = action.payload;
-    //   // index, update Tag...
-    // },
+    getMovementById(state, action) {
+      const movementId = action.payload.id;
+      return state.movements.find((movement) => movement.id === movementId);
+    },
   },
 });
 
