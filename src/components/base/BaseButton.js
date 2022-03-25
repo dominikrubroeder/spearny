@@ -18,6 +18,7 @@ const BaseButton = (props) => {
     <button
       className={`${classes[classList]} ${classes[withSize]} ${classes[isType]}`}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.children}
     </button>
