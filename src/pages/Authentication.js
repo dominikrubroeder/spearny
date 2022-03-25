@@ -5,27 +5,33 @@ import BaseButton from '../components/base/BaseButton';
 
 const Authentication = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [enteredEmail, setEnteredEmail] = useState('');
-  const [enteredEmailIsValid, setEnteredEmailIsValid] = useState(false);
-  const [enteredEmailWasTouched, setEnteredEmailWasTouched] = useState(false);
-  const [enteredEmailWasInitial, setEnteredEmailWasInitial] = useState(true);
+  const [enteredEmailState, setEnteredEmailState] = useState({
+    value: '',
+    isValid: false,
+    wasTouched: false,
+    wasInitial: true,
+  });
   const [enteredPassword, setEnteredPassword] = useState('');
 
   const checkAuth = (e) => {
     e.preventDefault();
     console.log('Authenticating...');
-    if (enteredEmail.trim() === '' || enteredPassword.trim() === '') return;
+    if (enteredEmailState.value.trim() === '' || enteredPassword.trim() === '')
+      return;
     setIsAuthenticated(true);
   };
 
   const handleEnteredEmail = (e) => {
     const inputValue = e.target.value;
-    setEnteredEmail(inputValue);
-    // checkAuth(e);
+    setEnteredEmailState((prevState) => {
+      return { ...prevState, value: inputValue };
+    });
 
-    // Check if it was just the first click to the input field
-    if (enteredEmailWasInitial) {
-      setEnteredEmailWasInitial(false);
+    // Check if it was just the first click to the input field without entering characters
+    if (setEnteredEmailState.wasInitial) {
+      setEnteredEmailState((prevState) => {
+        return { ...prevState, wasInitial: false };
+      });
       return;
     }
 
@@ -39,13 +45,14 @@ const Authentication = () => {
       !inputValue.includes('@') ||
       !inputValue.includes('.')
     ) {
-      setEnteredEmailWasTouched(true);
-      setEnteredEmailIsValid(false);
+      setEnteredEmailState((prevState) => {
+        return { ...prevState, isValid: false, wasTouched: true };
+      });
       return;
     }
-
-    setEnteredEmailIsValid(true);
-    setEnteredEmailWasTouched(true);
+    setEnteredEmailState((prevState) => {
+      return { ...prevState, isValid: true };
+    });
   };
 
   const handleEnteredPassword = (e) => {
@@ -60,14 +67,14 @@ const Authentication = () => {
         <BaseCard mode="form-control" background="light">
           <input
             type="email"
-            value={enteredEmail}
+            value={setEnteredEmailState.value}
             placeholder="E-Mailaddress..."
             onFocus={handleEnteredEmail}
             onBlur={handleEnteredEmail}
             onChange={handleEnteredEmail}
           />
         </BaseCard>
-        {enteredEmailWasTouched && !enteredEmailIsValid && (
+        {enteredEmailState.wasTouched && !enteredEmailState.isValid && (
           <p>Please enter a valid e-mail address.</p>
         )}
         <BaseCard mode="form-control" background="light">
