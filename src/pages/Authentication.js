@@ -1,8 +1,13 @@
 import { Fragment, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import Classes from './Authentication.module.scss';
+
 import BaseCard from '../components/base/BaseCard';
 import BaseButton from '../components/base/BaseButton';
 
 const Authentication = () => {
+  const navigate = useNavigate();
   const emailInput = useRef();
   const passwordInput = useRef();
   const [isLogin, setIsLogin] = useState(true);
@@ -20,34 +25,41 @@ const Authentication = () => {
 
     // optional: validation here...
 
+    let url;
+
     if (isLogin) {
-      // ...
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`;
     } else {
-      fetch(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: enteredEmail,
-            password: enteredPassword,
-            returnSecureToken: true,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      ).then((res) => {
-        if (res.ok) {
-          // ...
-        } else {
-          return res.json().then((data) => {
-            // show error modal
-            console.log(data);
-            // further error handling
-          });
-        }
-      });
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`;
     }
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => {
+      if (res.ok) {
+        // Navigate
+        if (isLogin) navigate('/dashboard');
+
+        if (!isLogin) {
+          // Show success message
+          // Switch to isLogin
+        }
+      } else {
+        return res.json().then((data) => {
+          // show error modal
+          console.log(data);
+          // further error handling
+        });
+      }
+    });
 
     console.log('...');
   };

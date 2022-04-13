@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/svgs/spearny-logo.svg';
-import classes from './TheHeader.module.css';
+import classes from './TheHeader.module.scss';
 
 const TheHeader = () => {
   return (

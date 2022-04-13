@@ -17,6 +17,7 @@ body {
   font-weight: 300;
   font-size: 1.4rem;
   line-height: 1.6;
+  color: var(--black);
 }
 
 .main-content {
@@ -38,6 +39,10 @@ h6,
 .h5,
 .h6 {
   font-weight: 600;
+}
+
+a {
+  text-decoration: none;
 }
 
 form,
