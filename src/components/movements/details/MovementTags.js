@@ -1,19 +1,19 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../../store/movements';
 import BaseDropdown from '../../base/BaseDropdown';
-import TagsList from '../../tags/TagsList';
+import Tag from '../../tags/Tag';
 
 const MovementTags = (props) => {
+  const tags = useSelector((state) => state.tags.tags);
   const dispatch = useDispatch();
   const id = props.id;
   let assignedTags = props.tags;
 
-  const toggleTagAssignment = (e) => {
+  const toggleTagAssignment = (tag) => {
     dispatch(
-      movementsActions.update({
-        id: id,
-        updatedProperty: 'tags',
-        updatedValue: assignedTags,
+      movementsActions.toggleTagAssignment({
+        movementId: id,
+        tag: tag,
       })
     );
   };
@@ -26,7 +26,11 @@ const MovementTags = (props) => {
       helpText="Tags help text"
       isOpen={assignedTags && true}
     >
-      <TagsList tagBackground="white" />
+      {tags.map((tag) => (
+        <Tag key={tag.id} onClick={() => toggleTagAssignment(tag)}>
+          {tag.title}
+        </Tag>
+      ))}
     </BaseDropdown>
   );
 };
