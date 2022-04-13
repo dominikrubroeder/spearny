@@ -82,10 +82,10 @@ const featuresHighlight = [
 
 const Features = () => {
   return (
-    <section className="features">
+    <section className="features" id="features">
       <section className="features__base hv-grid">
         <div className="container--compressed">
-          <SectionHead headline="Was kann Spearny?" />
+          <SectionHead headline="Was kann Spearny?" anchor="features" />
           <div className="h-grid-gap-huge">
             {featuresBase.map((feature) => (
               <Feature
@@ -98,9 +98,12 @@ const Features = () => {
           </div>
         </div>
       </section>
-      <section className="features__highlights hv-grid">
+      <section className="features__highlights hv-grid" id="highlights">
         <div className="container--compressed">
-          <SectionHead headline="Was zeichnet Spearny besonders aus?" />
+          <SectionHead
+            headline="Was zeichnet Spearny besonders aus?"
+            anchor="highlights"
+          />
           <div className="h-grid-gap-huge">
             {featuresHighlight.map((feature) => (
               <Feature

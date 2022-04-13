@@ -37,6 +37,20 @@ h6,
 
 a {
   text-decoration: none;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    color: var(--black);
+  }
 }
 
 form,
@@ -48,6 +62,10 @@ select {
   padding: 1rem;
   border-radius: 1rem;
   background-color: transparent;
+}
+
+svg {
+  color: var(--light-accent);
 }
 
 @mixin container($max-width: 0, $padding: 0 1rem) {

@@ -13,6 +13,7 @@ import {
   faPaperPlane,
   faFilter,
   faHand,
+  faArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './font/font.scss';
@@ -36,7 +37,8 @@ function App() {
     faPenClip,
     faPaperPlane,
     faFilter,
-    faHand
+    faHand,
+    faArrowDown
   );
 
   return (
