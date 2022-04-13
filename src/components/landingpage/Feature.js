@@ -3,8 +3,8 @@ import classes from './Feature.module.scss';
 
 const Feature = (props) => {
   return (
-    <div className="v-grid-align-top-no-wrap">
-      <span className={classes['icon-bg']}>
+    <div className="v-grid-gap-big-align-top-no-wrap">
+      <span className={`${classes.icon} icon icon--leading`}>
         <FontAwesomeIcon icon={`fa-solid ${props.icon}`} />
       </span>
       <div>

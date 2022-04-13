@@ -42,7 +42,7 @@ function App() {
   return (
     <Fragment>
       <TheHeader />
-      <main className="main-content h-grid">
+      <main>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Landingpage />} />

@@ -20,12 +20,6 @@ body {
   color: var(--black);
 }
 
-.main-content {
-  max-width: 48rem;
-  width: 100%;
-  margin: 0 auto;
-}
-
 h1,
 h2,
 h3,
@@ -54,6 +48,38 @@ select {
   padding: 1rem;
   border-radius: 1rem;
   background-color: transparent;
+}
+
+@mixin container($max-width: 0, $padding: 0 1rem) {
+  max-width: $max-width;
+  width: 100%;
+  padding: $padding;
+  margin: 0 auto;
+}
+
+.container {
+  @include container($max-width: 76.8rem, $padding: 1.6rem);
+}
+
+.container--compressed {
+  @include container($max-width: 48rem);
+}
+
+.container--big {
+  @include container($max-width: 140rem, $padding: 2rem);
+}
+
+.container--fluid {
+  @include container();
+}
+
+.icon {
+  size: 1rem;
+  color: var(--light-accent);
+}
+
+.icon--leading {
+  font-size: 3rem;
 }
 
 :root {
@@ -126,11 +152,17 @@ select {
   grid-gap: $grid-gap;
 }
 
-@mixin v-grid($gap: 1rem) {
+@mixin v-grid(
+  $gap: 1rem,
+  $align-items: center,
+  $justify-content: flex-start,
+  $flex-wrap: wrap
+) {
   display: flex;
-  align-items: center;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-wrap: $flex-wrap;
   gap: $gap;
-  flex-wrap: wrap;
 }
 
 @mixin v-grid-sb() {
@@ -140,6 +172,10 @@ select {
   justify-content: space-between;
 }
 
+/**
+---------- GRIDS // horizontal
+*/
+
 .h-grid {
   @include h-grid();
 }
@@ -148,14 +184,54 @@ select {
   @include h-grid($grid-gap: 0.5rem);
 }
 
+.h-grid-gap-big {
+  @include h-grid($grid-gap: 2rem);
+}
+
+.h-grid-gap-huge {
+  @include h-grid($grid-gap: 5rem);
+}
+
+.hv-grid {
+  @include h-grid();
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.hv-grid-gap-huge {
+  @include h-grid($grid-gap: 5rem);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/**
+---------- GRIDS // vertical
+*/
+
 .v-grid {
   @include v-grid();
 }
 
+.v-grid-gap-small {
+  @include v-grid($gap: 0.5rem);
+}
+
+.v-grid-gap-big {
+  @include v-grid($gap: 2rem);
+}
+
+.v-grid-gap-huge {
+  @include v-grid($gap: 5rem);
+}
+
+.v-grid-centered {
+  @include v-grid($justify-content: center);
+}
+
 .v-grid-align-top-no-wrap {
-  @include v-grid();
-  align-items: flex-start;
-  flex-wrap: nowrap;
+  @include v-grid($align-items: flex-start, $flex-wrap: nowrap);
+}
+
+.v-grid-gap-big-align-top-no-wrap {
+  @include v-grid($gap: 2rem, $align-items: flex-start, $flex-wrap: nowrap);
 }
 
 .v-grid-gap-small {
@@ -163,23 +239,19 @@ select {
 }
 
 .v-grid-gap-small-no-wrap {
-  @include v-grid($gap: 0.5rem);
-  flex-wrap: nowrap;
+  @include v-grid($gap: 0.5rem, $flex-wrap: nowrap);
 }
 
 .v-grid-gap-small-no-wrap-flex-end {
-  @include v-grid($gap: 0.5rem);
-  flex-wrap: nowrap;
-  justify-content: flex-end;
+  @include v-grid($gap: 0.5rem, $flex-wrap: nowrap, $justify-content: flex-end);
 }
 
 .v-grid-space-between {
-  @include v-grid-sb();
+  @include v-grid($justify-content: space-between);
 }
 
 .v-grid-space-between-no-wrap {
-  @include v-grid-sb();
-  flex-wrap: nowrap;
+  @include v-grid($justify-content: space-between, $flex-wrap: nowrap);
 }
 
 .v-grid-item-expand {
@@ -187,8 +259,7 @@ select {
 }
 
 .v-grid-gap-small-centered {
-  @include v-grid($gap: 0.5rem);
-  justify-content: center;
+  @include v-grid($gap: 0.5rem, $justify-content: center);
 }
 
 .w-100 {
@@ -203,4 +274,13 @@ select {
 
 .np {
   padding: 0;
+}
+
+.overline {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+section {
+  padding: 5rem 0;
 }

@@ -1,4 +1,4 @@
-import { Fragment, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Classes from './Authentication.module.scss';
@@ -65,7 +65,7 @@ const Authentication = () => {
   };
 
   return (
-    <Fragment>
+    <section className="container--compressed">
       <h1>Hello, Spearny</h1>
       <form className="h-grid" onSubmit={submitHandler}>
         <BaseCard mode="form-control" background="light">
@@ -89,7 +89,7 @@ const Authentication = () => {
       >
         {isLogin ? 'Sign up' : 'Login'} instead
       </BaseButton>
-    </Fragment>
+    </section>
   );
 };
 
