@@ -152,6 +152,12 @@ select {
   @include v-grid();
 }
 
+.v-grid-align-top-no-wrap {
+  @include v-grid();
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
 .v-grid-gap-small {
   @include v-grid($gap: 0.5rem);
 }
