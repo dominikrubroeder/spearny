@@ -7,7 +7,14 @@
   grid-template-rows: min-content 1fr min-content;
   padding: 1rem 2rem;
   background-color: var(--lightest-background);
-  transition: all 0.4s;
+  transition: all 0.4s ease-out;
+
+  &:not(.sidebar--open) {
+    &:hover {
+      cursor: pointer;
+      background-color: var(--light-background);
+    }
+  }
 
   &--open {
     width: 20rem;
@@ -26,69 +33,16 @@
 }
 
 .sidebar__toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.25rem;
   position: absolute;
   right: 0;
-  width: 3rem;
-  height: 3rem;
+  font-size: 2rem;
+  transform: translateX(4rem) rotate(0deg);
+  border: 1rem solid var(--white);
   border-radius: 50%;
-  border: 0.25rem solid var(--white);
-  background-color: var(--light-accent);
-  transform: translateX(3rem);
+  background-color: var(--white);
+  transition: all 0.4s ease-out;
 
-  &-bar {
-    border-radius: 5rem;
-    transition: all 0.2s;
-
-    span {
-      display: block;
-      width: 2rem;
-      border-radius: 5rem;
-      height: 0.25rem;
-      background-color: var(--white);
-      transition: all 0.2s;
-    }
-
-    &:first-child {
-      span {
-        width: 1rem;
-      }
-    }
-
-    &:nth-child(2) {
-      span {
-        width: 2rem;
-      }
-    }
-
-    &:last-child {
-      span {
-        width: 1rem;
-      }
-    }
-  }
-}
-
-.sidebar__toggle--true {
-  .sidebar__toggle {
-    &-bar {
-      &:first-child,
-      &:last-child {
-        width: 2rem;
-        span {
-          transform: rotate(-45deg);
-        }
-      }
-
-      &:nth-child(2) {
-        span {
-          transform: rotate(45deg);
-        }
-      }
-    }
+  &--mirrored {
+    transform: translateX(4rem) rotate(180deg);
   }
 }

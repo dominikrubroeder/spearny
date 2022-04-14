@@ -1,35 +1,33 @@
 import './Sidebar.scss';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
-  const toggleSidebar = () => {
+  const toggleSidebar = useCallback(() => {
+    document.body.classList.toggle('with--sidebar');
     setShowSidebar((previousState) => !previousState);
-  };
+  }, [showSidebar, setShowSidebar]);
 
   return (
     <div className={`sidebar h-grid ${showSidebar ? 'sidebar--open' : ''}`}>
       <header className="v-grid-space-between">
-        <div
-          className={`sidebar__toggle sidebar__toggle--${showSidebar}`}
+        <FontAwesomeIcon
+          icon="fa-solid fa-circle-chevron-right"
           onClick={toggleSidebar}
-        >
-          <div className="sidebar__toggle-bar">
-            <span></span>
-          </div>
-          <div className="sidebar__toggle-bar">
-            <span></span>
-          </div>
-          <div className="sidebar__toggle-bar">
-            <span></span>
-          </div>
-        </div>
+          className={`sidebar__toggle ${
+            showSidebar ? 'sidebar__toggle--mirrored' : ''
+          }`}
+        />
       </header>
-      <div className="sidebar__content">
+      <div
+        className="sidebar__content"
+        onClick={() => toggleSidebar('content')}
+      >
         {showSidebar && <div>Sidebar content</div>}
       </div>
-      <footer>Sidebar footer</footer>
+      <footer>{showSidebar && <span>Footer content</span>}</footer>
     </div>
   );
 };

@@ -18,6 +18,11 @@ body {
   font-size: 1.4rem;
   line-height: 1.6;
   color: var(--black);
+  transition: padding-left 0.4s ease-out;
+
+  &.with--sidebar {
+    padding-left: 20rem;
+  }
 }
 
 #root {
