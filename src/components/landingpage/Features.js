@@ -3,6 +3,7 @@ import Feature from './Feature';
 import './Features.scss';
 import SectionHead from './SectionHead';
 import BaseCard from '../base/BaseCard';
+import BaseButton from '../base/BaseButton';
 import { useState } from 'react';
 
 const features = [
@@ -94,9 +95,20 @@ const features = [
 
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState(0);
+  const [nextFeature, setNextFeature] = useState(1);
 
   const activateFeature = (index) => {
-    if (index < 0) index = 0;
+    if (index < 0) {
+      setActiveFeature(features.length - 1);
+      setNextFeature(activeFeature + 1);
+      return;
+    }
+
+    if (index === features.length) {
+      setActiveFeature(0);
+      setNextFeature(activeFeature + 1);
+      return;
+    }
 
     setActiveFeature(index);
   };
@@ -104,7 +116,7 @@ const Features = () => {
   return (
     <section className="features" id="features">
       <div className="features__gallery container v-grid-space-between">
-        <div className="features__content container--compressed">
+        <div className="features__content container--compressed h-grid-gap-huge">
           {
             <Feature
               key={features[activeFeature].title}
@@ -115,21 +127,27 @@ const Features = () => {
           }
 
           <div className="features__navigation v-grid-space-between">
-            <FontAwesomeIcon
-              icon="fa-solid fa-arrow-left"
+            <BaseButton
+              mode="icon"
               onClick={() => activateFeature(activeFeature - 1)}
-            />
+            >
+              <FontAwesomeIcon icon="fa-solid fa-arrow-left" />
+            </BaseButton>
             <span>
-              Next:
-              <FontAwesomeIcon
-                icon={`fa-solid ${features[activeFeature + 1].icon}`}
-              />{' '}
-              {features[activeFeature + 1].title}
+              <span className="v-grid">
+                Next:
+                <FontAwesomeIcon
+                  icon={`fa-solid ${features[nextFeature].icon}`}
+                />
+                {features[nextFeature].title}
+              </span>
             </span>
-            <FontAwesomeIcon
-              icon="fa-solid fa-arrow-right"
+            <BaseButton
+              mode="icon"
               onClick={() => activateFeature(activeFeature + 1)}
-            />
+            >
+              <FontAwesomeIcon icon="fa-solid fa-arrow-right" />
+            </BaseButton>
           </div>
         </div>
         <div className="features__icon-grid" grid-mode="vertical">
