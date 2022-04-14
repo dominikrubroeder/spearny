@@ -88,7 +88,7 @@ const Authentication = () => {
         </BaseCard>
         <p>
           <BaseButton
-            mode="link"
+            mode="text"
             priority="primary"
             className="v-grid"
             onClick={togglePasswordNotification}
@@ -114,7 +114,7 @@ const Authentication = () => {
       </form>
       <BaseButton
         priority="primary"
-        mode="link"
+        mode="text"
         onClick={switchAuthModeHandler}
       >
         {isLogin ? 'Sign up' : 'Login'} instead

@@ -1,0 +1,36 @@
+button {
+  color: hsla(100, 100%, 100%, 1);
+  padding: 1rem;
+  border: none;
+  background-color: hsla(0, 0%, 0%, 1);
+  cursor: pointer;
+  border-radius: 1rem;
+
+  &.button-size--small {
+    font-size: 1.2rem;
+  }
+}
+
+.button-mode--text {
+  padding: 0.25rem;
+  background-color: transparent;
+
+  &.button-priority--primary {
+    color: var(--light-accent);
+  }
+
+  &.button-priority--secondary {
+    color: var(--black);
+  }
+
+  &.button-type--destructive {
+    color: var(--light-red);
+  }
+}
+
+.button-mode--button {
+  &.button-priority--primary {
+    color: var(--white);
+    background-color: var(--light-accent);
+  }
+}

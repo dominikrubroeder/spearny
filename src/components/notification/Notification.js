@@ -5,6 +5,10 @@ import BaseCard from '../base/BaseCard';
 import classes from './Notification.scss';
 
 const Notification = (props) => {
+  // placement values: bottom (default), top, centered
+  const placement = props.placement || 'bottom';
+  const backdrop = props.backdrop;
+
   const head = (
     <header className="v-grid-space-between">
       <div>{props.title}</div>
@@ -21,7 +25,7 @@ const Notification = (props) => {
 
   const notification = (
     <BaseCard
-      className="notification h-grid container"
+      className={`notification notification--${placement} h-grid container`}
       dropShadow={props.dropShadow}
       background={props.background || 'white'}
     >

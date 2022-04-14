@@ -22,7 +22,7 @@ const TagsList = (props) => {
       ))}
       {showAddForm && <TagsAddForm />}
       <BaseCard mode="tag" background={tagBackground}>
-        <BaseButton mode="link" priority="primary" onClick={enableAdding}>
+        <BaseButton mode="text" priority="primary" onClick={enableAdding}>
           +Add new tag
         </BaseButton>
       </BaseCard>

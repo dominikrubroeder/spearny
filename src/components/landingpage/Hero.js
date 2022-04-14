@@ -43,7 +43,7 @@ const Hero = () => {
               Zum Login
             </BaseButton>
             <BaseButton
-              mode="link"
+              mode="text"
               priority="primary"
               onClick={() => navigate('/authentication')}
             >

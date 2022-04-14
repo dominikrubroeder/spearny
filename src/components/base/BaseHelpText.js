@@ -17,7 +17,7 @@ const BaseHelpText = (props) => {
 
   return (
     <div className={classes.helpbox}>
-      <BaseButton mode="link" priority="primary" onClick={showHelptext}>
+      <BaseButton mode="text" priority="primary" onClick={showHelptext}>
         ?
       </BaseButton>
       {showNotification && (

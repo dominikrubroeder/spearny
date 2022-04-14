@@ -1,16 +1,54 @@
 .notification {
   position: fixed;
   left: 50%;
-  transform: translateX(-50%);
-  animation: fade-in 0.2s ease-out forwards;
   transition: all 0.4s;
+  z-index: 1;
+
+  &--bottom {
+    transform: translateX(-50%);
+    animation: fade-in-from-bottom 0.2s ease-out forwards;
+  }
+
+  &--top {
+    transform: translateX(-50%);
+    animation: fade-in-from-top 0.2s ease-out forwards;
+  }
+
+  &--centered {
+    top: 50%;
+    animation: fade-in-centered 0.2s ease-out forwards;
+  }
 }
 
-@keyframes fade-in {
+@keyframes fade-in-from-bottom {
   from {
+    opacity: 0;
     bottom: 0;
   }
   to {
+    opacity: 1;
     bottom: 2rem;
+  }
+}
+
+@keyframes fade-in-from-top {
+  from {
+    opacity: 0;
+    top: 0;
+  }
+  to {
+    opacity: 1;
+    top: 2rem;
+  }
+}
+
+@keyframes fade-in-centered {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -120%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%);
   }
 }

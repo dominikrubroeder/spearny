@@ -1,22 +1,20 @@
-import classes from './BaseButton.module.scss';
+import classes from './BaseButton.scss';
 
 const BaseButton = (props) => {
-  // button, link, ...
+  // button (default), text, ...
   const mode = props.mode || 'button';
-  // primary, secondary, tertiary, ...
-  const priority = props.priority || 'default';
-  // small, default, medium, large, ...
-  const size = props.size || 'default';
-  // default, desctructive, ...
-  const ofType = props.ofType || 'default';
-
-  const classList = `${mode}--${priority}`;
-  const withSize = `size--${size}`;
-  const isType = `type--${ofType}`;
+  // primary (default), secondary, tertiary, ...
+  const priority = props.priority || 'primary';
+  // small, regular (default), medium, large, ...
+  const size = props.size || 'regular';
+  // regular (default), desctructive, ...
+  const type = props.type || 'regular';
 
   return (
     <button
-      className={`${classes[classList]} ${classes[withSize]} ${classes[isType]} ${props.className}`}
+      className={`button button-mode--${mode} button-priority--${priority} button-size--${size} button-type--${type} ${
+        props.className ?? ''
+      }`}
       onClick={props.onClick}
       disabled={props.disabled}
     >

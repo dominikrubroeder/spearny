@@ -12,7 +12,7 @@ const MovementDelete = (props) => {
 
   return (
     <BaseButton
-      mode="link"
+      mode="text"
       priority="primary"
       ofType="destructive"
       onClick={deleteMovement}

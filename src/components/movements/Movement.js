@@ -30,7 +30,7 @@ const Movement = (props) => {
         <span className={classes.amount}>
           {plusMinus} {props.movement.amount}€
         </span>
-        <BaseButton mode="link" priority="primary">
+        <BaseButton mode="text" priority="primary">
           Update
         </BaseButton>
       </div>

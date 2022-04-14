@@ -26,12 +26,20 @@ const BaseDropdown = (props) => {
   const openCloseComp = (
     <Fragment>
       {!isOpen && !hasToggle && (
-        <BaseButton mode="link" onClick={toggleIsOpenState}>
+        <BaseButton
+          mode="text"
+          priority="secondary"
+          onClick={toggleIsOpenState}
+        >
           +
         </BaseButton>
       )}
       {isOpen && !hasToggle && (
-        <BaseButton mode="link" onClick={toggleIsOpenState}>
+        <BaseButton
+          mode="text"
+          priority="secondary"
+          onClick={toggleIsOpenState}
+        >
           -
         </BaseButton>
       )}
