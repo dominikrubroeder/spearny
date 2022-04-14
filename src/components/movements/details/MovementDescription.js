@@ -4,8 +4,8 @@ import BaseDropdown from '../../base/BaseDropdown';
 import BaseCard from '../../base/BaseCard';
 
 const MovementDescription = (props) => {
-  const id = props.id;
   const dispatch = useDispatch();
+  const id = props.id;
 
   const descriptionOnChangeHandler = (e) => {
     dispatch(
@@ -21,11 +21,11 @@ const MovementDescription = (props) => {
     <BaseDropdown
       head={<label>Notes:</label>}
       hasToggle={true}
-      isOpen={props.description && true}
+      isOpen={props.description ?? false}
     >
       <BaseCard mode="form-control" background="white">
         <textarea
-          value={props.description}
+          value={props.description ?? ''}
           placeholder="Some notes..."
           onChange={descriptionOnChangeHandler}
         />
