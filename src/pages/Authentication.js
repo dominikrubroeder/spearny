@@ -3,14 +3,18 @@ import { useNavigate } from 'react-router-dom';
 
 import Classes from './Authentication.module.scss';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BaseCard from '../components/base/BaseCard';
 import BaseButton from '../components/base/BaseButton';
+import Notification from '../components/notification/Notification';
 
 const Authentication = () => {
   const navigate = useNavigate();
   const emailInput = useRef();
   const passwordInput = useRef();
   const [isLogin, setIsLogin] = useState(true);
+  const [showPasswordNotification, setShowPasswordNotification] =
+    useState(false);
   const API_KEY = 'AIzaSyCfILVsJgXoj6YygpYtIs_GiLsiJMfxZ8w';
 
   const switchAuthModeHandler = () => {
@@ -64,6 +68,10 @@ const Authentication = () => {
     console.log('...');
   };
 
+  const togglePasswordNotification = () => {
+    setShowPasswordNotification((previousState) => !previousState);
+  };
+
   return (
     <section className="container--compressed">
       <h1>Hello, Spearny</h1>
@@ -78,6 +86,28 @@ const Authentication = () => {
             ref={passwordInput}
           />
         </BaseCard>
+        <p>
+          <BaseButton
+            mode="link"
+            priority="primary"
+            className="v-grid"
+            onClick={togglePasswordNotification}
+          >
+            Passwort vergessen
+            <FontAwesomeIcon icon="fa-solid fa-circle-question" />
+          </BaseButton>
+          {showPasswordNotification && (
+            <Notification
+              title="Passwort vergessen"
+              dropShadow={true}
+              onClose={() => setShowPasswordNotification(false)}
+            >
+              Das Passwort muss mindestens 8 Zeichen, Groß- und Kleinbuchstaben,
+              mindestens ein Sonderzeichen (?,.-#+) und aus mindestens einer
+              Zahl bestehen.
+            </Notification>
+          )}
+        </p>
         <BaseButton priority="primary">
           {isLogin ? 'Login' : 'Sign up'}
         </BaseButton>

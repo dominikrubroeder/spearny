@@ -1,0 +1,16 @@
+.notification {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fade-in 0.2s ease-out forwards;
+  transition: all 0.4s;
+}
+
+@keyframes fade-in {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 2rem;
+  }
+}

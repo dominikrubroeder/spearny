@@ -5,8 +5,9 @@ const BaseCard = (props) => {
   const background = props.background || 'transparent';
   const className = props.className || '';
   const mode = props.mode || '';
+  const dropShadow = props.dropShadow ? 'drop-shadow' : '';
 
-  const classList = `${classes.card} ${className} ${classes[background]} ${classes[mode]}`;
+  const classList = `${classes.card} ${className} ${classes[background]} ${classes[mode]} ${dropShadow}`;
 
   return <div className={classList}>{props.children}</div>;
 };

@@ -16,7 +16,7 @@ const BaseButton = (props) => {
 
   return (
     <button
-      className={`${classes[classList]} ${classes[withSize]} ${classes[isType]}`}
+      className={`${classes[classList]} ${classes[withSize]} ${classes[isType]} ${props.className}`}
       onClick={props.onClick}
       disabled={props.disabled}
     >
