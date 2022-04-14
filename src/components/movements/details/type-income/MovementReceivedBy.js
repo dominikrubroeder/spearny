@@ -28,14 +28,17 @@ const MovementReceivedBy = (props) => {
   return (
     <BaseDropdown
       head={dropdownHead}
-      isOpen={props.initialValue && true}
+      isOpen={props.initialValue ?? false}
       hasToggle
     >
       <BaseCard mode="form-control" background="white">
-        <select value={props.initialValue} onChange={receivedByOnChangeHandler}>
+        <select
+          value={props.initialValue ?? 'Cash'}
+          onChange={receivedByOnChangeHandler}
+        >
           <option value="Cash">Cash</option>
           <option value="PayPal">PayPal</option>
-          <option value="invoice">By Invoice</option>
+          <option value="Invoice">By Invoice</option>
           <option value="VISA">VISA</option>
           <option value="Mastercard">Mastercard</option>
           <option value="Klarna">Klarna</option>

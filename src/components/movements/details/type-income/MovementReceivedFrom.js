@@ -30,12 +30,12 @@ const MovementReceivedBy = (props) => {
   return (
     <BaseDropdown
       head={dropdownHead}
-      isOpen={props.initialValue && true}
+      isOpen={props.initialValue ?? false}
       hasToggle
     >
       <BaseCard mode="form-control" background="white">
         <select
-          value={props.initialValue}
+          value={props.initialValue ?? 'Zalando GmbH'}
           onChange={receivedFromOnChangeHandler}
         >
           <option value="Zalando GmbH">Zalando GmbH</option>

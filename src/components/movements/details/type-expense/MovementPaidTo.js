@@ -30,11 +30,14 @@ const MovementPaidTo = (props) => {
   return (
     <BaseDropdown
       head={dropdownHead}
-      isOpen={props.initialValue && true}
+      isOpen={props.initialValue ?? false}
       hasToggle
     >
       <BaseCard mode="form-control" background="white">
-        <select value={props.initialValue} onChange={paidToOnChangeHandler}>
+        <select
+          value={props.initialValue ?? 'Zalando GmbH'}
+          onChange={paidToOnChangeHandler}
+        >
           <option value="Zalando GmbH">Zalando GmbH</option>
           <option value="Luca Walther">Luca Walther</option>
           <option value="Patrick Rubroeder">Patrick Rubröder</option>

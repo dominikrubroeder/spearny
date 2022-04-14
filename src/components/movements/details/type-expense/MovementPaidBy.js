@@ -37,7 +37,10 @@ const MovementPaidBy = (props) => {
       hasToggle
     >
       <BaseCard mode="form-control" background="white">
-        <select value={props.initialValue} onChange={paidByOnChangeHandler}>
+        <select
+          value={props.initialValue ?? 'Cash'}
+          onChange={paidByOnChangeHandler}
+        >
           <option value="Cash">Cash</option>
           <option value="PayPal">PayPal</option>
           <option value="invoice">By Invoice</option>
