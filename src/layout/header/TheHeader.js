@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/svgs/spearny-logo.svg';
-import classes from './TheHeader.module.scss';
+import Sidebar from '../sidebar/Sidebar';
+import './TheHeader.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const TheHeader = () => {
   return (
-    <header className={classes.theHeader}>
+    <header className="header-main v-grid-space-between">
+      <Sidebar />
+      <div>.</div>
       <Link to="/">
-        <div className={`${classes.logo} v-grid-centered`}>
+        <div className="logo v-grid-centered">
           <Logo />
           <div className="v-grid-gap-small">
             <h1>Spearny.</h1>
           </div>
         </div>
       </Link>
-      {/* <div className={classes.claim}>
-        Keep track of your spent and earned money everywhere.
-  </div> */}
+      <FontAwesomeIcon icon="fa-solid fa-circle-user" />
     </header>
   );
 };

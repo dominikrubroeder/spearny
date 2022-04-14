@@ -16,6 +16,8 @@ import {
   faArrowDown,
   faCircleQuestion,
   faCircleXmark,
+  faBars,
+  faCircleUser,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './font/font.scss';
@@ -42,7 +44,9 @@ function App() {
     faHand,
     faArrowDown,
     faCircleQuestion,
-    faCircleXmark
+    faCircleXmark,
+    faBars,
+    faCircleUser
   );
 
   return (
