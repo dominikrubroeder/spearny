@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classes from './Feature.module.scss';
+import './Feature.scss';
 
 const Feature = (props) => {
   return (
-    <div className="v-grid-gap-big-align-top-no-wrap">
-      <span className={`${classes.icon} icon icon--leading`}>
-        <FontAwesomeIcon icon={`fa-solid ${props.icon}`} />
-      </span>
-      <div>
-        <h3>{props.title}</h3>
+    <div className="feature v-grid-space-between" data-index={props.index}>
+      <FontAwesomeIcon
+        icon={`fa-solid ${props.icon}`}
+        className="feature__icon"
+      />
+      <div className="container--compressed">
+        <h2>{props.title}</h2>
         <p>{props.description}</p>
       </div>
     </div>

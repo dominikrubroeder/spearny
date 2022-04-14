@@ -9,7 +9,11 @@ const BaseCard = (props) => {
 
   const classList = `${classes.card} ${className} ${classes[background]} ${classes[mode]} ${dropShadow}`;
 
-  return <div className={classList}>{props.children}</div>;
+  return (
+    <div className={classList} onClick={props.onClick}>
+      {props.children}
+    </div>
+  );
 };
 
 export default BaseCard;

@@ -20,6 +20,8 @@ import {
   faCircleUser,
   faChevronRight,
   faCircleChevronRight,
+  faArrowRight,
+  faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './font/font.scss';
@@ -50,7 +52,9 @@ function App() {
     faBars,
     faCircleUser,
     faChevronRight,
-    faCircleChevronRight
+    faCircleChevronRight,
+    faArrowRight,
+    faArrowLeft
   );
 
   return (
