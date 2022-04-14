@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { Fragment } from 'react';
 import classes from './Movement.module.scss';
 import BaseDropdown from '../base/BaseDropdown';
 import BaseCard from '../base/BaseCard';
@@ -12,6 +12,7 @@ import MovementPaidBy from './details/type-expense/MovementPaidBy';
 import MovementReceivedFrom from './details/type-income/MovementReceivedFrom';
 import MovementReceivedBy from './details/type-income/MovementReceivedBy';
 import MovementDelete from './details/actions/MovementDelete';
+import BaseButton from '../base/BaseButton';
 
 const Movement = (props) => {
   const id = props.movement.id;
@@ -21,19 +22,17 @@ const Movement = (props) => {
       : classes['type--income'];
 
   const plusMinus = props.movement.type === 'expense' ? '-' : '+';
-  const [showDetails, setShowDetails] = useState(props.movement.showDetails);
-
-  const toggleDetails = () => {
-    setShowDetails((previousState) => {
-      return !previousState;
-    });
-  };
 
   const headMarkup = (
     <div className="v-grid-space-between w-100">
-      <h3 onClick={toggleDetails}>{props.movement.title}</h3>
-      <div className={classes.amount}>
-        {plusMinus} {props.movement.amount}€
+      <h3>{props.movement.title}</h3>
+      <div>
+        <span className={classes.amount}>
+          {plusMinus} {props.movement.amount}€
+        </span>
+        <BaseButton mode="link" priority="primary">
+          Update
+        </BaseButton>
       </div>
     </div>
   );
@@ -98,7 +97,7 @@ const Movement = (props) => {
       className={`${classes.movement} ${typeclasses}`}
       background="light"
     >
-      <BaseDropdown isOpen={showDetails} head={headMarkup}>
+      <BaseDropdown isOpen={false} head={headMarkup}>
         {detailsMarkup}
       </BaseDropdown>
     </BaseCard>

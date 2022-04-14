@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import classes from './BaseHelpText.module.scss';
-import BaseCard from './BaseCard';
 import BaseButton from './BaseButton';
+import Notification from '../notification/Notification';
 
 const BaseHelpText = (props) => {
   const title = props.title || 'Info';
-  const [helptextVisible, setHelptextVisible] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   const showHelptext = () => {
-    setHelptextVisible(() => true);
+    setShowNotification(true);
   };
 
   const hideHelptext = () => {
-    setHelptextVisible(() => false);
+    setShowNotification(false);
   };
 
   return (
@@ -20,16 +20,10 @@ const BaseHelpText = (props) => {
       <BaseButton mode="link" priority="primary" onClick={showHelptext}>
         ?
       </BaseButton>
-      {helptextVisible && (
-        <BaseCard background="white" classes={classes.helpboxContent}>
-          <header className="v-grid-space-between">
-            {title}
-            <BaseButton mode="link" priority="primary" onClick={hideHelptext}>
-              x
-            </BaseButton>
-          </header>
-          <div className={classes.helptext}>{props.children}</div>
-        </BaseCard>
+      {showNotification && (
+        <Notification title={title} dropShadow={true} onClose={hideHelptext}>
+          {props.children}
+        </Notification>
       )}
     </div>
   );

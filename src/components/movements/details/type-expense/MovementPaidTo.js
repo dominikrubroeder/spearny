@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../../../store/movements';
 import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
+import BaseHelpText from '../../../base/BaseHelpText';
 
 const MovementPaidTo = (props) => {
   const dispatch = useDispatch();
@@ -17,13 +18,20 @@ const MovementPaidTo = (props) => {
     );
   };
 
+  const dropdownHead = (
+    <div className="v-grid-space-between">
+      <label>Paid to:</label>
+      <BaseHelpText title="Paid to">
+        To whom did I make the payment?
+      </BaseHelpText>
+    </div>
+  );
+
   return (
     <BaseDropdown
-      head={<label>Paid to:</label>}
-      hasToggle={true}
-      helpTitle="Paid to"
-      helpText="To whom did I make the payment?"
+      head={dropdownHead}
       isOpen={props.initialValue && true}
+      hasToggle
     >
       <BaseCard mode="form-control" background="white">
         <select value={props.initialValue} onChange={paidToOnChangeHandler}>

@@ -70,20 +70,13 @@ export const fetchMovements = () => {
   };
 };
 
-/**
-export const updateMovement = (updatedMovementId) => {
+export const updateMovement = (updatedMovement) => {
   return async (dispatch) => {
     const sendUpdateRequest = async () => {
-        
-      // This not working yet (get the movement by id)
-      const updatedMovement = dispatch(
-        movementsActions.getMovementById({ id: updatedMovementId })
-      );
-
       console.log(updatedMovement);
 
       const response = await fetch(
-        `https://react-spearny-default-rtdb.firebaseio.com/movements/${updatedMovementId}.json`,
+        `https://react-spearny-default-rtdb.firebaseio.com/movements/${updatedMovement.id}.json`,
         {
           method: 'PATCH',
           body: JSON.stringify({
@@ -114,4 +107,3 @@ export const updateMovement = (updatedMovementId) => {
     }
   };
 };
-*/

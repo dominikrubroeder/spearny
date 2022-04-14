@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../../store/movements';
 import BaseDropdown from '../../base/BaseDropdown';
+import BaseHelpText from '../../base/BaseHelpText';
 import Tag from '../../tags/Tag';
 
 const MovementTags = (props) => {
@@ -18,14 +19,15 @@ const MovementTags = (props) => {
     );
   };
 
+  const dropdownHead = (
+    <div className="v-grid-space-between">
+      <label>Tags:</label>
+      <BaseHelpText title="Tags">Tags help text</BaseHelpText>
+    </div>
+  );
+
   return (
-    <BaseDropdown
-      head={<label>Tags:</label>}
-      hasToggle={true}
-      helpTitle="Tags"
-      helpText="Tags help text"
-      isOpen={assignedTags && true}
-    >
+    <BaseDropdown head={dropdownHead} isOpen={assignedTags && true} hasToggle>
       {tags.map((tag) => (
         <Tag key={tag.id} onClick={() => toggleTagAssignment(tag)}>
           {tag.title}
