@@ -73,8 +73,6 @@ export const fetchMovements = () => {
 export const updateMovement = (updatedMovement) => {
   return async (dispatch) => {
     const sendUpdateRequest = async () => {
-      console.log(updatedMovement);
-
       const response = await fetch(
         `https://react-spearny-default-rtdb.firebaseio.com/movements/${updatedMovement.id}.json`,
         {

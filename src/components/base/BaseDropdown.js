@@ -14,12 +14,12 @@ const BaseDropdown = (props) => {
 
     setIsOpen((previousState) => !previousState);
 
+    // Update, ...
     if (props.onClick) props.onClick();
   };
 
   const toggleSection = () => {
     setIsOpen((previousState) => !previousState);
-    if (props.onClick) props.onClick();
   };
 
   const headClassNames = `${

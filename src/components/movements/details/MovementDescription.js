@@ -9,7 +9,7 @@ const MovementDescription = (props) => {
 
   const descriptionOnChangeHandler = (e) => {
     dispatch(
-      movementsActions.update({
+      movementsActions.updateProperty({
         id: id,
         updatedProperty: 'description',
         updatedValue: e.target.value,

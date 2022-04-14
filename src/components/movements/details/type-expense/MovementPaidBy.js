@@ -11,7 +11,7 @@ const MovementPaidBy = (props) => {
 
   const paidByOnChangeHandler = (e) => {
     dispatch(
-      movementsActions.update({
+      movementsActions.updateProperty({
         id: id,
         updatedProperty: 'paidBy',
         updatedValue: e.target.value,

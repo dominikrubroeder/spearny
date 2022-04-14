@@ -1,4 +1,7 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { movementsActions } from '../../store/movements';
+import { updateMovement } from '../../store/movements-actions';
 import classes from './Movement.module.scss';
 import BaseDropdown from '../base/BaseDropdown';
 import BaseCard from '../base/BaseCard';
@@ -12,16 +15,28 @@ import MovementPaidBy from './details/type-expense/MovementPaidBy';
 import MovementReceivedFrom from './details/type-income/MovementReceivedFrom';
 import MovementReceivedBy from './details/type-income/MovementReceivedBy';
 import MovementDelete from './details/actions/MovementDelete';
-import BaseButton from '../base/BaseButton';
 
 const Movement = (props) => {
-  const id = props.movement.id;
+  const dispatch = useDispatch();
+  const [showDetails, setShowDetails] = useState(props.showDetails);
   const typeclasses =
     props.movement.type === 'expense'
       ? classes['type--expense']
       : classes['type--income'];
 
   const plusMinus = props.movement.type === 'expense' ? '-' : '+';
+
+  const updateMovementHandler = (updatedMovement) => {
+    // When movement details are not visible, return
+    setShowDetails((previousState) => !previousState);
+    if (!showDetails) return;
+
+    // Compare: old / updated, only when differ than update
+
+    console.log(props.movement);
+    dispatch(movementsActions.update(props.movement));
+    dispatch(updateMovement(props.movement));
+  };
 
   const headMarkup = (
     <div className="v-grid-space-between w-100">
@@ -30,9 +45,6 @@ const Movement = (props) => {
         <span className={classes.amount}>
           {plusMinus} {props.movement.amount}€
         </span>
-        <BaseButton mode="text" priority="primary">
-          Update
-        </BaseButton>
       </div>
     </div>
   );
@@ -97,7 +109,11 @@ const Movement = (props) => {
       className={`${classes.movement} ${typeclasses}`}
       background="light"
     >
-      <BaseDropdown isOpen={false} head={headMarkup}>
+      <BaseDropdown
+        isOpen={showDetails}
+        head={headMarkup}
+        onClick={updateMovementHandler}
+      >
         {detailsMarkup}
       </BaseDropdown>
     </BaseCard>

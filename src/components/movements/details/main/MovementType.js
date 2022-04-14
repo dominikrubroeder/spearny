@@ -8,7 +8,7 @@ const MovementType = (props) => {
 
   const typeOnChangeHandler = (e) => {
     dispatch(
-      movementsActions.update({
+      movementsActions.updateProperty({
         id: id,
         updatedProperty: 'type',
         updatedValue: e.target.value,

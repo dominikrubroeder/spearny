@@ -10,7 +10,7 @@ const MovementPaidTo = (props) => {
 
   const paidToOnChangeHandler = (e) => {
     dispatch(
-      movementsActions.update({
+      movementsActions.updateProperty({
         id: id,
         updatedProperty: 'paidTo',
         updatedValue: e.target.value,

@@ -8,7 +8,7 @@ const MovementTitle = (props) => {
 
   const titleOnChangeHandler = (e) => {
     dispatch(
-      movementsActions.update({
+      movementsActions.updateProperty({
         id: id,
         updatedProperty: 'title',
         updatedValue: e.target.value,

@@ -15,7 +15,22 @@ const movementsSlice = createSlice({
       const newMovement = action.payload;
       state.movements.unshift(newMovement);
     },
+    delete(state, action) {
+      const movementId = action.payload;
+      state.movements = state.movements.filter(
+        (movement) => movement.id !== movementId
+      );
+    },
     update(state, action) {
+      const updatedMovement = action.payload;
+
+      const movementIndex = state.movements.findIndex(
+        (movement) => movement.id === updatedMovement.id
+      );
+
+      state.movements[movementIndex] = updatedMovement;
+    },
+    updateProperty(state, action) {
       const updatedProperty = action.payload.updatedProperty;
       const updatedValue = action.payload.updatedValue;
       const movementId = action.payload.id;
@@ -25,12 +40,6 @@ const movementsSlice = createSlice({
       );
 
       state.movements[movementIndex][updatedProperty] = updatedValue;
-    },
-    delete(state, action) {
-      const movementId = action.payload;
-      state.movements = state.movements.filter(
-        (movement) => movement.id !== movementId
-      );
     },
     toggleTagAssignment(state, action) {
       const movementId = action.payload.movementId;

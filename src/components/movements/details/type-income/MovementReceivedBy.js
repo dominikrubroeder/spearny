@@ -10,7 +10,7 @@ const MovementReceivedBy = (props) => {
 
   const receivedByOnChangeHandler = (e) => {
     dispatch(
-      movementsActions.update({
+      movementsActions.updateProperty({
         id: id,
         updatedProperty: 'receivedBy',
         updatedValue: e.target.value,

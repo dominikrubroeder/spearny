@@ -8,7 +8,7 @@ const MovementAmount = (props) => {
 
   const amountOnChangeHandler = (e) => {
     dispatch(
-      movementsActions.update({
+      movementsActions.updateProperty({
         id: id,
         updatedProperty: 'amount',
         updatedValue: +e.target.value,
