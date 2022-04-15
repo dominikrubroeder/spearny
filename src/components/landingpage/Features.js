@@ -101,18 +101,33 @@ const Features = () => {
 
   const activateFeature = (index) => {
     if (index < 0) {
+      console.log('index < 0');
       setActiveFeature(features.length - 1);
-      setNextFeature(activeFeature + 1);
+      setNextFeature(index + 1);
       return;
     }
 
     if (index === features.length) {
+      console.log('index === features.length');
       setActiveFeature(0);
-      setNextFeature(activeFeature + 1);
+      setNextFeature(1);
       return;
     }
 
-    setActiveFeature(index);
+    // is last element
+    if (index === features.length - 1) {
+      console.log('index === features.length - 1');
+      setActiveFeature(features.length - 1);
+      setNextFeature(0);
+      return;
+    }
+
+    if (index < features.length) {
+      console.log('index < features.length');
+      setActiveFeature(index);
+      setNextFeature(index + 1);
+      return;
+    }
   };
 
   const getActiveSwitchOption = (value) => {
