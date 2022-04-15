@@ -5,6 +5,7 @@ import SectionHead from './SectionHead';
 import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
 import { useState } from 'react';
+import BaseSwitch from '../base/BaseSwitch';
 
 const features = [
   {
@@ -93,12 +94,10 @@ const features = [
   },
 ];
 
-const switchData = ['vertical', 'grid'];
-
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [nextFeature, setNextFeature] = useState(1);
-  const [activeSwitch, setActiveSwitch] = useState(0);
+  const [activeSwitchOption, setActiveSwitchOption] = useState('vertical');
 
   const activateFeature = (index) => {
     if (index < 0) {
@@ -116,31 +115,18 @@ const Features = () => {
     setActiveFeature(index);
   };
 
-  const toggleSwitch = () => {
-    setActiveSwitch((previousState) => {
-      if (previousState === 0) {
-        return 1;
-      } else if (previousState === 1) {
-        return 0;
-      }
-    });
+  const getActiveSwitchOption = (value) => {
+    setActiveSwitchOption(value);
   };
 
   return (
     <section className="features" id="features">
       <div className="container--compressed">
-        <div className="base-switch" onClick={toggleSwitch}>
-          {switchData.map((data) => (
-            <div
-              key={data}
-              className={`base-switch__option ${
-                switchData[activeSwitch] === data ? 'active' : ''
-              }`}
-            >
-              {data.charAt(0).toUpperCase() + data.slice(1)}
-            </div>
-          ))}
-        </div>
+        <BaseSwitch
+          initialValue={0}
+          options={['vertical', 'grid']}
+          onClick={getActiveSwitchOption}
+        />
       </div>
       <div className="features__gallery container v-grid-space-between">
         <div className="features__content container--compressed h-grid-gap-huge">
@@ -177,10 +163,7 @@ const Features = () => {
             </BaseButton>
           </div>
         </div>
-        <div
-          className="features__icon-grid"
-          grid-mode={switchData[activeSwitch]}
-        >
+        <div className="features__icon-grid" grid-mode={activeSwitchOption}>
           {features.map((feature, index) => (
             <BaseCard
               key={feature.title}
