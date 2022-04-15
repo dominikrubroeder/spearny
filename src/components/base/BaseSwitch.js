@@ -2,12 +2,12 @@ import { useState } from 'react';
 import './BaseSwitch.scss';
 
 const BaseSwitch = (props) => {
+  const [activeSwitch, setActiveSwitch] = useState(props.initialValue);
   const switchOptions = props.options;
-  const [activeSwitch, setActiveSwitch] = useState(props.initialValue || 0);
 
   const activateSwitchOption = (index) => {
     setActiveSwitch(index);
-    props.onClick(switchOptions[activeSwitch]);
+    props.onClick(switchOptions[index]);
   };
 
   return (

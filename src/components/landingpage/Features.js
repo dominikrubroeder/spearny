@@ -4,7 +4,7 @@ import './Features.scss';
 import SectionHead from './SectionHead';
 import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import BaseSwitch from '../base/BaseSwitch';
 
 const features = [
