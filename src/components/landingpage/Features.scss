@@ -12,12 +12,8 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
 
+  &[alignment='horizontal'],
   &[alignment='vertical'] {
-    position: relative;
-    max-height: 40rem;
-    overflow-y: scroll;
-    width: 8rem;
-    padding: 1rem;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
 
@@ -26,6 +22,35 @@
       width: 0;
       height: 0;
     }
+
+    .features__icon-grid-item {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        opacity: 0;
+        visibility: hidden;
+        background-color: var(--light-accent);
+      }
+
+      &.active {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &[alignment='vertical'] {
+    position: relative;
+    max-height: 45rem;
+    overflow-y: scroll;
+    width: 10rem;
+    padding: 2rem;
 
     &::before,
     &::after {
@@ -44,12 +69,32 @@
       bottom: -1rem;
       background-image: linear-gradient(transparent, var(--white));
     }
+
+    .features__icon-grid-item {
+      &::after {
+        left: -1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
   }
 
   &[alignment='horizontal'] {
+    position: relative;
+    display: flex;
+    gap: 1rem;
     width: 100%;
+    padding: 2rem;
     max-height: auto;
-    overflow-x: auto;
+    overflow-x: scroll;
+
+    &::before,
+    &::after {
+      content: '';
+      position: sticky;
+      width: 3rem;
+      height: 100%;
+    }
 
     &::before {
       left: 0;
@@ -60,32 +105,37 @@
       right: 0;
       background-image: linear-gradient(transparent, var(--white));
     }
+
+    .features__icon-grid-item {
+      &::after {
+        bottom: -1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   }
 
   &[alignment='grid'] {
     width: 20rem;
   }
+}
 
-  &-item {
-    transition: all 0.4s;
+.features__icon-grid-item {
+  position: relative;
+  transition: all 0.4s;
 
-    &:hover {
-      /* box-shadow: 0 0 1rem hsla(0, 0%, 0%, 0.1); */
-      transform: scale(1.2);
-      cursor: pointer;
-    }
+  &:hover {
+    /* box-shadow: 0 0 1rem hsla(0, 0%, 0%, 0.1); */
+    transform: scale(1.2);
+    cursor: pointer;
+  }
 
-    &.active {
-      transform: scale(1.2);
-    }
+  &--highlight {
+    color: var(--white) !important;
+    background-color: var(--light-accent) !important;
 
-    &--highlight {
-      color: var(--white) !important;
-      background-color: var(--light-accent) !important;
-
-      svg {
-        color: var(--white);
-      }
+    svg {
+      color: var(--white);
     }
   }
 }

@@ -3,8 +3,8 @@ import './Feature.scss';
 
 const Feature = (props) => {
   return (
-    <div className="feature" data-index={props.index}>
-      <div className="h-grid">
+    <div className="feature v-grid-centered" data-index={props.index}>
+      <div className="h-grid-gap-small">
         <div className="feature__title v-grid-gap-small">
           <FontAwesomeIcon
             icon={`fa-solid ${props.icon}`}
