@@ -5,26 +5,20 @@ const BaseSwitch = (props) => {
   const switchOptions = props.options;
   const [activeSwitch, setActiveSwitch] = useState(props.initialValue || 0);
 
-  const toggleSwitch = () => {
-    setActiveSwitch((previousState) => {
-      if (previousState === 0) {
-        return 1;
-      } else if (previousState === 1) {
-        return 0;
-      }
-    });
-
+  const activateSwitchOption = (index) => {
+    setActiveSwitch(index);
     props.onClick(switchOptions[activeSwitch]);
   };
 
   return (
-    <div className="base-switch" onClick={toggleSwitch}>
-      {switchOptions.map((option) => (
+    <div className="base-switch">
+      {switchOptions.map((option, index) => (
         <div
           key={option}
           className={`base-switch__option ${
             switchOptions[activeSwitch] === option ? 'active' : ''
           }`}
+          onClick={() => activateSwitchOption(index)}
         >
           {option.charAt(0).toUpperCase() + option.slice(1)}
         </div>
