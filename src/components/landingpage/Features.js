@@ -4,7 +4,7 @@ import './Features.scss';
 import SectionHead from './SectionHead';
 import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import BaseSwitch from '../base/BaseSwitch';
 
 const features = [
@@ -97,7 +97,7 @@ const features = [
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [nextFeature, setNextFeature] = useState(1);
-  const [activeSwitchOption, setActiveSwitchOption] = useState('vertical');
+  const [activeSwitchOption, setActiveSwitchOption] = useState('horizontal');
 
   const activateFeature = (index) => {
     if (index < 0) {
@@ -136,14 +136,17 @@ const Features = () => {
 
   return (
     <section className="features" id="features">
-      <div className="container--compressed">
+      <div className="container--compressed v-grid-centered">
         <BaseSwitch
           initialValue={0}
-          options={['vertical', 'grid']}
+          options={['horizontal', 'vertical', 'grid']}
           onClick={getActiveSwitchOption}
         />
       </div>
-      <div className="features__gallery container v-grid-space-between">
+      <div
+        className="features__gallery container v-grid-space-between"
+        alignment={activeSwitchOption}
+      >
         <div className="features__content container--compressed h-grid-gap-huge">
           {
             <Feature
@@ -178,13 +181,13 @@ const Features = () => {
             </BaseButton>
           </div>
         </div>
-        <div className="features__icon-grid" grid-mode={activeSwitchOption}>
+        <div className="features__icon-grid" alignment={activeSwitchOption}>
           {features.map((feature, index) => (
             <BaseCard
               key={feature.title}
               className={`features__icon-grid-item v-grid-centered ${
                 feature.isHighlight ? 'features__icon-grid-item--highlight' : ''
-              }`}
+              } ${activeFeature === index ? 'active' : ''}`}
               background="light"
               onClick={() => activateFeature(index)}
             >
