@@ -103,6 +103,10 @@ svg {
   @include container();
 }
 
+.container--centered {
+  text-align: center;
+}
+
 .icon {
   size: 1rem;
   color: var(--light-accent);

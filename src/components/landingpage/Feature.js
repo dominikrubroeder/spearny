@@ -8,7 +8,7 @@ const Feature = (props) => {
         icon={`fa-solid ${props.icon}`}
         className="feature__icon"
       />
-      <div className="container--compressed">
+      <div>
         <h2>{props.title}</h2>
         <p>{props.description}</p>
       </div>

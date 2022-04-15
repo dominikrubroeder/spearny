@@ -93,9 +93,12 @@ const features = [
   },
 ];
 
+const switchData = ['vertical', 'grid'];
+
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [nextFeature, setNextFeature] = useState(1);
+  const [activeSwitch, setActiveSwitch] = useState(0);
 
   const activateFeature = (index) => {
     if (index < 0) {
@@ -113,8 +116,32 @@ const Features = () => {
     setActiveFeature(index);
   };
 
+  const toggleSwitch = () => {
+    setActiveSwitch((previousState) => {
+      if (previousState === 0) {
+        return 1;
+      } else if (previousState === 1) {
+        return 0;
+      }
+    });
+  };
+
   return (
     <section className="features" id="features">
+      <div className="container--compressed">
+        <div className="base-switch" onClick={toggleSwitch}>
+          {switchData.map((data) => (
+            <div
+              key={data}
+              className={`base-switch__option ${
+                switchData[activeSwitch] === data ? 'active' : ''
+              }`}
+            >
+              {data.charAt(0).toUpperCase() + data.slice(1)}
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="features__gallery container v-grid-space-between">
         <div className="features__content container--compressed h-grid-gap-huge">
           {
@@ -150,7 +177,10 @@ const Features = () => {
             </BaseButton>
           </div>
         </div>
-        <div className="features__icon-grid" grid-mode="vertical">
+        <div
+          className="features__icon-grid"
+          grid-mode={switchData[activeSwitch]}
+        >
           {features.map((feature, index) => (
             <BaseCard
               key={feature.title}
