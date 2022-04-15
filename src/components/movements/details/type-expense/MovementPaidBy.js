@@ -3,6 +3,7 @@ import { movementsActions } from '../../../../store/movements';
 import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
 import BaseHelpText from '../../../base/BaseHelpText';
+import BaseButton from '../../../base/BaseButton';
 // import { updateMovement } from '../../../../store/movements-actions';
 
 const MovementPaidBy = (props) => {
@@ -31,12 +32,12 @@ const MovementPaidBy = (props) => {
   );
 
   return (
-    <BaseDropdown
-      head={dropdownHead}
-      isOpen={props.initialValue && true}
-      hasToggle
-    >
-      <BaseCard mode="form-control" background="white">
+    <BaseCard background="white">
+      <BaseDropdown
+        head={dropdownHead}
+        isOpen={props.initialValue && true}
+        hasToggle
+      >
         <select
           value={props.initialValue ?? 'Cash'}
           onChange={paidByOnChangeHandler}
@@ -49,8 +50,11 @@ const MovementPaidBy = (props) => {
           <option value="Klarna">Klarna</option>
           <option value="American Express">American Express</option>
         </select>
-      </BaseCard>
-    </BaseDropdown>
+        <BaseButton mode="text" size="small">
+          Add new payment method
+        </BaseButton>
+      </BaseDropdown>
+    </BaseCard>
   );
 };
 

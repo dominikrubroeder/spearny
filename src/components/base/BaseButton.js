@@ -12,7 +12,7 @@ const BaseButton = (props) => {
 
   return (
     <button
-      className={`button button-mode--${mode} button-priority--${priority} button-size--${size} button-type--${type} ${
+      className={`base-button base-button--mode-${mode} base-button--priority-${priority} base-button--size-${size} base-button--type-${type} ${
         props.className ?? ''
       }`}
       onClick={props.onClick}

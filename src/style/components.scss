@@ -1,3 +1,11 @@
+section {
+  padding: 5rem 0;
+}
+
+svg {
+  color: var(--light-accent);
+}
+
 form,
 input,
 textarea,
@@ -9,10 +17,6 @@ select {
   background-color: transparent;
 }
 
-section {
-  padding: 5rem 0;
-}
-
-svg {
-  color: var(--light-accent);
+textarea {
+  resize: none;
 }

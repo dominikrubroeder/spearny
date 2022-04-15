@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../../store/movements';
+import BaseCard from '../../base/BaseCard';
 import BaseDropdown from '../../base/BaseDropdown';
 import BaseHelpText from '../../base/BaseHelpText';
 import Tag from '../../tags/Tag';
@@ -27,13 +28,15 @@ const MovementTags = (props) => {
   );
 
   return (
-    <BaseDropdown head={dropdownHead} isOpen={assignedTags && true} hasToggle>
-      {tags.map((tag) => (
-        <Tag key={tag.id} onClick={() => toggleTagAssignment(tag)}>
-          {tag.title}
-        </Tag>
-      ))}
-    </BaseDropdown>
+    <BaseCard background="white">
+      <BaseDropdown head={dropdownHead} isOpen={assignedTags && true} hasToggle>
+        {tags.map((tag) => (
+          <Tag key={tag.id} onClick={() => toggleTagAssignment(tag)}>
+            {tag.title}
+          </Tag>
+        ))}
+      </BaseDropdown>
+    </BaseCard>
   );
 };
 

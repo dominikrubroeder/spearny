@@ -1,24 +1,25 @@
 .sidebar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 1rem;
+  width: 20rem;
   height: 100vh;
   grid-template-rows: min-content 1fr min-content;
   padding: 1rem 2rem;
   background-color: var(--lightest-background);
-  animation: fade-in-from-left 0.4s ease-out forwards;
-  transition: all 0.4s ease-out;
+  transform: translateX(-80%);
+  /* animation: fade-in-from-left 0.4s ease-out forwards;*/
+  transition: all 0.3s ease-in-out;
+
+  &--open {
+    transform: translateX(0%);
+  }
 
   &:not(.sidebar--open) {
     &:hover {
       cursor: pointer;
       background-color: var(--light-background);
     }
-  }
-
-  &--open {
-    width: 20rem;
   }
 
   header {
@@ -29,7 +30,6 @@
 
   &__content,
   &__footer {
-    transition: all 0.4s;
     visibility: hidden;
     opacity: 0;
   }
@@ -62,12 +62,10 @@
 
 @keyframes fade-in-from-left {
   from {
-    opacity: 0;
     transform: translateX(-20%);
   }
 
   to {
-    opacity: 1;
     transform: translateX(0);
   }
 }

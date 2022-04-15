@@ -6,47 +6,51 @@ button {
   cursor: pointer;
   border-radius: 1rem;
   transition: all 0.4s;
+}
 
-  &.button-size--small {
+.base-button--mode {
+  &-text {
+    padding: 0.25rem;
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--lightest-background);
+    }
+
+    &.base-button--priority-primary {
+      color: var(--light-accent);
+    }
+
+    &.base-button--priority-secondary {
+      color: var(--black);
+    }
+
+    &.base-button--type-destructive {
+      color: var(--light-red);
+    }
+  }
+
+  &-button {
+    &.base-button--priority-primary {
+      color: var(--white);
+      background-color: var(--light-accent);
+    }
+  }
+
+  &-icon {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+
+    &:hover {
+      background-color: var(--lightest-background);
+    }
+  }
+}
+
+.base-button--size {
+  &-small {
     font-size: 1.2rem;
-  }
-}
-
-.button-mode--text {
-  padding: 0.25rem;
-  background-color: transparent;
-
-  &:hover {
-    background-color: var(--lightest-background);
-  }
-
-  &.button-priority--primary {
-    color: var(--light-accent);
-  }
-
-  &.button-priority--secondary {
-    color: var(--black);
-  }
-
-  &.button-type--destructive {
-    color: var(--light-red);
-  }
-}
-
-.button-mode--icon {
-  background-color: transparent;
-  border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
-
-  &:hover {
-    background-color: var(--lightest-background);
-  }
-}
-
-.button-mode--button {
-  &.button-priority--primary {
-    color: var(--white);
-    background-color: var(--light-accent);
   }
 }

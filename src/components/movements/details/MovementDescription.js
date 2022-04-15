@@ -18,19 +18,19 @@ const MovementDescription = (props) => {
   };
 
   return (
-    <BaseDropdown
-      head={<label>Notes:</label>}
-      hasToggle={true}
-      isOpen={props.description ?? false}
-    >
-      <BaseCard mode="form-control" background="white">
+    <BaseCard background="white">
+      <BaseDropdown
+        head={<label>Notes:</label>}
+        hasToggle={true}
+        isOpen={props.description ?? false}
+      >
         <textarea
           value={props.description ?? ''}
           placeholder="Some notes..."
           onChange={descriptionOnChangeHandler}
         />
-      </BaseCard>
-    </BaseDropdown>
+      </BaseDropdown>
+    </BaseCard>
   );
 };
 

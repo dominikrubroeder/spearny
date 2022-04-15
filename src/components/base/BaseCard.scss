@@ -1,0 +1,32 @@
+.base-card {
+  padding: 2rem;
+  border-radius: 1rem;
+
+  &--mode {
+    &-tag {
+      font-size: 1.2rem;
+      display: inline-block;
+      padding: 1rem;
+    }
+
+    &-form-control {
+      padding: 0;
+    }
+  }
+
+  &--background {
+    &-transparent {
+      padding: 0;
+      background-color: transparent;
+      background: transparent;
+    }
+
+    &-white {
+      background-color: var(--white);
+    }
+
+    &-light {
+      background-color: var(--lightest-background);
+    }
+  }
+}

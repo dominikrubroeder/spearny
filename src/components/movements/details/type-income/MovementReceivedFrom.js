@@ -28,12 +28,12 @@ const MovementReceivedBy = (props) => {
   );
 
   return (
-    <BaseDropdown
-      head={dropdownHead}
-      isOpen={props.initialValue ?? false}
-      hasToggle
-    >
-      <BaseCard mode="form-control" background="white">
+    <BaseCard background="white">
+      <BaseDropdown
+        head={dropdownHead}
+        isOpen={props.initialValue ?? false}
+        hasToggle
+      >
         <select
           value={props.initialValue ?? 'Zalando GmbH'}
           onChange={receivedFromOnChangeHandler}
@@ -46,8 +46,8 @@ const MovementReceivedBy = (props) => {
           <option value="Restaurant Il Soprano">Restaurant Il Soprano</option>
           <option value="Amazon.com Inc.">Amazon.com Inc.</option>
         </select>
-      </BaseCard>
-    </BaseDropdown>
+      </BaseDropdown>
+    </BaseCard>
   );
 };
 

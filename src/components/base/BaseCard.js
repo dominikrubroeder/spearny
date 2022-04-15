@@ -1,16 +1,17 @@
-import classes from './BaseCard.module.scss';
+import './BaseCard.scss';
 
 const BaseCard = (props) => {
-  // white, light (= gray), default: transparent, ...
+  // Background variants: transparent (default), light (= gray), white, ...
   const background = props.background || 'transparent';
-  const className = props.className || '';
-  const mode = props.mode || '';
+  const mode = props.mode || 'container';
   const dropShadow = props.dropShadow ? 'drop-shadow' : '';
-
-  const classList = `${classes.card} ${className} ${classes[background]} ${classes[mode]} ${dropShadow}`;
+  const className = props.className || '';
 
   return (
-    <div className={classList} onClick={props.onClick}>
+    <div
+      className={`base-card base-card--mode-${mode} base-card--background-${background} ${dropShadow} ${className}`}
+      onClick={props.onClick}
+    >
       {props.children}
     </div>
   );

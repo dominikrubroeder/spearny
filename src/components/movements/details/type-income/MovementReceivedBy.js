@@ -26,12 +26,12 @@ const MovementReceivedBy = (props) => {
   );
 
   return (
-    <BaseDropdown
-      head={dropdownHead}
-      isOpen={props.initialValue ?? false}
-      hasToggle
-    >
-      <BaseCard mode="form-control" background="white">
+    <BaseCard background="white">
+      <BaseDropdown
+        head={dropdownHead}
+        isOpen={props.initialValue ?? false}
+        hasToggle
+      >
         <select
           value={props.initialValue ?? 'Cash'}
           onChange={receivedByOnChangeHandler}
@@ -44,8 +44,8 @@ const MovementReceivedBy = (props) => {
           <option value="Klarna">Klarna</option>
           <option value="American Express">American Express</option>
         </select>
-      </BaseCard>
-    </BaseDropdown>
+      </BaseDropdown>
+    </BaseCard>
   );
 };
 
