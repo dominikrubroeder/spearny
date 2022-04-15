@@ -27,9 +27,21 @@
     padding-top: 2rem;
   }
 
+  &__content,
+  &__footer {
+    transition: all 0.4s;
+    visibility: hidden;
+    opacity: 0;
+  }
+
   &__content {
     height: 100%;
     overflow-y: scroll;
+  }
+
+  .visible {
+    opacity: 1;
+    visibility: visible;
   }
 }
 

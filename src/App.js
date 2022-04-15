@@ -28,7 +28,6 @@ import './font/font.scss';
 import './App.scss';
 
 import TheHeader from './layout/header/TheHeader';
-import TheFooter from './layout/footer/TheFooter';
 
 const Landingpage = React.lazy(() => import('./pages/Landingpage'));
 const Authentication = React.lazy(() => import('./pages/Authentication'));
@@ -69,7 +68,6 @@ function App() {
           </Routes>
         </Suspense>
       </main>
-      <TheFooter />
     </Fragment>
   );
 }
