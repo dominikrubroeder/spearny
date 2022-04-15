@@ -1,0 +1,147 @@
+/* CONTAINER, GRIDS */
+
+/**
+---------- CONTAINER
+*/
+
+@mixin container($max-width: 0, $padding: 0 1rem) {
+  max-width: $max-width;
+  width: 100%;
+  padding: $padding;
+  margin: 0 auto;
+}
+
+.container {
+  @include container($max-width: 76.8rem, $padding: 1.6rem);
+}
+
+.container--compressed {
+  @include container($max-width: 48rem);
+}
+
+.container--big {
+  @include container($max-width: 140rem, $padding: 2rem);
+}
+
+.container--fluid {
+  @include container();
+}
+
+.container--centered {
+  text-align: center;
+}
+
+@mixin h-grid($grid-gap: 1rem) {
+  display: grid;
+  grid-gap: $grid-gap;
+}
+
+/**
+---------- GRIDS // horizontal
+*/
+
+.h-grid {
+  @include h-grid();
+}
+
+.h-grid-gap-small {
+  @include h-grid($grid-gap: 0.5rem);
+}
+
+.h-grid-gap-big {
+  @include h-grid($grid-gap: 2rem);
+}
+
+.h-grid-gap-huge {
+  @include h-grid($grid-gap: 5rem);
+}
+
+.hv-grid {
+  @include h-grid();
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.hv-grid-gap-huge {
+  @include h-grid($grid-gap: 5rem);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/**
+---------- GRIDS // vertical
+*/
+
+@mixin v-grid(
+  $gap: 1rem,
+  $align-items: center,
+  $justify-content: flex-start,
+  $flex-wrap: wrap
+) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-wrap: $flex-wrap;
+  gap: $gap;
+}
+
+@mixin v-grid-sb() {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.v-grid {
+  @include v-grid();
+}
+
+.v-grid-gap-small {
+  @include v-grid($gap: 0.5rem);
+}
+
+.v-grid-gap-big {
+  @include v-grid($gap: 2rem);
+}
+
+.v-grid-gap-huge {
+  @include v-grid($gap: 5rem);
+}
+
+.v-grid-centered {
+  @include v-grid($justify-content: center);
+}
+
+.v-grid-align-top-no-wrap {
+  @include v-grid($align-items: flex-start, $flex-wrap: nowrap);
+}
+
+.v-grid-gap-big-align-top-no-wrap {
+  @include v-grid($gap: 2rem, $align-items: flex-start, $flex-wrap: nowrap);
+}
+
+.v-grid-gap-small {
+  @include v-grid($gap: 0.5rem);
+}
+
+.v-grid-gap-small-no-wrap {
+  @include v-grid($gap: 0.5rem, $flex-wrap: nowrap);
+}
+
+.v-grid-gap-small-no-wrap-flex-end {
+  @include v-grid($gap: 0.5rem, $flex-wrap: nowrap, $justify-content: flex-end);
+}
+
+.v-grid-space-between {
+  @include v-grid($justify-content: space-between);
+}
+
+.v-grid-space-between-no-wrap {
+  @include v-grid($justify-content: space-between, $flex-wrap: nowrap);
+}
+
+.v-grid-item-expand {
+  flex: 1;
+}
+
+.v-grid-gap-small-centered {
+  @include v-grid($gap: 0.5rem, $justify-content: center);
+}
