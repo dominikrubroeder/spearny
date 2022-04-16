@@ -1,0 +1,13 @@
+.movement-list {
+  transition: all 0.4s ease-out;
+
+  &[list-mode='list'],
+  &[list-mode='grid'] {
+    display: grid;
+    grid-gap: 1rem;
+  }
+
+  &[list-mode='grid'] {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}

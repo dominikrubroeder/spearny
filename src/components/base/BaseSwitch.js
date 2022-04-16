@@ -4,6 +4,7 @@ import './BaseSwitch.scss';
 const BaseSwitch = (props) => {
   const [activeSwitch, setActiveSwitch] = useState(props.initialValue);
   const switchOptions = props.options;
+  const switchVariant = props.variant || 'priority';
 
   const activateSwitchOption = (index) => {
     setActiveSwitch(index);
@@ -11,7 +12,7 @@ const BaseSwitch = (props) => {
   };
 
   return (
-    <div className="base-switch">
+    <div className={`base-switch base-switch--${switchVariant}`}>
       {switchOptions.map((option, index) => (
         <div
           key={option}

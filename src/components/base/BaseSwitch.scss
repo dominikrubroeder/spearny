@@ -1,23 +1,33 @@
 .base-switch {
-  background-color: var(--lightest-background);
-  border-radius: 5rem;
   display: inline-flex;
-  padding: 1rem;
   justify-content: space-around;
   align-items: center;
-  gap: 1rem;
   height: 5rem;
+  padding: 1rem;
+  gap: 1rem;
+  border-radius: 5rem;
+  background-color: var(--lightest-background);
   transition: all 0.4s ease-out;
-
-  &__option {
-    cursor: pointer;
-    transition: all 0.4s ease-out;
-  }
 
   .active {
     background-color: var(--light-accent);
     color: white;
     border-radius: 5rem;
     padding: 0.5rem 1rem;
+  }
+
+  &__option {
+    cursor: pointer;
+    transition: all 0.4s ease-out;
+  }
+
+  &--minimal {
+    padding: 0;
+    background-color: transparent;
+
+    .active {
+      color: var(--light-accent);
+      background-color: var(--lightest-background);
+    }
   }
 }
