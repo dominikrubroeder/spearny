@@ -1,5 +1,5 @@
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 20rem;
@@ -12,7 +12,7 @@
   transition: all 0.3s ease-in-out;
 
   &--open {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
 
   &:not(.sidebar--open) {
