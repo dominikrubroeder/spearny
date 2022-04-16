@@ -21,6 +21,16 @@
     transition: all 0.4s ease-out;
   }
 
+  &--reduced {
+    padding: 0;
+    background-color: transparent;
+
+    .active {
+      color: var(--light-white);
+      background-color: var(--light-accent);
+    }
+  }
+
   &--minimal {
     padding: 0;
     background-color: transparent;
@@ -28,6 +38,16 @@
     .active {
       color: var(--light-accent);
       background-color: var(--lightest-background);
+    }
+  }
+
+  &--text {
+    padding: 0;
+    background-color: transparent;
+
+    .active {
+      color: var(--light-accent);
+      background-color: transparent;
     }
   }
 }

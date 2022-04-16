@@ -4,11 +4,14 @@ import './BaseSwitch.scss';
 const BaseSwitch = (props) => {
   const [activeSwitch, setActiveSwitch] = useState(props.initialValue);
   const switchOptions = props.options;
-  const switchVariant = props.variant || 'priority';
+  // switchVariants: prioritized (default), reduced, minimal, text, ...
+  const switchVariant = props.variant || 'prioritized';
 
   const activateSwitchOption = (index) => {
     setActiveSwitch(index);
     props.onClick(switchOptions[index]);
+    console.log(index);
+    console.log(switchOptions[index]);
   };
 
   return (
@@ -21,7 +24,9 @@ const BaseSwitch = (props) => {
           }`}
           onClick={() => activateSwitchOption(index)}
         >
-          {option.charAt(0).toUpperCase() + option.slice(1)}
+          {`${option.charAt(0).toUpperCase()}${option
+            .slice(1)
+            .replaceAll('-', ' ')}`}
         </div>
       ))}
     </div>

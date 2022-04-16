@@ -30,6 +30,37 @@ const movementsSlice = createSlice({
 
       state.movements[movementIndex] = updatedMovement;
     },
+    sort(state, action) {
+      const sortingMode = action.payload;
+
+      switch (sortingMode) {
+        case 'alphabetical':
+          state.movements = state.movements.sort((a, b) => {
+            const movementTitleA = a.title.toLowerCase();
+            const movementTitleB = b.title.toLowerCase();
+            if (movementTitleA < movementTitleB)
+              //sort string ascending
+              return -1;
+            if (movementTitleA > movementTitleB) return 1;
+          });
+          console.log('Sorted: alphabetically');
+          break;
+        case 'date-added-first':
+          state.movements = state.movements.sort((a, b) => {
+            const movementTitleA = a.dateAdded.toLowerCase();
+            const movementTitleB = b.dateAdded.toLowerCase();
+            if (movementTitleA < movementTitleB)
+              //sort string ascending
+              return -1;
+            if (movementTitleA > movementTitleB) return 1;
+          });
+          console.log('Sorted: date-added-first');
+          break;
+        default:
+          // state.movements;
+          console.log('Sorted: No changes');
+      }
+    },
     updateProperty(state, action) {
       const updatedProperty = action.payload.updatedProperty;
       const updatedValue = action.payload.updatedValue;
