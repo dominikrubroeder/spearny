@@ -1,0 +1,41 @@
+.main {
+  width: 100%;
+}
+
+.head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  cursor: pointer;
+}
+
+.movement {
+  align-self: start;
+
+  &__actions {
+    margin-top: 2rem;
+  }
+
+  &__details {
+    form,
+    input,
+    textarea,
+    select {
+      width: 100%;
+    }
+  }
+}
+
+.movement--type {
+  &-expense {
+    color: var(--light-red);
+  }
+
+  &-income {
+    color: var(--light-green);
+  }
+}

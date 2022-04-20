@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../store/movements';
 import { updateMovement } from '../../store/movements-actions';
-import classes from './Movement.module.scss';
+import './Movement.scss';
 import BaseDropdown from '../base/BaseDropdown';
 import BaseCard from '../base/BaseCard';
 import MovementType from './details/main/MovementType';
@@ -19,12 +19,19 @@ import MovementDelete from './details/actions/MovementDelete';
 const Movement = (props) => {
   const dispatch = useDispatch();
   const [showDetails, setShowDetails] = useState(props.showDetails);
-  const typeclasses =
-    props.movement.type === 'expense'
-      ? classes['type--expense']
-      : classes['type--income'];
-
-  const plusMinus = props.movement.type === 'expense' ? '-' : '+';
+  const {
+    id,
+    type,
+    title,
+    amount,
+    description,
+    tags,
+    paidTo,
+    paidBy,
+    receivedFrom,
+    receivedBy,
+  } = props.movement;
+  const plusMinus = type === 'expense' ? '-' : '+';
 
   const updateMovementHandler = (updatedMovement) => {
     // When movement details are not visible, return
@@ -40,10 +47,10 @@ const Movement = (props) => {
 
   const headMarkup = (
     <div className="v-grid-space-between w-100">
-      <h3>{props.movement.title}</h3>
+      <h3>{title}</h3>
       <div>
-        <span className={classes.amount}>
-          {plusMinus} {props.movement.amount}€
+        <span className={`movement--type-${type}`}>
+          {plusMinus} {amount}€
         </span>
       </div>
     </div>
@@ -51,64 +58,37 @@ const Movement = (props) => {
 
   const expenseOnlyMarkup = (
     <Fragment>
-      <MovementPaidTo
-        id={props.movement.id}
-        initialValue={props.movement.paidTo}
-      />
-      <MovementPaidBy
-        id={props.movement.id}
-        initialValue={props.movement.paidBy}
-      />
+      <MovementPaidTo id={id} initialValue={paidTo} />
+      <MovementPaidBy id={id} initialValue={paidBy} />
     </Fragment>
   );
 
   const incomeOnlyMarkup = (
     <Fragment>
-      <MovementReceivedFrom
-        id={props.movement.id}
-        initialValue={props.movement.receivedFrom}
-      />
-      <MovementReceivedBy
-        id={props.movement.id}
-        initialValue={props.movement.receivedBy}
-      />
+      <MovementReceivedFrom id={id} initialValue={receivedFrom} />
+      <MovementReceivedBy id={id} initialValue={receivedBy} />
     </Fragment>
   );
 
   const detailsMarkup = (
-    <div className={`h-grid ${classes.details}`}>
+    <div className="h-grid movement__details">
       <div className="v-grid-gap-small">
-        <MovementType
-          id={props.movement.id}
-          initialValue={props.movement.type}
-        />
-        <MovementTitle
-          id={props.movement.id}
-          initialValue={props.movement.title}
-        />
-        <MovementAmount
-          id={props.movement.id}
-          initialValue={props.movement.amount}
-        />
+        <MovementType id={id} initialValue={type} />
+        <MovementTitle id={id} initialValue={title} />
+        <MovementAmount id={id} initialValue={amount} />
       </div>
-      <MovementDescription
-        id={props.movement.id}
-        description={props.movement.description}
-      />
-      <MovementTags id={props.movement.id} tags={props.movement.tags} />
-      {props.movement.type === 'expense' && expenseOnlyMarkup}
-      {props.movement.type === 'income' && incomeOnlyMarkup}
-      <div className={`${classes.actions} v-grid-gap-small-centered`}>
-        <MovementDelete id={props.movement.id} />
+      <MovementDescription id={id} description={description} />
+      <MovementTags id={id} tags={tags} />
+      {type === 'expense' && expenseOnlyMarkup}
+      {type === 'income' && incomeOnlyMarkup}
+      <div className="movement__actions v-grid-gap-small-centered">
+        <MovementDelete id={id} />
       </div>
     </div>
   );
 
   return (
-    <BaseCard
-      className={`${classes.movement} ${typeclasses}`}
-      background="light"
-    >
+    <BaseCard className="movement" background="light">
       <BaseDropdown
         isOpen={showDetails}
         head={headMarkup}
