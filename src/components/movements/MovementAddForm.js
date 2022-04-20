@@ -35,6 +35,7 @@ const MovementAddForm = () => {
       receivedBy: null,
       receivedFrom: null,
       showDetails: true,
+      isVisible: true,
     };
 
     dispatch(movementsActions.add(newMovement));

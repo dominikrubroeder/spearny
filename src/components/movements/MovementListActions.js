@@ -14,8 +14,19 @@ const MovementListAction = (props) => {
     props.sortingMode.handler(childValue);
   };
 
+  const publishFilterMode = (childValue) => {
+    dispatch(movementsActions.filter(childValue));
+    props.filterMode.handler(childValue);
+  };
+
   const listModeOptions = ['list', 'grid'];
   const sortingModeOptions = ['date-added-first', 'alphabetical'];
+  const filterModeOptions = [
+    'show-all',
+    'hide-income',
+    'hide-expenses',
+    'advanced',
+  ];
 
   return (
     <div>
@@ -36,6 +47,16 @@ const MovementListAction = (props) => {
           initialValue={props.sortingMode.initialValue}
           variant="minimal"
           onClick={publishSortingMode}
+        />
+      </div>
+
+      <div className="v-grid">
+        Filter:
+        <BaseSwitch
+          options={filterModeOptions}
+          initialValue={props.filterMode.initialValue}
+          variant="minimal"
+          onClick={publishFilterMode}
         />
       </div>
     </div>

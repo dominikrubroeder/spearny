@@ -9,8 +9,9 @@ const MovementList = (props) => {
   const dispatch = useDispatch();
   const movements = useSelector((state) => state.movements.movements);
   const movementsExists = movements.length > 0;
-  const listMode = props.config.listMode;
-  const sortingMode = props.config.sortingMode;
+  const listMode = props.config.list;
+  const sortingMode = props.config.sorting;
+  const filter = props.config.filter;
 
   /** useEffect() hook to only trigger this dispatch action once
    * the dispatch function will never change, so it won't recall this block again
@@ -25,11 +26,14 @@ const MovementList = (props) => {
       className="movement-list"
       list-mode={listMode}
       sorting-mode={sortingMode}
+      filter={filter}
     >
       {movementsExists &&
-        movements.map((movement) => (
-          <Movement movement={movement} key={movement.id} />
-        ))}
+        movements.map((movement) => {
+          if (movement.isVisible) {
+            return <Movement movement={movement} key={movement.id} />;
+          }
+        })}
     </div>
   );
 };

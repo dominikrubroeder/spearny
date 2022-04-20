@@ -59,6 +59,7 @@ export const fetchMovements = () => {
           receivedBy: responseData[key].receivedBy || null,
           receivedFrom: responseData[key].receivedFrom || null,
           showDetails: false,
+          isVisible: true,
         };
         movements.unshift(movement);
       }
@@ -89,6 +90,7 @@ export const updateMovement = (updatedMovement) => {
             receivedBy: updatedMovement.receivedBy,
             receivedFrom: updatedMovement.receivedFrom,
             showDetails: false,
+            isVisible: true,
           }),
         }
       );

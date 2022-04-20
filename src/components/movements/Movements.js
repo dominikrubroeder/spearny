@@ -8,6 +8,7 @@ const Movements = () => {
   const [movementListMode, setMovementListMode] = useState('list');
   const [movementSortingMode, setMovementSortingMode] =
     useState('date-added-first');
+  const [movementFilterMode, setMovementFilterMode] = useState('show-all');
   const [showListActions, setShowListActions] = useState(false);
 
   const setListMode = (childValue) => {
@@ -16,6 +17,10 @@ const Movements = () => {
 
   const setSortingMode = (childValue) => {
     setMovementSortingMode(childValue);
+  };
+
+  const setFilterMode = (childValue) => {
+    setMovementFilterMode(childValue);
   };
 
   return (
@@ -32,9 +37,16 @@ const Movements = () => {
 
         {showListActions && (
           <MovementListAction
-            listMode={{ handler: setListMode, initialValue: 0 }}
+            listMode={{
+              handler: setListMode,
+              initialValue: 0,
+            }}
             sortingMode={{
               handler: setSortingMode,
+              initialValue: 0,
+            }}
+            filterMode={{
+              handler: setFilterMode,
               initialValue: 0,
             }}
           />
@@ -42,8 +54,9 @@ const Movements = () => {
 
         <MovementList
           config={{
-            listMode: movementListMode,
-            sortingMode: movementSortingMode,
+            list: movementListMode,
+            sorting: movementSortingMode,
+            filters: movementFilterMode,
           }}
         />
       </div>

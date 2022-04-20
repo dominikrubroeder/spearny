@@ -30,6 +30,17 @@ const movementsSlice = createSlice({
 
       state.movements[movementIndex] = updatedMovement;
     },
+    updateProperty(state, action) {
+      const updatedProperty = action.payload.updatedProperty;
+      const updatedValue = action.payload.updatedValue;
+      const movementId = action.payload.id;
+
+      const movementIndex = state.movements.findIndex(
+        (movement) => movement.id === movementId
+      );
+
+      state.movements[movementIndex][updatedProperty] = updatedValue;
+    },
     sort(state, action) {
       const sortingMode = action.payload;
 
@@ -61,16 +72,40 @@ const movementsSlice = createSlice({
           break;
       }
     },
-    updateProperty(state, action) {
-      const updatedProperty = action.payload.updatedProperty;
-      const updatedValue = action.payload.updatedValue;
-      const movementId = action.payload.id;
+    filter(state, action) {
+      const filter = action.payload;
 
-      const movementIndex = state.movements.findIndex(
-        (movement) => movement.id === movementId
-      );
-
-      state.movements[movementIndex][updatedProperty] = updatedValue;
+      switch (filter) {
+        case 'show-all':
+          state.movements = state.movements.map((movement) => {
+            return { ...movement, isVisible: true };
+          });
+          console.log(state.movements);
+          break;
+        case 'hide-expenses':
+          state.movements = state.movements.map((movement) => {
+            if (movement.type === 'expense') {
+              return { ...movement, isVisible: false };
+            } else {
+              return { ...movement, isVisible: true };
+            }
+          });
+          console.log(state.movements);
+          break;
+        case 'hide-income':
+          state.movements = state.movements.map((movement) => {
+            if (movement.type === 'income') {
+              return { ...movement, isVisible: false };
+            } else {
+              return { ...movement, isVisible: true };
+            }
+          });
+          console.log(state.movements);
+          break;
+        default:
+          console.log('Default: no filter mode');
+          break;
+      }
     },
     toggleTagAssignment(state, action) {
       const movementId = action.payload.movementId;
