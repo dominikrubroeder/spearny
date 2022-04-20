@@ -22,6 +22,8 @@ import {
   faCircleChevronRight,
   faArrowRight,
   faArrowLeft,
+  faFolderTree,
+  faSort,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './font/font.scss';
@@ -53,7 +55,9 @@ function App() {
     faChevronRight,
     faCircleChevronRight,
     faArrowRight,
-    faArrowLeft
+    faArrowLeft,
+    faFolderTree,
+    faSort
   );
 
   return (

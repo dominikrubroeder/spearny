@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import MovementListActionsToggle from './list-actions/MovementListActionsToggle';
 import MovementAddForm from './MovementAddForm';
 import MovementList from './MovementList';
 import MovementListAction from './MovementListActions';
@@ -9,48 +8,33 @@ const Movements = () => {
   const [movementSortingMode, setMovementSortingMode] =
     useState('date-added-first');
   const [movementFilterMode, setMovementFilterMode] = useState('show-all');
-  const [showListActions, setShowListActions] = useState(false);
-
-  const setListMode = (childValue) => {
-    setMovementListMode(childValue);
-  };
-
-  const setSortingMode = (childValue) => {
-    setMovementSortingMode(childValue);
-  };
-
-  const setFilterMode = (childValue) => {
-    setMovementFilterMode(childValue);
-  };
 
   return (
     <div className="h-grid-gap-big">
       <MovementAddForm />
 
       <div className="h-grid-gap-small">
-        <div className="h-grid">
-          <MovementListActionsToggle
-            state={showListActions}
-            onClick={setShowListActions}
-          />
-        </div>
-
-        {showListActions && (
-          <MovementListAction
-            listMode={{
-              handler: setListMode,
+        <MovementListAction
+          values={{
+            listModeValue: movementListMode,
+            sortingModeValue: movementSortingMode,
+            filterModeValue: movementListMode,
+          }}
+          actions={{
+            listModeAction: {
+              handler: setMovementListMode,
               initialValue: 0,
-            }}
-            sortingMode={{
-              handler: setSortingMode,
+            },
+            sortingModeAction: {
+              handler: setMovementSortingMode,
               initialValue: 0,
-            }}
-            filterMode={{
-              handler: setFilterMode,
+            },
+            filterModeAction: {
+              handler: setMovementFilterMode,
               initialValue: 0,
-            }}
-          />
-        )}
+            },
+          }}
+        />
 
         <MovementList
           config={{

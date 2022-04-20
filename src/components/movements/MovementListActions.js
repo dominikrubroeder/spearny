@@ -1,22 +1,29 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { movementsActions } from '../../store/movements';
+import BaseButton from '../base/BaseButton';
 import BaseSwitch from '../base/BaseSwitch';
+import './MovementListActions.scss';
 
 const MovementListAction = (props) => {
   const dispatch = useDispatch();
+  const [showListActions, setShowListActions] = useState(false);
+  const { listModeValue, sortingModeValue, filterModeValue } = props.values;
+  const { listModeAction, sortingModeAction, filterModeAction } = props.actions;
 
   const publishListMode = (childValue) => {
-    props.listMode.handler(childValue);
+    listModeAction.handler(childValue);
   };
 
   const publishSortingMode = (childValue) => {
     dispatch(movementsActions.sort(childValue));
-    props.sortingMode.handler(childValue);
+    sortingModeAction.handler(childValue);
   };
 
   const publishFilterMode = (childValue) => {
     dispatch(movementsActions.filter(childValue));
-    props.filterMode.handler(childValue);
+    filterModeAction.handler(childValue);
   };
 
   const listModeOptions = ['list', 'grid'];
@@ -30,34 +37,74 @@ const MovementListAction = (props) => {
 
   return (
     <div>
-      <div className="v-grid">
-        Listing:
-        <BaseSwitch
-          options={listModeOptions}
-          initialValue={props.listMode.initialValue}
-          variant="minimal"
-          onClick={publishListMode}
-        />
+      <div className="v-grid-space-between">
+        <div className="v-grid">
+          <div className="v-grid-gap-small">
+            <FontAwesomeIcon icon="fa-solid fa-folder-tree" />
+            {`${listModeValue.charAt(0).toUpperCase()}${listModeValue
+              .slice(1)
+              .replaceAll('-', ' ')}`}
+          </div>
+          <div className="v-grid-gap-small">
+            <FontAwesomeIcon icon="fa-solid fa-sort" />
+            {`${sortingModeValue.charAt(0).toUpperCase()}${sortingModeValue
+              .slice(1)
+              .replaceAll('-', ' ')}`}
+          </div>
+          <div className="v-grid-gap-small">
+            <FontAwesomeIcon icon="fa-solid fa-filter" />
+            {`${filterModeValue.charAt(0).toUpperCase()}${filterModeValue
+              .slice(1)
+              .replaceAll('-', ' ')}`}
+          </div>
+        </div>
+
+        <BaseButton
+          className={`movement-list__actions-toggle ${
+            showListActions ? 'active' : ''
+          }`}
+          mode="text"
+          onClick={setShowListActions.bind(
+            null,
+            (previousValue) => !previousValue
+          )}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </BaseButton>
       </div>
 
-      <div className="v-grid">
-        Sorting:
-        <BaseSwitch
-          options={sortingModeOptions}
-          initialValue={props.sortingMode.initialValue}
-          variant="minimal"
-          onClick={publishSortingMode}
-        />
-      </div>
+      <div>
+        <div className="v-grid">
+          Listing:
+          <BaseSwitch
+            options={listModeOptions}
+            initialValue={listModeAction.initialValue}
+            variant="minimal"
+            onClick={publishListMode}
+          />
+        </div>
 
-      <div className="v-grid">
-        Filter:
-        <BaseSwitch
-          options={filterModeOptions}
-          initialValue={props.filterMode.initialValue}
-          variant="minimal"
-          onClick={publishFilterMode}
-        />
+        <div className="v-grid">
+          Sorting:
+          <BaseSwitch
+            options={sortingModeOptions}
+            initialValue={sortingModeAction.initialValue}
+            variant="minimal"
+            onClick={publishSortingMode}
+          />
+        </div>
+
+        <div className="v-grid">
+          Filter:
+          <BaseSwitch
+            options={filterModeOptions}
+            initialValue={filterModeAction.initialValue}
+            variant="minimal"
+            onClick={publishFilterMode}
+          />
+        </div>
       </div>
     </div>
   );
