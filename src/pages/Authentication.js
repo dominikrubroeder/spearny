@@ -1,8 +1,5 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import Classes from './Authentication.module.scss';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BaseCard from '../components/base/BaseCard';
 import BaseButton from '../components/base/BaseButton';
@@ -74,7 +71,7 @@ const Authentication = () => {
 
   return (
     <section className="container--compressed">
-      <h1>Hello, Spearny</h1>
+      <h1>{isLogin ? 'Welcome back' : 'Welcome to Spearny'}</h1>
       <form className="h-grid" onSubmit={submitHandler}>
         <BaseCard mode="form-control" background="light">
           <input type="email" placeholder="E-Mailaddress..." ref={emailInput} />
@@ -112,13 +109,15 @@ const Authentication = () => {
           {isLogin ? 'Login' : 'Sign up'}
         </BaseButton>
       </form>
-      <BaseButton
-        priority="primary"
-        mode="text"
-        onClick={switchAuthModeHandler}
-      >
-        {isLogin ? 'Sign up' : 'Login'} instead
-      </BaseButton>
+      <div className="h-grid">
+        <BaseButton
+          priority="primary"
+          mode="text"
+          onClick={switchAuthModeHandler}
+        >
+          {isLogin ? 'Sign up' : 'Login'} instead
+        </BaseButton>
+      </div>
     </section>
   );
 };

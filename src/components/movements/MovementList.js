@@ -18,7 +18,7 @@ const MovementList = (props) => {
   useEffect(() => {
     dispatch(fetchMovements());
     dispatch(movementsActions.sort(sortingMode));
-  }, [dispatch, sortingMode]);
+  }, [dispatch]);
 
   return (
     <div

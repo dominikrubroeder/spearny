@@ -1,11 +1,16 @@
+import { useDispatch } from 'react-redux';
+import { movementsActions } from '../../store/movements';
 import BaseSwitch from '../base/BaseSwitch';
 
 const MovementListAction = (props) => {
+  const dispatch = useDispatch();
+
   const publishListMode = (childValue) => {
     props.listMode.handler(childValue);
   };
 
   const publishSortingMode = (childValue) => {
+    dispatch(movementsActions.sort(childValue));
     props.sortingMode.handler(childValue);
   };
 
@@ -18,7 +23,7 @@ const MovementListAction = (props) => {
         Listing:
         <BaseSwitch
           options={listModeOptions}
-          initialValue={listModeOptions.indexOf(props.listMode.initialValue)}
+          initialValue={props.listMode.initialValue}
           variant="minimal"
           onClick={publishListMode}
         />
@@ -28,9 +33,7 @@ const MovementListAction = (props) => {
         Sorting:
         <BaseSwitch
           options={sortingModeOptions}
-          initialValue={sortingModeOptions.indexOf(
-            props.sortingMode.initialValue
-          )}
+          initialValue={props.sortingMode.initialValue}
           variant="minimal"
           onClick={publishSortingMode}
         />

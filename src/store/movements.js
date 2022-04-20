@@ -42,8 +42,8 @@ const movementsSlice = createSlice({
               //sort string ascending
               return -1;
             if (movementTitleA > movementTitleB) return 1;
+            return 0;
           });
-          console.log('Sorted: alphabetically');
           break;
         case 'date-added-first':
           state.movements = state.movements.sort((a, b) => {
@@ -53,12 +53,12 @@ const movementsSlice = createSlice({
               //sort string ascending
               return -1;
             if (movementTitleA > movementTitleB) return 1;
+            return 0;
           });
-          console.log('Sorted: date-added-first');
           break;
         default:
-          // state.movements;
-          console.log('Sorted: No changes');
+          console.log('Default: no sorting mode changes');
+          break;
       }
     },
     updateProperty(state, action) {

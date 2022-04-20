@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Feature from './Feature';
 import './Features.scss';
-import SectionHead from './SectionHead';
 import BaseCard from '../base/BaseCard';
 import BaseButton from '../base/BaseButton';
 import { useState } from 'react';
@@ -97,7 +96,7 @@ const features = [
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [nextFeature, setNextFeature] = useState(1);
-  const [activeSwitchOption, setActiveSwitchOption] = useState('horizontal');
+  const [activeSwitchOption, setActiveSwitchOption] = useState('vertical');
 
   const activateFeature = (index) => {
     if (index < 0) {
@@ -139,7 +138,7 @@ const Features = () => {
       <div className="container--compressed v-grid-centered">
         <BaseSwitch
           initialValue={0}
-          options={['horizontal', 'vertical', 'grid']}
+          options={['vertical', 'horizontal', 'grid']}
           onClick={getActiveSwitchOption}
         />
       </div>
@@ -196,19 +195,6 @@ const Features = () => {
           ))}
         </div>
       </div>
-      <section className="features__base hv-grid">
-        <div className="container--compressed">
-          <SectionHead headline="Was kann Spearny?" anchor="features" />
-        </div>
-      </section>
-      <section className="features__highlights hv-grid" id="highlights">
-        <div className="container--compressed">
-          <SectionHead
-            headline="Was zeichnet Spearny besonders aus?"
-            anchor="highlights"
-          />
-        </div>
-      </section>
     </section>
   );
 };
