@@ -18,7 +18,7 @@ const Movements = () => {
           values={{
             listModeValue: movementListMode,
             sortingModeValue: movementSortingMode,
-            filterModeValue: movementListMode,
+            filterModeValue: movementFilterMode,
           }}
           actions={{
             listModeAction: {

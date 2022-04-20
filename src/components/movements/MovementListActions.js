@@ -37,7 +37,13 @@ const MovementListAction = (props) => {
 
   return (
     <div>
-      <div className="v-grid-space-between">
+      <div
+        className="movement-list__status-bar v-grid-space-between"
+        onClick={setShowListActions.bind(
+          null,
+          (previousValue) => !previousValue
+        )}
+      >
         <div className="v-grid">
           <div className="v-grid-gap-small">
             <FontAwesomeIcon icon="fa-solid fa-folder-tree" />
@@ -64,10 +70,6 @@ const MovementListAction = (props) => {
             showListActions ? 'active' : ''
           }`}
           mode="text"
-          onClick={setShowListActions.bind(
-            null,
-            (previousValue) => !previousValue
-          )}
         >
           <span></span>
           <span></span>
@@ -75,37 +77,39 @@ const MovementListAction = (props) => {
         </BaseButton>
       </div>
 
-      <div>
-        <div className="v-grid">
-          Listing:
-          <BaseSwitch
-            options={listModeOptions}
-            initialValue={listModeAction.initialValue}
-            variant="minimal"
-            onClick={publishListMode}
-          />
-        </div>
+      {showListActions && (
+        <div>
+          <div className="v-grid">
+            Listing:
+            <BaseSwitch
+              options={listModeOptions}
+              initialValue={listModeAction.initialValue}
+              variant="minimal"
+              onClick={publishListMode}
+            />
+          </div>
 
-        <div className="v-grid">
-          Sorting:
-          <BaseSwitch
-            options={sortingModeOptions}
-            initialValue={sortingModeAction.initialValue}
-            variant="minimal"
-            onClick={publishSortingMode}
-          />
-        </div>
+          <div className="v-grid">
+            Sorting:
+            <BaseSwitch
+              options={sortingModeOptions}
+              initialValue={sortingModeAction.initialValue}
+              variant="minimal"
+              onClick={publishSortingMode}
+            />
+          </div>
 
-        <div className="v-grid">
-          Filter:
-          <BaseSwitch
-            options={filterModeOptions}
-            initialValue={filterModeAction.initialValue}
-            variant="minimal"
-            onClick={publishFilterMode}
-          />
+          <div className="v-grid">
+            Filter:
+            <BaseSwitch
+              options={filterModeOptions}
+              initialValue={filterModeAction.initialValue}
+              variant="minimal"
+              onClick={publishFilterMode}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
