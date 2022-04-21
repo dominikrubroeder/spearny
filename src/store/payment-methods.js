@@ -4,11 +4,15 @@ const initialPaymentMethods = {
   paymentMethods: [
     {
       id: Math.random().toString(),
-      title: 'Cash',
+      title: 'American Express',
     },
     {
       id: Math.random().toString(),
-      title: 'PayPal',
+      title: 'Bank transfer',
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Cash',
     },
     {
       id: Math.random().toString(),
@@ -16,19 +20,15 @@ const initialPaymentMethods = {
     },
     {
       id: Math.random().toString(),
-      title: 'VISA',
-    },
-    {
-      id: Math.random().toString(),
-      title: 'Mastercard',
-    },
-    {
-      id: Math.random().toString(),
       title: 'Klarna',
     },
     {
       id: Math.random().toString(),
-      title: 'American Express',
+      title: 'PayPal',
+    },
+    {
+      id: Math.random().toString(),
+      title: 'VISA',
     },
   ],
 };

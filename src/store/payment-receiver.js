@@ -4,7 +4,11 @@ const initialpaymentReceivers = {
   paymentReceivers: [
     {
       id: Math.random().toString(),
-      title: 'Zalando GmbH',
+      title: 'Amazon Inc.',
+    },
+    {
+      id: Math.random().toString(),
+      title: 'Apple Inc.',
     },
     {
       id: Math.random().toString(),
@@ -16,7 +20,7 @@ const initialpaymentReceivers = {
     },
     {
       id: Math.random().toString(),
-      title: 'Apple Inc.',
+      title: 'Restaurant Il Soprano',
     },
     {
       id: Math.random().toString(),
@@ -24,11 +28,7 @@ const initialpaymentReceivers = {
     },
     {
       id: Math.random().toString(),
-      title: 'Restaurant Il Soprano',
-    },
-    {
-      id: Math.random().toString(),
-      title: 'Amazon Inc.',
+      title: 'Zalando GmbH',
     },
   ],
 };
@@ -38,9 +38,22 @@ const paymentReceiversSlice = createSlice({
   initialState: initialpaymentReceivers,
   reducers: {
     add(state, action) {
-      const newpaymentReceiver = action.payload;
-      state.paymentReceivers =
-        state.paymentReceivers.concat(newpaymentReceiver);
+      const newPaymentReceiver = action.payload;
+      const updatedPaymentReceivers =
+        state.paymentReceivers.concat(newPaymentReceiver);
+      const sortedPaymentReceivers = updatedPaymentReceivers.sort(function (
+        a,
+        b
+      ) {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+      state.paymentReceivers = sortedPaymentReceivers;
     },
     // delete(state, action) {
     //   const tagId = action.payload;

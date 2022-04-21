@@ -53,10 +53,6 @@ const MovementPaidTo = (props) => {
     </div>
   );
 
-  // const sortedPaymentReceivers = paymentReceivers.sort((a, b) =>
-  //   a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-  // );
-
   return (
     <BaseCard background="white">
       <BaseDropdown
