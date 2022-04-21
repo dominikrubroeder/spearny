@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../../../store/movements';
+import { paymentMethodsActions } from '../../../../store/payment-methods';
+import { sendNewPaymentMethod } from '../../../../store/payment-methods-actions';
 import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
 import BaseHelpText from '../../../base/BaseHelpText';
 import AddNewEntitiy from '../../detail-actions/AddNewEntity';
-import { paymentMethodsActions } from '../../../../store/payment-methods';
 
 const MovementReceivedBy = (props) => {
   const dispatch = useDispatch();
@@ -24,13 +25,13 @@ const MovementReceivedBy = (props) => {
   };
 
   const onAdd = (childValue) => {
+    const newPaymentMethod = {
+      id: Math.random().toString(),
+      title: childValue,
+    };
+
     // Update payment methods with a new payment methods added by the user value
-    dispatch(
-      paymentMethodsActions.add({
-        id: Math.random().toString(),
-        title: childValue,
-      })
-    );
+    dispatch(paymentMethodsActions.add(newPaymentMethod));
 
     // Update current movement with new payment method selected
     dispatch(
@@ -42,6 +43,7 @@ const MovementReceivedBy = (props) => {
     );
 
     // Save payment methods to Firebase
+    dispatch(sendNewPaymentMethod(newPaymentMethod));
   };
 
   const dropdownHead = (
