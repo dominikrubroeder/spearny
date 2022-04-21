@@ -41,7 +41,7 @@ const MovementPaidTo = (props) => {
       })
     );
 
-    // Save payment receivers to Firebase, Save movement to Firebase
+    // Save payment receivers to Firebase
   };
 
   const dropdownHead = (

@@ -39,7 +39,18 @@ const paymentMethodsSlice = createSlice({
   reducers: {
     add(state, action) {
       const newPaymentMethod = action.payload;
-      state.paymentMethods = state.paymentMethods.concat(newPaymentMethod);
+      const updatedPaymentMethods =
+        state.paymentMethods.concat(newPaymentMethod);
+      const sortedPaymentMethods = updatedPaymentMethods.sort(function (a, b) {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+      state.paymentMethods = sortedPaymentMethods;
     },
     // delete(state, action) {
     //   const tagId = action.payload;

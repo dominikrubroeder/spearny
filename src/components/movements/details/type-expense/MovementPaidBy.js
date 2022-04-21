@@ -52,7 +52,7 @@ const MovementPaidBy = (props) => {
       })
     );
 
-    // Save payment methods to Firebase, Save movement to Firebase
+    // Save payment methods to Firebase
   };
 
   return (

@@ -1,12 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../../../store/movements';
 import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
 import BaseHelpText from '../../../base/BaseHelpText';
+import AddNewEntitiy from '../../detail-actions/AddNewEntity';
+import { paymentMethodsActions } from '../../../../store/payment-methods';
 
 const MovementReceivedBy = (props) => {
   const dispatch = useDispatch();
   const id = props.id;
+  const paymentMethods = useSelector(
+    (state) => state.paymentMethods.paymentMethods
+  );
 
   const receivedByOnChangeHandler = (e) => {
     dispatch(
@@ -16,6 +21,27 @@ const MovementReceivedBy = (props) => {
         updatedValue: e.target.value,
       })
     );
+  };
+
+  const onAdd = (childValue) => {
+    // Update payment methods with a new payment methods added by the user value
+    dispatch(
+      paymentMethodsActions.add({
+        id: Math.random().toString(),
+        title: childValue,
+      })
+    );
+
+    // Update current movement with new payment method selected
+    dispatch(
+      movementsActions.updateProperty({
+        id: id,
+        updatedProperty: 'receivedBy',
+        updatedValue: childValue,
+      })
+    );
+
+    // Save payment methods to Firebase
   };
 
   const dropdownHead = (
@@ -36,14 +62,14 @@ const MovementReceivedBy = (props) => {
           value={props.initialValue ?? 'Cash'}
           onChange={receivedByOnChangeHandler}
         >
-          <option value="Cash">Cash</option>
-          <option value="PayPal">PayPal</option>
-          <option value="Invoice">By Invoice</option>
-          <option value="VISA">VISA</option>
-          <option value="Mastercard">Mastercard</option>
-          <option value="Klarna">Klarna</option>
-          <option value="American Express">American Express</option>
+          {paymentMethods.map((paymentMethod) => (
+            <option key={paymentMethod.id} value={paymentMethod.title}>
+              {paymentMethod.title}
+            </option>
+          ))}
         </select>
+
+        <AddNewEntitiy entityType="payment method" onAdd={onAdd} />
       </BaseDropdown>
     </BaseCard>
   );
