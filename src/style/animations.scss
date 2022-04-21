@@ -1,0 +1,70 @@
+@keyframes appear-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appear-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appear {
+  animation-timing-function: ease-out;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  transition: all 0.3s ease-out;
+
+  &.appear--from-top {
+    animation-name: appear-from-top;
+  }
+
+  &.appear--from-left {
+    animation-name: appear-from-left;
+  }
+
+  &.appear--from-right {
+    animation-name: appear-from-right;
+  }
+
+  &.appear--from-bottom {
+    animation-name: appear-from-bottom;
+  }
+}

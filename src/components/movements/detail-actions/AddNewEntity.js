@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import './AddNewEntity.scss';
 import BaseButton from '../../base/BaseButton';
 
 const AddNewEntitiy = (props) => {
@@ -13,22 +14,21 @@ const AddNewEntitiy = (props) => {
   };
 
   return (
-    <div className="v-grid-space-between">
+    <div className="movement-details__add-new-entity v-grid-space-between">
       {inputVisible && (
-        <form className="v-grid-gap-small appear">
+        <form className="v-grid-gap-small appear appear--from-right">
           <input placeholder="Add new..." ref={inputValue} />
           <BaseButton mode="text" size="small" onClick={(e) => onAdd(e)}>
-            Add
+            +
           </BaseButton>
         </form>
       )}
 
       <BaseButton
-        mode="text"
         size="small"
         onClick={setInputVisible.bind(null, (previousState) => !previousState)}
       >
-        Add new {entityType}
+        {inputVisible ? 'Done' : `Add new ${entityType}`}
       </BaseButton>
     </div>
   );
