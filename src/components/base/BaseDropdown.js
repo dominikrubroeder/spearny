@@ -4,10 +4,9 @@ import BaseButton from './BaseButton';
 import BaseToggle from '../base/BaseToggle';
 
 const BaseDropdown = (props) => {
+  const [isOpen, setIsOpen] = useState(props.isOpen);
   const head = props.head || <h3>Title</h3>;
   const hasToggle = props.hasToggle;
-
-  const [isOpen, setIsOpen] = useState(props.isOpen);
 
   const toggleIsOpenState = () => {
     if (hasToggle) return;

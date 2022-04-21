@@ -31,7 +31,6 @@ const Movement = (props) => {
     receivedFrom,
     receivedBy,
   } = props.movement;
-  const plusMinus = type === 'expense' ? '-' : '+';
 
   const updateMovementHandler = (updatedMovement) => {
     // When movement details are not visible, return
@@ -49,9 +48,7 @@ const Movement = (props) => {
     <div className="v-grid-space-between w-100">
       <h3>{title}</h3>
       <div>
-        <span className={`movement--type-${type}`}>
-          {plusMinus} {amount}€
-        </span>
+        <span className={`movement--type-${type}`}>{amount}€</span>
       </div>
     </div>
   );
@@ -75,7 +72,7 @@ const Movement = (props) => {
       <div className="v-grid-gap-small">
         <MovementType id={id} initialValue={type} />
         <MovementTitle id={id} initialValue={title} />
-        <MovementAmount id={id} initialValue={amount} />
+        <MovementAmount id={id} type={type} initialValue={amount} />
       </div>
       <MovementDescription id={id} description={description} />
       <MovementTags id={id} tags={tags} />

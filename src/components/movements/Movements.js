@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Budget from '../budget/Budget';
 import MovementAddForm from './MovementAddForm';
 import MovementList from './MovementList';
 import MovementListAction from './MovementListActions';
@@ -12,6 +13,10 @@ const Movements = () => {
   return (
     <div className="h-grid-gap-huge">
       <MovementAddForm />
+
+      <div className="v-grid-centered">
+        <Budget />
+      </div>
 
       <div className="h-grid">
         <MovementListAction

@@ -11,7 +11,6 @@ const MovementAddForm = () => {
   const newMovementType = useRef();
   const newMovementTitle = useRef();
   const newMovementAmount = useRef();
-  let invalidBackground = 'red';
 
   const addNewMovement = (e) => {
     e.preventDefault();
@@ -27,7 +26,10 @@ const MovementAddForm = () => {
       dateAdded: new Date().toDateString(),
       type: newMovementType.current.value,
       title: newMovementTitle.current.value,
-      amount: +newMovementAmount.current.value,
+      amount:
+        newMovementType.current.value === 'expense'
+          ? -+newMovementAmount.current.value
+          : +newMovementAmount.current.value,
       description: null,
       tags: null,
       paidBy: null,
