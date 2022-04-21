@@ -5,14 +5,13 @@ import BaseCard from '../../../base/BaseCard';
 import BaseHelpText from '../../../base/BaseHelpText';
 import AddNewEntitiy from '../../detail-actions/AddNewEntity';
 import { paymentMethodsActions } from '../../../../store/payment-methods';
-// import { updateMovement } from '../../../../store/movements-actions';
 
 const MovementPaidBy = (props) => {
   const dispatch = useDispatch();
+  const id = props.id;
   const paymentMethods = useSelector(
     (state) => state.paymentMethods.paymentMethods
   );
-  const id = props.id;
 
   const paidByOnChangeHandler = (e) => {
     dispatch(
