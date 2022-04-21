@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../../../store/movements';
-import { paymentReceiversActions } from '../../../../store/payment-receiver';
+import { paymentPartnersActions } from '../../../../store/payment-partner';
 import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
 import BaseHelpText from '../../../base/BaseHelpText';
@@ -9,8 +9,8 @@ import AddNewEntitiy from '../../detail-actions/AddNewEntity';
 const MovementReceivedBy = (props) => {
   const dispatch = useDispatch();
   const id = props.id;
-  const paymentReceivers = useSelector(
-    (state) => state.paymentReceivers.paymentReceivers
+  const paymentPartners = useSelector(
+    (state) => state.paymentPartners.paymentPartners
   );
 
   const receivedFromOnChangeHandler = (e) => {
@@ -26,7 +26,7 @@ const MovementReceivedBy = (props) => {
   const onAdd = (childValue) => {
     // Update payment receivers with a new payment receiver added by the user value
     dispatch(
-      paymentReceiversActions.add({
+      paymentPartnersActions.add({
         id: Math.random().toString(),
         title: childValue,
       })
@@ -64,9 +64,9 @@ const MovementReceivedBy = (props) => {
           value={props.initialValue ?? 'Zalando GmbH'}
           onChange={receivedFromOnChangeHandler}
         >
-          {paymentReceivers.map((paymentReceiver) => (
-            <option key={paymentReceiver.id} value={paymentReceiver.title}>
-              {paymentReceiver.title}
+          {paymentPartners.map((paymentPartner) => (
+            <option key={paymentPartner.id} value={paymentPartner.title}>
+              {paymentPartner.title}
             </option>
           ))}
         </select>

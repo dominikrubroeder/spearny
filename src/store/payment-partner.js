@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialpaymentReceivers = {
-  paymentReceivers: [
+const initialpaymentPartners = {
+  paymentPartners: [
     {
       id: Math.random().toString(),
       title: 'Amazon Inc.',
@@ -33,15 +33,15 @@ const initialpaymentReceivers = {
   ],
 };
 
-const paymentReceiversSlice = createSlice({
-  name: 'paymentReceivers',
-  initialState: initialpaymentReceivers,
+const paymentPartnersSlice = createSlice({
+  name: 'paymentPartners',
+  initialState: initialpaymentPartners,
   reducers: {
     add(state, action) {
-      const newPaymentReceiver = action.payload;
-      const updatedPaymentReceivers =
-        state.paymentReceivers.concat(newPaymentReceiver);
-      const sortedPaymentReceivers = updatedPaymentReceivers.sort(function (
+      const newPaymentPartner = action.payload;
+      const updatedPaymentPartners =
+        state.paymentPartners.concat(newPaymentPartner);
+      const sortedpaymentPartners = updatedPaymentPartners.sort(function (
         a,
         b
       ) {
@@ -53,7 +53,7 @@ const paymentReceiversSlice = createSlice({
         }
         return 0;
       });
-      state.paymentReceivers = sortedPaymentReceivers;
+      state.paymentPartners = sortedpaymentPartners;
     },
     // delete(state, action) {
     //   const tagId = action.payload;
@@ -65,6 +65,6 @@ const paymentReceiversSlice = createSlice({
   },
 });
 
-export const paymentReceiversActions = paymentReceiversSlice.actions;
+export const paymentPartnersActions = paymentPartnersSlice.actions;
 
-export default paymentReceiversSlice.reducer;
+export default paymentPartnersSlice.reducer;
