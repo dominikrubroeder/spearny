@@ -10,10 +10,10 @@ const Movements = () => {
   const [movementFilterMode, setMovementFilterMode] = useState('show-all');
 
   return (
-    <div className="h-grid-gap-big">
+    <div className="h-grid-gap-huge">
       <MovementAddForm />
 
-      <div className="h-grid-gap-small">
+      <div className="h-grid">
         <MovementListAction
           values={{
             listModeValue: movementListMode,

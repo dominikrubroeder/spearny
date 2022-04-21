@@ -4,6 +4,7 @@ import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
 import BaseHelpText from '../../../base/BaseHelpText';
 import BaseButton from '../../../base/BaseButton';
+import AddNewEntitiy from '../../detail-actions/AddNewEntity';
 // import { updateMovement } from '../../../../store/movements-actions';
 
 const MovementPaidBy = (props) => {
@@ -50,9 +51,11 @@ const MovementPaidBy = (props) => {
           <option value="Klarna">Klarna</option>
           <option value="American Express">American Express</option>
         </select>
-        <BaseButton mode="text" size="small">
-          Add new payment method
-        </BaseButton>
+
+        <AddNewEntitiy
+          entityType="payment method"
+          onAdd={console.log('onAdd')}
+        />
       </BaseDropdown>
     </BaseCard>
   );

@@ -43,4 +43,8 @@
 
 .movement-list__status-bar {
   cursor: pointer;
+
+  svg {
+    color: var(--black);
+  }
 }
