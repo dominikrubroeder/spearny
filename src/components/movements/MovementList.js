@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../store/movements';
 import { fetchMovements } from '../../store/movements-actions';
 import { fetchPaymentMethods } from '../../store/payment-methods-actions';
+import { fetchPaymentPartners } from '../../store/payment-partner-actions';
 import Movement from './Movement';
 import './MovementList.scss';
 
@@ -21,6 +22,7 @@ const MovementList = (props) => {
     dispatch(fetchMovements());
     dispatch(movementsActions.sort(sortingMode));
     dispatch(fetchPaymentMethods());
+    dispatch(fetchPaymentPartners());
   }, [dispatch]);
 
   return (

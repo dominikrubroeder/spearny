@@ -37,6 +37,9 @@ const paymentPartnersSlice = createSlice({
   name: 'paymentPartners',
   initialState: initialpaymentPartners,
   reducers: {
+    setPaymentPartners(state, action) {
+      state.paymentPartners = [...state.paymentPartners, ...action.payload];
+    },
     add(state, action) {
       const newPaymentPartner = action.payload;
       const updatedPaymentPartners =

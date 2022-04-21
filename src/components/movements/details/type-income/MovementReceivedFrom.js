@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { movementsActions } from '../../../../store/movements';
 import { paymentPartnersActions } from '../../../../store/payment-partner';
+import { sendNewPaymentPartner } from '../../../../store/payment-partner-actions';
 import BaseDropdown from '../../../base/BaseDropdown';
 import BaseCard from '../../../base/BaseCard';
 import BaseHelpText from '../../../base/BaseHelpText';
@@ -24,13 +25,13 @@ const MovementReceivedBy = (props) => {
   };
 
   const onAdd = (childValue) => {
+    const newPaymentPartner = {
+      id: Math.random().toString(),
+      title: childValue,
+    };
+
     // Update payment receivers with a new payment receiver added by the user value
-    dispatch(
-      paymentPartnersActions.add({
-        id: Math.random().toString(),
-        title: childValue,
-      })
-    );
+    dispatch(paymentPartnersActions.add(newPaymentPartner));
 
     // Update current movement with new payment method selected
     dispatch(
@@ -42,6 +43,7 @@ const MovementReceivedBy = (props) => {
     );
 
     // Save payment receivers to Firebase
+    dispatch(sendNewPaymentPartner(newPaymentPartner));
   };
 
   const dropdownHead = (
