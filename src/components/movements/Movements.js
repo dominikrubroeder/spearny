@@ -14,9 +14,7 @@ const Movements = () => {
     <div className="h-grid-gap-huge">
       <MovementAddForm />
 
-      <div className="v-grid-centered">
-        <Budget />
-      </div>
+      <Budget />
 
       <div className="h-grid">
         <MovementListAction
