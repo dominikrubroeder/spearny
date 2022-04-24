@@ -31,6 +31,7 @@ const MovementAddForm = () => {
           ? -+newMovementAmount.current.value
           : +newMovementAmount.current.value,
       description: null,
+      isRegular: null,
       tags: null,
       paidBy: null,
       paidTo: null,

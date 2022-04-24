@@ -20,22 +20,28 @@
     margin-top: 2rem;
   }
 
-  &__details {
-    form,
-    input,
-    textarea,
-    select {
-      width: 100%;
-    }
+  svg {
+    font-size: 0.75rem;
+    color: var(--white);
+    padding: 0.25rem;
+    border-radius: 50%;
   }
 }
 
 .movement--type {
   &-expense {
     color: var(--light-red);
+
+    svg {
+      background-color: var(--light-red);
+    }
   }
 
   &-income {
     color: var(--light-green);
+
+    svg {
+      background-color: var(--light-green);
+    }
   }
 }

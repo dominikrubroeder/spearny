@@ -15,6 +15,8 @@ import MovementPaidBy from './details/type-expense/MovementPaidBy';
 import MovementReceivedFrom from './details/type-income/MovementReceivedFrom';
 import MovementReceivedBy from './details/type-income/MovementReceivedBy';
 import MovementDelete from './details/actions/MovementDelete';
+import MovementIsRegular from './details/MovementIsRegular';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Movement = (props) => {
   const dispatch = useDispatch();
@@ -25,6 +27,7 @@ const Movement = (props) => {
     title,
     amount,
     description,
+    isRegular,
     tags,
     paidTo,
     paidBy,
@@ -48,7 +51,10 @@ const Movement = (props) => {
     <div className="v-grid-space-between w-100">
       <h3>{title}</h3>
       <div>
-        <span className={`movement--type-${type}`}>{amount}€</span>
+        <span className={`movement--type-${type} v-grid-gap-small`}>
+          {amount}€
+          {isRegular && <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" />}
+        </span>
       </div>
     </div>
   );
@@ -75,6 +81,7 @@ const Movement = (props) => {
         <MovementAmount id={id} type={type} initialValue={amount} />
       </div>
       <MovementDescription id={id} description={description} />
+      <MovementIsRegular id={id} isRegular={isRegular} />
       <MovementTags id={id} tags={tags} />
       {type === 'expense' && expenseOnlyMarkup}
       {type === 'income' && incomeOnlyMarkup}

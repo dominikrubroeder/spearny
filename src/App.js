@@ -24,6 +24,7 @@ import {
   faArrowLeft,
   faFolderTree,
   faSort,
+  faArrowsRotate,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './font/font.scss';
@@ -57,7 +58,8 @@ function App() {
     faArrowRight,
     faArrowLeft,
     faFolderTree,
-    faSort
+    faSort,
+    faArrowsRotate
   );
 
   return (
