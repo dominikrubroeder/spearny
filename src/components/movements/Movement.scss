@@ -20,6 +20,21 @@
     margin-top: 2rem;
   }
 
+  &__title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @supports (-webkit-line-clamp: 1) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+  }
+
   svg {
     font-size: 0.75rem;
     color: var(--white);

@@ -48,8 +48,8 @@ const Movement = (props) => {
   };
 
   const headMarkup = (
-    <div className="v-grid-space-between w-100">
-      <h3>{title}</h3>
+    <div className="v-grid-space-between-no-wrap w-100">
+      <h3 className="movement__title">{title}</h3>
       <div>
         <span className={`movement--type-${type} v-grid-gap-small`}>
           {amount}€
