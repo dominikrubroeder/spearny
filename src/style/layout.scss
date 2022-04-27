@@ -66,6 +66,19 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
+.h-centered {
+  align-items: center;
+}
+
+.v-centered {
+  justify-content: center;
+}
+
+.hv-centered {
+  align-items: center;
+  justify-content: center;
+}
+
 /**
 ---------- GRIDS // vertical
 */

@@ -1,0 +1,27 @@
+.user-profile__form {
+  input {
+    border: 1px solid var(--lightest-border);
+  }
+}
+
+.section__form-header {
+  position: relative;
+
+  &-title {
+    background-color: var(--white);
+    padding-right: 2rem;
+    display: inline-block;
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--lightest-border);
+    z-index: -1;
+  }
+}

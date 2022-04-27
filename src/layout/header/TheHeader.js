@@ -17,7 +17,9 @@ const TheHeader = () => {
           </div>
         </div>
       </Link>
-      <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+      <Link to="/user-profile">
+        <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+      </Link>
     </header>
   );
 };
