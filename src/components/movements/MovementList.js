@@ -37,7 +37,11 @@ const MovementList = (props) => {
         movements.map((movement) => {
           if (movement.isVisible) {
             return (
-              <CSSTransition key={movement.id} classNames="fade" timeout={400}>
+              <CSSTransition
+                key={movement.id}
+                classNames="fade-up"
+                timeout={400}
+              >
                 <Movement movement={movement} />
               </CSSTransition>
             );

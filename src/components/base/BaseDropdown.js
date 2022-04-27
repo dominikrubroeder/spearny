@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import classes from './BaseDropdown.module.scss';
 import BaseButton from './BaseButton';
 import BaseToggle from '../base/BaseToggle';
+import { CSSTransition } from 'react-transition-group';
 
 const BaseDropdown = (props) => {
   const [isOpen, setIsOpen] = useState(props.isOpen);
@@ -52,6 +53,10 @@ const BaseDropdown = (props) => {
     <BaseToggle onClick={toggleSection} enabled={isOpen ? true : false} />
   );
 
+  /**
+   * CSSTransiton
+   * mountOnEnter unmountOnExit important here for showing and hiding
+   */
   return (
     <div className="h-grid">
       <div className={headClassNames}>
@@ -63,7 +68,16 @@ const BaseDropdown = (props) => {
           {switchComp}
         </div>
       </div>
-      {isOpen && <div className="h-grid">{props.children}</div>}
+
+      <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        in={isOpen}
+        classNames="fade-up-minimal"
+        timeout={400}
+      >
+        <div className="h-grid">{props.children}</div>
+      </CSSTransition>
     </div>
   );
 };
