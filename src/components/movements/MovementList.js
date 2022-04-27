@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { movementsActions } from '../../store/movements';
 import { fetchMovements } from '../../store/movements-actions';
 import { fetchPaymentMethods } from '../../store/payment-methods-actions';
@@ -26,7 +27,7 @@ const MovementList = (props) => {
   }, [dispatch]);
 
   return (
-    <div
+    <TransitionGroup
       className="movement-list"
       list-mode={listMode}
       sorting-mode={sortingMode}
@@ -35,10 +36,14 @@ const MovementList = (props) => {
       {movementsExists &&
         movements.map((movement) => {
           if (movement.isVisible) {
-            return <Movement movement={movement} key={movement.id} />;
+            return (
+              <CSSTransition key={movement.id} classNames="fade" timeout={400}>
+                <Movement movement={movement} />
+              </CSSTransition>
+            );
           }
         })}
-    </div>
+    </TransitionGroup>
   );
 };
 
