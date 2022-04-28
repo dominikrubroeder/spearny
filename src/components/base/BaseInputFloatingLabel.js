@@ -17,13 +17,15 @@ const BaseInputFloatingLabel = (props) => {
         {props.labelTitle}
       </label>
       <input
-        type="text"
+        type={props.inputType}
         name={props.inputName}
         id={props.inputId}
         placeholder={props.inputPlaceholder || null}
         ref={inputRef}
         onClick={() => setFocused(true)}
         onBlur={onBlurHandler}
+        onChange={() => props.onChange(inputRef.current.value)}
+        value={props.inputValue}
       ></input>
     </div>
   );
