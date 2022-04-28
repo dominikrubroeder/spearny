@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import BaseCard from '../components/base/BaseCard';
 import BaseButton from '../components/base/BaseButton';
 import Notification from '../components/notification/Notification';
 
@@ -73,16 +72,8 @@ const Authentication = () => {
     <section className="container--compressed">
       <h1>{isLogin ? 'Welcome back' : 'Welcome to Spearny'}</h1>
       <form className="h-grid" onSubmit={submitHandler}>
-        <BaseCard mode="form-control" background="light">
-          <input type="email" placeholder="E-Mailaddress..." ref={emailInput} />
-        </BaseCard>
-        <BaseCard mode="form-control" background="light">
-          <input
-            type="password"
-            placeholder="Password..."
-            ref={passwordInput}
-          />
-        </BaseCard>
+        <input type="email" placeholder="E-Mailaddress..." ref={emailInput} />
+        <input type="password" placeholder="Password..." ref={passwordInput} />
         <p>
           <BaseButton
             mode="text"

@@ -31,8 +31,8 @@ const Budget = () => {
   return (
     <BaseDropdown head={headMarkup}>
       <p>
-        {calculatedBudget} from max. 1000€ für {currentMonth} {currentYear}{' '}
-        verfügbar.
+        {calculatedBudget} from max. {monthlyBudget}€ für {currentMonth}{' '}
+        {currentYear} verfügbar.
       </p>
     </BaseDropdown>
   );

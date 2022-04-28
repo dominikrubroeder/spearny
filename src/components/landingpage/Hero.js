@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import classes from './Hero.scss';
+import './Hero.scss';
 import BaseButton from '../base/BaseButton';
 
 const Hero = () => {

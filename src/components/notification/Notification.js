@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Fragment } from 'react';
 import { createPortal } from 'react-dom';
 import BaseCard from '../base/BaseCard';
-import classes from './Notification.scss';
+import './Notification.scss';
 
 const Notification = (props) => {
   // placement values: bottom (default), top, centered
   const placement = props.placement || 'bottom';
-  const backdrop = props.backdrop;
+  // const backdrop = props.backdrop;
 
   const head = (
     <header className="v-grid space-between">

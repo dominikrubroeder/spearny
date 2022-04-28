@@ -10,7 +10,7 @@ const Sidebar = () => {
   const toggleSidebar = useCallback(() => {
     document.body.classList.toggle('with--sidebar');
     setShowSidebar((previousState) => !previousState);
-  }, [showSidebar, setShowSidebar]);
+  }, [setShowSidebar]);
 
   return (
     <div className={`sidebar h-grid ${showSidebar ? 'sidebar--open' : ''}`}>
