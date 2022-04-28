@@ -1,0 +1,19 @@
+.label--floating {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+
+.input--focused {
+  .label--floating {
+    font-size: 1rem;
+    top: 0;
+    opacity: 1;
+    background-color: var(--white);
+  }
+}

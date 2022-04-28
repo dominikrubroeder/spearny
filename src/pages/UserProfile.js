@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BaseButton from '../components/base/BaseButton';
 import './UserProfile.scss';
+import BaseInputFloatingLabel from '../components/base/BaseInputFloatingLabel';
 
 const UserProfile = () => {
   return (
@@ -25,7 +26,12 @@ const UserProfile = () => {
                 </div>
               </header>
               <div className="h-grid">
-                <input type="text" placeholder="Vorname"></input>
+                <BaseInputFloatingLabel
+                  labelHtmlFor="firstname"
+                  labelTitle="Vorname"
+                  inputName="firstname"
+                  inputId="firstname"
+                />
                 <input type="text" placeholder="Nachname"></input>
                 <input type="email" placeholder="E-Mail"></input>
                 <input type="password" placeholder="Password"></input>
