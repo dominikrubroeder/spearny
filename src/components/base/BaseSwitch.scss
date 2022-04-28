@@ -6,11 +6,11 @@
   padding: 1rem;
   gap: 1rem;
   border-radius: 5rem;
-  background-color: var(--lightest-background);
+  background-color: var(--color-background);
   transition: all 0.4s ease-out;
 
   .active {
-    background-color: var(--light-accent);
+    background-color: var(--color-accent);
     color: white;
     border-radius: 5rem;
     padding: 0.5rem 1rem;
@@ -27,7 +27,7 @@
 
     .active {
       color: var(--light-white);
-      background-color: var(--light-accent);
+      background-color: var(--color-accent);
     }
   }
 
@@ -36,8 +36,8 @@
     background-color: transparent;
 
     .active {
-      color: var(--light-accent);
-      background-color: var(--lightest-background);
+      color: var(--color-accent);
+      background-color: var(--color-background);
     }
   }
 
@@ -46,7 +46,7 @@
     background-color: transparent;
 
     .active {
-      color: var(--light-accent);
+      color: var(--color-accent);
       background-color: transparent;
     }
   }

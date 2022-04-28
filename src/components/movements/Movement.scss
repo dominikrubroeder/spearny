@@ -45,18 +45,18 @@
 
 .movement--type {
   &-expense {
-    color: var(--light-red);
+    color: var(--color-red);
 
     svg {
-      background-color: var(--light-red);
+      background-color: var(--color-red);
     }
   }
 
   &-income {
-    color: var(--light-green);
+    color: var(--color-green);
 
     svg {
-      background-color: var(--light-green);
+      background-color: var(--color-green);
     }
   }
 }

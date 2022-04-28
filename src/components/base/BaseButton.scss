@@ -15,11 +15,11 @@ button {
     background-color: transparent;
 
     &:hover {
-      background-color: var(--lightest-background);
+      background-color: var(--color-background);
     }
 
     &.base-button--priority-primary {
-      color: var(--light-accent);
+      color: var(--color-accent);
     }
 
     &.base-button--priority-secondary {
@@ -27,14 +27,14 @@ button {
     }
 
     &.base-button--type-destructive {
-      color: var(--light-red);
+      color: var(--color-red);
     }
   }
 
   &-button {
     &.base-button--priority-primary {
       color: var(--white);
-      background-color: var(--light-accent);
+      background-color: var(--color-accent);
     }
   }
 
@@ -45,7 +45,7 @@ button {
     height: 4rem;
 
     &:hover {
-      background-color: var(--lightest-background);
+      background-color: var(--color-background);
     }
   }
 }

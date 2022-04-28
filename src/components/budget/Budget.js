@@ -18,7 +18,11 @@ const Budget = () => {
   const headMarkup = (
     <span className="v-grid-gap-small">
       Budget:
-      <span className={`budget ${calculatedBudget > 0 ? 'green' : 'red'}`}>
+      <span
+        className={`budget ${
+          calculatedBudget > 0 ? 'light--green' : 'light--red'
+        }`}
+      >
         {calculatedBudget}
       </span>
     </span>

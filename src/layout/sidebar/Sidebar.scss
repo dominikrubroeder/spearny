@@ -6,7 +6,7 @@
   height: 100vh;
   grid-template-rows: min-content 1fr min-content;
   padding: 1rem 2rem;
-  background-color: var(--lightest-background);
+  background-color: var(--color-background);
   transform: translateX(-80%);
   /* animation: fade-in-from-left 0.4s ease-out forwards;*/
   transition: all 0.3s ease-in-out;
@@ -18,7 +18,7 @@
   &:not(.sidebar--open) {
     &:hover {
       cursor: pointer;
-      background-color: var(--light-background);
+      background-color: var(--color-background-soft);
     }
   }
 

@@ -4,6 +4,9 @@
 ---------- COLORS // Apple system colors //
 */
 :root {
+  --white: hsla(0, 0%, 100%);
+  --black: hsla(0, 0%, 0%);
+
   --light-accent: rgb(0, 102, 204);
 
   --light-red: rgb(255, 59, 48);
@@ -47,29 +50,55 @@
   --dark-gray-4: rgb(58, 58, 60);
   --dark-gray-5: rgb(44, 44, 46);
   --dark-gray-6: rgb(28, 28, 30);
-
-  --white: hsla(0, 0%, 100%);
-  --black: hsla(0, 0%, 0%);
-
-  --white-dimmed: hsla(0, 0%, 100%, 0.7);
-
-  --light-background: var(--light-gray-4);
-  --lightest-background: var(--light-gray-6);
-
-  --dark-background: var(--dark-gray-4);
-  --darkest-background: var(--dark-gray-6);
-
-  --light-border: var(--light-gray-3);
-  --lightest-border: var(--light-gray-6);
-
-  --dark-border: var(--dark-gray-3);
-  --darkest-border: var(--dark-gray-6);
 }
 
-.green {
+/* semantic color variables for this project */
+:root {
+  --color-background: var(--light-gray-6);
+  --color-background-soft: var(--light-gray-4);
+  --color-background-mute: var(--light-gray-3);
+
+  --color-border: var(--light-gray-3);
+  --color-border-hover: var(--light-gray-6);
+
+  --color-heading: var(--dark-gray-6);
+  --color-text: var(--dark-gray-6);
+
+  --color-accent: var(--light-accent);
+  --color-green: var(--light-green);
+  --color-red: var(--light-red);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--dark-gray-6);
+    --color-background-soft: var(--dark-gray-4);
+    --color-background-mute: var(--dark-gray-3);
+
+    --color-border: var(--dark-gray-3);
+    --color-border-hover: var(--dark-gray-6);
+
+    --color-heading: var(--white);
+    --color-text: var(--white);
+
+    --color-accent: var(--dark-accent);
+    --color-green: var(--dark-green);
+    --color-red: var(--dark-red);
+  }
+}
+
+.light--green {
   color: var(--light-green);
 }
 
-.red {
+.light--red {
   color: var(--light-red);
+}
+
+.dark--green {
+  color: var(--dark-green);
+}
+
+.dark--red {
+  color: var(--dark-red);
 }
