@@ -9,7 +9,7 @@
   background-color: var(--color-background);
   transform: translateX(-80%);
   /* animation: fade-in-from-left 0.4s ease-out forwards;*/
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease-out;
 
   &--open {
     transform: translateX(-100%);

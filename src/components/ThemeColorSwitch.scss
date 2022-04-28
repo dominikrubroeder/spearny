@@ -7,7 +7,7 @@
   padding: 0.25rem;
   cursor: pointer;
   background-color: var(--color-background);
-  transition: all 0.2s;
+  transition: all 0.4s ease-out;
 
   svg {
     font-size: 1.4rem;
@@ -24,7 +24,7 @@
     vertical-align: middle;
     border-radius: 5rem;
     opacity: 0.25;
-    transition: all 0.2s;
+    transition: all 0.4s ease-out;
 
     &--main {
       position: absolute;
