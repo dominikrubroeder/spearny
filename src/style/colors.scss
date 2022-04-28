@@ -65,6 +65,7 @@
 
   --color-heading: var(--dark-gray-6);
   --color-text: var(--dark-gray-6);
+  --color-text-muted: var(--light-gray-4);
 
   --color-theme-contrary: var(--black);
   --color-filler: var(--white);
@@ -73,24 +74,29 @@
   --color-red: var(--light-red);
 }
 
+@mixin dark-color-scheme {
+  --color-background: var(--dark-gray-6);
+  --color-background-soft: var(--dark-gray-4);
+  --color-background-mute: var(--dark-gray-3);
+
+  --color-border: var(--dark-gray-6);
+  --color-border-hover: var(--dark-gray-6);
+
+  --color-heading: var(--white);
+  --color-text: var(--white);
+  --color-text-muted: var(--dark-gray-4);
+
+  --color-theme-contrary: var(--white);
+  --color-filler: var(--black);
+  --color-accent: var(--dark-accent);
+  --color-green: var(--dark-green);
+  --color-red: var(--dark-red);
+}
+
 // @media (prefers-color-scheme: dark) autmatically detects if the user has dark mode in his local settings enabled and switches to those colors instead
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--dark-gray-6);
-    --color-background-soft: var(--dark-gray-4);
-    --color-background-mute: var(--dark-gray-3);
-
-    --color-border: var(--dark-gray-6);
-    --color-border-hover: var(--dark-gray-6);
-
-    --color-heading: var(--white);
-    --color-text: var(--white);
-
-    --color-theme-contrary: var(--white);
-    --color-filler: var(--black);
-    --color-accent: var(--dark-accent);
-    --color-green: var(--dark-green);
-    --color-red: var(--dark-red);
+    @include dark-color-scheme();
   }
 }
 
@@ -99,21 +105,7 @@
 * It's responsible for manually switch colors to dark mode when user clicks ThemeColorSwitch
 */
 .dark {
-  --color-background: var(--dark-gray-6);
-  --color-background-soft: var(--dark-gray-4);
-  --color-background-mute: var(--dark-gray-3);
-
-  --color-border: var(--dark-gray-3);
-  --color-border-hover: var(--dark-gray-6);
-
-  --color-heading: var(--white);
-  --color-text: var(--white);
-
-  --color-theme-contrary: var(--white);
-  --color-filler: var(--black);
-  --color-accent: var(--dark-accent);
-  --color-green: var(--dark-green);
-  --color-red: var(--dark-red);
+  @include dark-color-scheme();
 }
 
 html.dark {
