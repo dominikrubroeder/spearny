@@ -10,7 +10,7 @@
   span {
     width: 3px;
     height: 3px;
-    background-color: var(--black);
+    background-color: var(--color-theme-contrary);
     display: inline-block;
     border-radius: 50%;
     transition: all 0.3s;
@@ -45,6 +45,6 @@
   cursor: pointer;
 
   svg {
-    color: var(--black);
+    color: var(--color-theme-contrary);
   }
 }

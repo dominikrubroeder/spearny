@@ -31,7 +31,8 @@ body {
   font-weight: 300;
   font-size: 1.4rem;
   line-height: 1.6;
-  color: var(--black);
+  color: var(--color-theme-contrary);
+  background-color: var(--color-filler);
   transition: padding-left 0.4s ease-out;
 
   &.with--sidebar {

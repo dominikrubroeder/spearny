@@ -26,6 +26,8 @@ import {
   faSort,
   faArrowsRotate,
   faCirclePlus,
+  faSun,
+  faMoon,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './font/font.scss';
@@ -62,7 +64,9 @@ function App() {
     faFolderTree,
     faSort,
     faArrowsRotate,
-    faCirclePlus
+    faCirclePlus,
+    faSun,
+    faMoon
   );
 
   return (

@@ -50,9 +50,9 @@
   right: 0;
   font-size: 2rem;
   transform: translateX(4rem) rotate(0deg);
-  border: 1rem solid var(--white);
+  border: 1rem solid var(--color-filler);
   border-radius: 50%;
-  background-color: var(--white);
+  background-color: var(--color-filler);
   transition: all 0.4s ease-out;
 
   &--mirrored {

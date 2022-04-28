@@ -3,6 +3,7 @@ import { ReactComponent as Logo } from '../../assets/svgs/spearny-logo.svg';
 import Sidebar from '../sidebar/Sidebar';
 import './TheHeader.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ThemeColorSwitch from '../../components/ThemeColorSwitch';
 
 const TheHeader = () => {
   return (
@@ -17,9 +18,12 @@ const TheHeader = () => {
           </div>
         </div>
       </Link>
-      <Link to="/user-profile">
-        <FontAwesomeIcon icon="fa-solid fa-circle-user" />
-      </Link>
+      <div className="v-grid">
+        <ThemeColorSwitch />
+        <Link className="v-grid" to="/user-profile">
+          <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+        </Link>
+      </div>
     </header>
   );
 };

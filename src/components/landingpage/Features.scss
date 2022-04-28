@@ -41,12 +41,12 @@
 
     &::before {
       top: -1rem;
-      background-image: linear-gradient(var(--white), transparent);
+      background-image: linear-gradient(var(--color-filler), transparent);
     }
 
     &::after {
       bottom: -1rem;
-      background-image: linear-gradient(transparent, var(--white));
+      background-image: linear-gradient(transparent, var(--color-filler));
     }
   }
 
@@ -69,12 +69,12 @@
 
     &::before {
       left: 0;
-      background-image: linear-gradient(var(--white), transparent);
+      background-image: linear-gradient(var(--color-filler), transparent);
     }
 
     &::after {
       right: 0;
-      background-image: linear-gradient(transparent, var(--white));
+      background-image: linear-gradient(transparent, var(--color-filler));
     }
   }
 
@@ -100,11 +100,11 @@
   }
 
   &--highlight {
-    color: var(--white) !important;
+    color: var(--color-filler) !important;
     background-color: var(--color-accent) !important;
 
     svg {
-      color: var(--white);
+      color: var(--color-filler);
     }
   }
 }

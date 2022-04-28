@@ -23,7 +23,7 @@ button {
     }
 
     &.base-button--priority-secondary {
-      color: var(--black);
+      color: var(--color-theme-contrary);
     }
 
     &.base-button--type-destructive {
@@ -33,7 +33,7 @@ button {
 
   &-button {
     &.base-button--priority-primary {
-      color: var(--white);
+      color: var(--color-filler);
       background-color: var(--color-accent);
     }
   }

@@ -52,7 +52,9 @@
   --dark-gray-6: rgb(28, 28, 30);
 }
 
-/* semantic color variables for this project */
+/* Semantic color variables for this project
+* Set up colors for light and dark mode theme
+*/
 :root {
   --color-background: var(--light-gray-6);
   --color-background-soft: var(--light-gray-4);
@@ -64,11 +66,14 @@
   --color-heading: var(--dark-gray-6);
   --color-text: var(--dark-gray-6);
 
+  --color-theme-contrary: var(--black);
+  --color-filler: var(--white);
   --color-accent: var(--light-accent);
   --color-green: var(--light-green);
   --color-red: var(--light-red);
 }
 
+// @media (prefers-color-scheme: dark) autmatically detects if the user has dark mode in his local settings enabled and switches to those colors instead
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--dark-gray-6);
@@ -81,10 +86,38 @@
     --color-heading: var(--white);
     --color-text: var(--white);
 
+    --color-theme-contrary: var(--white);
+    --color-filler: var(--black);
     --color-accent: var(--dark-accent);
     --color-green: var(--dark-green);
     --color-red: var(--dark-red);
   }
+}
+
+/*
+* This needs to be the same as for @media (prefers-color-scheme: dark) { ... }
+* It's responsible for manually switch colors to dark mode when user clicks ThemeColorSwitch
+*/
+.dark {
+  --color-background: var(--dark-gray-6);
+  --color-background-soft: var(--dark-gray-4);
+  --color-background-mute: var(--dark-gray-3);
+
+  --color-border: var(--dark-gray-3);
+  --color-border-hover: var(--dark-gray-6);
+
+  --color-heading: var(--white);
+  --color-text: var(--white);
+
+  --color-theme-contrary: var(--white);
+  --color-filler: var(--black);
+  --color-accent: var(--dark-accent);
+  --color-green: var(--dark-green);
+  --color-red: var(--dark-red);
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 .light--green {
