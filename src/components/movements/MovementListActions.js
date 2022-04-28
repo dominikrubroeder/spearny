@@ -38,26 +38,26 @@ const MovementListAction = (props) => {
   return (
     <div>
       <div
-        className="movement-list__status-bar v-grid-space-between"
+        className="movement-list__status-bar v-grid space-between"
         onClick={setShowListActions.bind(
           null,
           (previousValue) => !previousValue
         )}
       >
         <div className="v-grid">
-          <div className="v-grid-gap-small">
+          <div className="v-grid gap-small">
             <FontAwesomeIcon icon="fa-solid fa-folder-tree" />
             {`${listModeValue.charAt(0).toUpperCase()}${listModeValue
               .slice(1)
               .replaceAll('-', ' ')}`}
           </div>
-          <div className="v-grid-gap-small">
+          <div className="v-grid gap-small">
             <FontAwesomeIcon icon="fa-solid fa-sort" />
             {`${sortingModeValue.charAt(0).toUpperCase()}${sortingModeValue
               .slice(1)
               .replaceAll('-', ' ')}`}
           </div>
-          <div className="v-grid-gap-small">
+          <div className="v-grid gap-small">
             <FontAwesomeIcon icon="fa-solid fa-filter" />
             {`${filterModeValue.charAt(0).toUpperCase()}${filterModeValue
               .slice(1)

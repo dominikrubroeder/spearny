@@ -14,9 +14,9 @@ const AddNewEntitiy = (props) => {
   };
 
   return (
-    <div className="movement-details__add-new-entity v-grid-space-between">
+    <div className="movement-details__add-new-entity v-grid space-between">
       {inputVisible && (
-        <form className="v-grid-gap-small appear appear--from-left">
+        <form className="v-grid gap-small appear appear--from-left">
           <input placeholder="Add new..." ref={inputValue} />
           <BaseButton mode="text" size="small" onClick={(e) => onAdd(e)}>
             +

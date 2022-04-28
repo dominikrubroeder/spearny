@@ -4,7 +4,7 @@ const Dashboard = () => {
   return (
     <div className="container">
       {/* <h1>Hello, Dashboard</h1> */}
-      <div className="h-grid-gap-big">
+      <div className="h-grid gap-big">
         <Movements />
       </div>
     </div>

@@ -23,7 +23,7 @@ const MovementIsRegular = (props) => {
   };
 
   const dropdownHead = (
-    <div className="v-grid-space-between">
+    <div className="v-grid space-between">
       <label>Is Regular:</label>
       <BaseHelpText title="Is Regular">
         Einkommen und Ausgaben kommen häufig in regelmäßigen Abständen vor.
@@ -54,7 +54,7 @@ const MovementIsRegular = (props) => {
         />
 
         {props.isRegular && props.isRegular === 'monthly' && (
-          <div className="v-grid-space-between">
+          <div className="v-grid space-between">
             On which day of the month?
             <select>
               {[...Array(28).keys()].map((day) => (

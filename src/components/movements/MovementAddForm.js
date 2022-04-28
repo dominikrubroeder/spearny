@@ -50,8 +50,8 @@ const MovementAddForm = () => {
   };
 
   return (
-    <form className="v-grid-space-between np" onSubmit={addNewMovement}>
-      <div className="v-grid-gap-small">
+    <form className="v-grid space-between np" onSubmit={addNewMovement}>
+      <div className="v-grid gap-small">
         <BaseCard mode="form-control" background="light">
           <select ref={newMovementType}>
             <option value="expense">-</option>

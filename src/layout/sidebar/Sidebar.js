@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <div className={`sidebar h-grid ${showSidebar ? 'sidebar--open' : ''}`}>
-      <header className="v-grid-space-between">
+      <header className="v-grid space-between">
         <FontAwesomeIcon
           icon="fa-solid fa-circle-chevron-right"
           onClick={toggleSidebar}

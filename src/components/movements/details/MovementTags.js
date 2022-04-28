@@ -21,7 +21,7 @@ const MovementTags = (props) => {
   };
 
   const dropdownHead = (
-    <div className="v-grid-space-between">
+    <div className="v-grid space-between">
       <label>Tags:</label>
       <BaseHelpText title="Tags">Tags help text</BaseHelpText>
     </div>

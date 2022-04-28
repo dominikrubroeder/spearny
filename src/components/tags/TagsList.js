@@ -16,7 +16,7 @@ const TagsList = (props) => {
   };
 
   return (
-    <div className="v-grid-gap-small">
+    <div className="h-grid gap-small">
       {tags.map((tag) => (
         <Tag key={tag.id}>{tag.title}</Tag>
       ))}

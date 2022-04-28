@@ -48,10 +48,10 @@ const Movement = (props) => {
   };
 
   const headMarkup = (
-    <div className="v-grid-space-between-no-wrap w-100">
+    <div className="v-grid space-between no-wrap w-100">
       <h3 className="movement__title">{title}</h3>
       <div>
-        <span className={`movement--type-${type} v-grid-gap-small`}>
+        <span className={`movement--type-${type} v-grid gap-small`}>
           {amount}€
           {isRegular && <FontAwesomeIcon icon="fa-solid fa-arrows-rotate" />}
         </span>
@@ -75,7 +75,7 @@ const Movement = (props) => {
 
   const detailsMarkup = (
     <div className="h-grid movement__details">
-      <div className="v-grid-gap-small">
+      <div className="v-grid gap-small">
         <MovementType id={id} initialValue={type} />
         <MovementTitle id={id} initialValue={title} />
         <MovementAmount id={id} type={type} initialValue={amount} />
@@ -85,7 +85,7 @@ const Movement = (props) => {
       <MovementTags id={id} tags={tags} />
       {type === 'expense' && expenseOnlyMarkup}
       {type === 'income' && incomeOnlyMarkup}
-      <div className="movement__actions v-grid-gap-small-centered">
+      <div className="movement__actions v-grid gap-small hv-centered">
         <MovementDelete id={id} />
       </div>
     </div>

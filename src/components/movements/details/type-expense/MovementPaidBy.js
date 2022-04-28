@@ -25,7 +25,7 @@ const MovementPaidBy = (props) => {
   };
 
   const dropdownHead = (
-    <div className="v-grid-space-between">
+    <div className="v-grid space-between">
       <label>Paid by:</label>
       <BaseHelpText title="Paid by">
         Which payment method did I use to make the payment?

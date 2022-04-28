@@ -24,7 +24,7 @@ const BaseDropdown = (props) => {
 
   const headClassNames = `${
     !hasToggle ? classes['dropdown--head'] : ''
-  } v-grid-gap-small-no-wrap`;
+  } v-grid gap-small no-wrap`;
 
   const openCloseComp = (
     <Fragment>
@@ -63,7 +63,7 @@ const BaseDropdown = (props) => {
         <div className="w-100" onClick={toggleIsOpenState}>
           {head}
         </div>
-        <div className="v-grid-gap-small-no-wrap">
+        <div className="v-grid gap-small no-wrap">
           {openCloseComp}
           {switchComp}
         </div>

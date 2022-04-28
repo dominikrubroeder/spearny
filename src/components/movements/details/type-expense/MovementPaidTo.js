@@ -47,7 +47,7 @@ const MovementPaidTo = (props) => {
   };
 
   const dropdownHead = (
-    <div className="v-grid-space-between">
+    <div className="v-grid space-between">
       <label>Paid to:</label>
       <BaseHelpText title="Paid to">
         To whom did I make the payment?

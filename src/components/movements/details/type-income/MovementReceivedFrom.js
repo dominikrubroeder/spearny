@@ -47,7 +47,7 @@ const MovementReceivedBy = (props) => {
   };
 
   const dropdownHead = (
-    <div className="v-grid-space-between">
+    <div className="v-grid space-between">
       <label>Received from:</label>
       <BaseHelpText title="Received from:">
         Reveiced from help text

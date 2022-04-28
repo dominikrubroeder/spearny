@@ -22,7 +22,7 @@ const TagsAddForm = () => {
 
   return (
     <BaseCard mode="tag" background="light">
-      <form className="v-grid-space-between-no-wrap" onSubmit={addTag}>
+      <form className="v-grid space-between no-wrap" onSubmit={addTag}>
         <input type="text" placeholder="Tag title..." ref={newTagTitle} />
         <BaseButton type="submit" mode="text" priority="primary">
           +

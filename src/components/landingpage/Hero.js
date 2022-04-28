@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="container">
-        <div className="hero__brand v-grid-centered">
+        <div className="hero__brand v-grid hv-centered">
           <div className="h-grid">
             <span>Keep track of your</span>
             <div className="hero__brand-naming v-grid">
@@ -24,7 +24,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="h-grid-gap-big">
+        <div className="h-grid gap-big">
           <div className="h-grid">
             <h1>
               Geld kommt und geht. Spearney hilft dir dabei den Überblick zu

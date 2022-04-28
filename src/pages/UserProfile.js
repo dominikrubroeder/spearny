@@ -14,7 +14,7 @@ const UserProfile = () => {
 
   return (
     <div className="container--compressed">
-      <div className="h-grid-gap-huge">
+      <div className="h-grid gap-huge">
         <section className="h-grid hv-centered">
           <FontAwesomeIcon
             icon="fa-solid fa-circle-user"
@@ -24,8 +24,8 @@ const UserProfile = () => {
             <FontAwesomeIcon icon="fa-solid fa-circle-plus" /> Add profile image
           </BaseButton>
         </section>
-        <section className="h-grid-gap-huge">
-          <form className="user-profile__form h-grid-gap-huge">
+        <section className="h-grid gap-huge">
+          <form className="user-profile__form h-grid gap-huge">
             <section className="h-grid">
               <header className="section__form-header">
                 <div className="section__form-header-title">
@@ -82,7 +82,7 @@ const UserProfile = () => {
                 </div>
               </header>
               <div className="h-grid">
-                <div className="h-grid-gap-small">
+                <div className="h-grid gap-small">
                   <BaseInputFloatingLabel
                     labelHtmlFor="IBAN"
                     labelTitle="IBAN"
@@ -94,7 +94,7 @@ const UserProfile = () => {
                   />
                   <BaseButton mode="text">More information</BaseButton>
                 </div>
-                <div className="h-grid-gap-small">
+                <div className="h-grid gap-small">
                   <BaseInputFloatingLabel
                     labelHtmlFor="monthlyBudget"
                     labelTitle="Monthly Budget"

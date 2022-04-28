@@ -11,7 +11,7 @@ const BaseInputFloatingLabel = (props) => {
 
   return (
     <div
-      className={`relative h-grid-gap-small input--${focused ? 'focused' : ''}`}
+      className={`relative h-grid gap-small input--${focused ? 'focused' : ''}`}
     >
       <label className="label--floating" htmlFor={props.labelHtmlFor}>
         {props.labelTitle}

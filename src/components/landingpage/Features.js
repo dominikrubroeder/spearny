@@ -135,7 +135,7 @@ const Features = () => {
 
   return (
     <section className="features" id="features">
-      <div className="container--compressed v-grid-centered">
+      <div className="container--compressed v-grid hv-centered">
         <BaseSwitch
           initialValue={0}
           options={['vertical', 'horizontal', 'grid']}
@@ -143,10 +143,10 @@ const Features = () => {
         />
       </div>
       <div
-        className="features__gallery container v-grid-space-between"
+        className="features__gallery container v-grid space-between"
         alignment={activeSwitchOption}
       >
-        <div className="features__content container--compressed h-grid-gap-huge">
+        <div className="features__content container--compressed h-grid gap-huge">
           {
             <Feature
               key={features[activeFeature].title}
@@ -156,7 +156,7 @@ const Features = () => {
             />
           }
 
-          <div className="features__navigation v-grid-space-between">
+          <div className="features__navigation v-grid space-between">
             <BaseButton
               mode="icon"
               onClick={() => activateFeature(activeFeature - 1)}
@@ -184,7 +184,7 @@ const Features = () => {
           {features.map((feature, index) => (
             <BaseCard
               key={feature.title}
-              className={`features__icon-grid-item v-grid-centered ${
+              className={`features__icon-grid-item v-grid hv-centered ${
                 feature.isHighlight ? 'features__icon-grid-item--highlight' : ''
               } ${activeFeature === index ? 'active' : ''}`}
               background="light"

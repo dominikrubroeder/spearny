@@ -11,7 +11,7 @@ const Movements = () => {
   const [movementFilterMode, setMovementFilterMode] = useState('show-all');
 
   return (
-    <div className="h-grid-gap-huge">
+    <div className="h-grid gap-huge">
       <MovementAddForm />
 
       <Budget />

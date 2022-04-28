@@ -17,11 +17,7 @@ const MovementTitle = (props) => {
   };
 
   return (
-    <BaseCard
-      className="v-grid-item-expand"
-      mode="form-control"
-      background="white"
-    >
+    <BaseCard className="flex-1" mode="form-control" background="white">
       <input
         type="text"
         value={props.initialValue}

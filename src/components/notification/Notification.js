@@ -10,7 +10,7 @@ const Notification = (props) => {
   const backdrop = props.backdrop;
 
   const head = (
-    <header className="v-grid-space-between">
+    <header className="v-grid space-between">
       <div>{props.title}</div>
       <div>
         <FontAwesomeIcon

@@ -16,7 +16,7 @@ const Budget = () => {
   const currentYear = new Date().getFullYear();
 
   const headMarkup = (
-    <span className="v-grid-gap-small">
+    <span className="v-grid gap-small">
       Budget:
       <span
         className={`budget ${
