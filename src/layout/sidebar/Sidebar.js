@@ -13,7 +13,7 @@ const Sidebar = () => {
   }, [setShowSidebar]);
 
   return (
-    <div className={`sidebar h-grid ${showSidebar ? 'sidebar--open' : ''}`}>
+    <div className={`sidebar h-grid ${showSidebar ? '' : 'sidebar--closed'}`}>
       <header className="v-grid space-between">
         <FontAwesomeIcon
           icon="fa-solid fa-circle-chevron-right"

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import BaseButton from '../components/base/BaseButton';
 import Notification from '../components/notification/Notification';
 
@@ -69,7 +70,12 @@ const Authentication = () => {
   };
 
   return (
-    <section className="container--compressed">
+    <motion.section
+      className="container--compressed"
+      animate={{ opacity: [0, 1], y: [30, 0] }}
+      exit={{ opacity: [1, 0] }}
+      transition={{ ease: 'easeOut', duration: 0.4 }}
+    >
       <h1>{isLogin ? 'Welcome back' : 'Welcome to Spearny'}</h1>
       <form className="h-grid" onSubmit={submitHandler}>
         <input type="email" placeholder="E-Mailaddress..." ref={emailInput} />
@@ -109,7 +115,7 @@ const Authentication = () => {
           {isLogin ? 'Sign up' : 'Login'} instead
         </BaseButton>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

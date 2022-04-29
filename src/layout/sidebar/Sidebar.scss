@@ -8,15 +8,15 @@
   padding: 1rem 2rem;
   background-color: var(--color-background);
   border-radius: var(--border-radius);
-  transform: translateX(-80%);
+  transform: translateX(-100%);
   /* animation: fade-in-from-left 0.4s ease-out forwards;*/
   transition: all 0.4s ease-out;
 
-  &--open {
-    transform: translateX(-100%);
+  &--closed {
+    transform: translateX(-80%);
   }
 
-  &:not(.sidebar--open) {
+  &.sidebar--closed {
     &:hover {
       cursor: pointer;
       background-color: var(--color-background-soft);
