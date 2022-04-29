@@ -1,0 +1,29 @@
+.scroll-progress {
+  position: relative;
+  width: 5rem;
+
+  &__bar,
+  &__indicator {
+    height: 0.3rem;
+    border-radius: 2rem;
+  }
+
+  &__bar {
+    width: 100%;
+    background-color: var(--color-background);
+  }
+
+  &__indicator {
+    width: 0%;
+    background-color: var(--color-accent);
+  }
+
+  &__percentage {
+    font-size: 1rem;
+    display: inline-block;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

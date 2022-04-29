@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { motion } from 'framer-motion';
 import { movementsActions } from '../../store/movements';
 import { fetchMovements } from '../../store/movements-actions';
@@ -22,10 +21,13 @@ const MovementList = (props) => {
    */
   useEffect(() => {
     dispatch(fetchMovements());
-    dispatch(movementsActions.sort(sortingMode));
     dispatch(fetchPaymentMethods());
     dispatch(fetchPaymentPartners());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(movementsActions.sort(sortingMode));
+  }, [sortingMode, dispatch]);
 
   return (
     <ul
@@ -47,6 +49,8 @@ const MovementList = (props) => {
                 <Movement movement={movement} />
               </motion.li>
             );
+          } else {
+            return <li>No movement found! Add one. :-)</li>;
           }
         })}
     </ul>

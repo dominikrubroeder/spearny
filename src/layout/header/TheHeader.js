@@ -4,6 +4,7 @@ import Sidebar from '../sidebar/Sidebar';
 import './TheHeader.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ThemeColorSwitch from '../../components/ThemeColorSwitch';
+import ScrollProgress from '../../components/ScrollProgress';
 
 const TheHeader = () => {
   return (
@@ -19,6 +20,7 @@ const TheHeader = () => {
         </div>
       </Link>
       <div className="v-grid align-center">
+        <ScrollProgress />
         <ThemeColorSwitch />
         <Link className="v-grid" to="/user-profile">
           <FontAwesomeIcon icon="fa-solid fa-circle-user" />
