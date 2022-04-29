@@ -1,8 +1,8 @@
 import './BaseCard.scss';
 
 const BaseCard = (props) => {
-  // Background variants: transparent (default), light (= gray), white, ...
-  const background = props.background || 'transparent';
+  // Background variants: light (= gray) (=default), filler, transparent ...
+  const background = props.background || 'light';
   const mode = props.mode || 'container';
   const dropShadow = props.dropShadow ? 'drop-shadow' : '';
   const className = props.className || '';

@@ -1,3 +1,6 @@
+/**
+---------- CSS ANIMATIONS & KEYFRAMES 
+*/
 @keyframes appear-from-top {
   from {
     opacity: 0;
@@ -70,7 +73,7 @@
 }
 
 /**
----------- react-transition-group package classes
+---------- REACT-TRANSITION-GROUP PACKAGE CLASSES
 */
 .fade-up-enter,
 .fade-up-minimal-enter {
@@ -103,3 +106,7 @@
   opacity: 0;
   transition: all 0.4s ease-out;
 }
+
+/**
+----------
+*/

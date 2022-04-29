@@ -56,7 +56,7 @@ const MovementPaidBy = (props) => {
   };
 
   return (
-    <BaseCard background="white">
+    <BaseCard background="filler">
       <BaseDropdown
         head={dropdownHead}
         isOpen={props.initialValue && true}

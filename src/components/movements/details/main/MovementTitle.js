@@ -17,7 +17,7 @@ const MovementTitle = (props) => {
   };
 
   return (
-    <BaseCard className="flex-1" mode="form-control" background="white">
+    <BaseCard className="flex-1" mode="form-control" background="filler">
       <input
         type="text"
         value={props.initialValue}

@@ -18,7 +18,7 @@ const MovementDescription = (props) => {
   };
 
   return (
-    <BaseCard background="white">
+    <BaseCard background="filler">
       <BaseDropdown
         head={<label>Notes:</label>}
         hasToggle={true}

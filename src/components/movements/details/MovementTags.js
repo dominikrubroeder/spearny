@@ -28,7 +28,7 @@ const MovementTags = (props) => {
   );
 
   return (
-    <BaseCard background="white">
+    <BaseCard background="filler">
       <BaseDropdown head={dropdownHead} isOpen={assignedTags && true} hasToggle>
         {tags.map((tag) => (
           <Tag key={tag.id} onClick={() => toggleTagAssignment(tag)}>

@@ -17,7 +17,7 @@ const MovementAmount = (props) => {
   };
 
   return (
-    <BaseCard mode="form-control" background="white">
+    <BaseCard mode="form-control" background="filler">
       <input
         type="text"
         value={props.initialValue}

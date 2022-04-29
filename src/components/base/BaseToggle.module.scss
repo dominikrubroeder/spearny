@@ -4,9 +4,9 @@
   width: 3.5rem;
   border-radius: 10rem;
   padding: 0.25rem;
-  background-color: var(--color-filler);
+  background-color: var(--color-background);
   cursor: pointer;
-  transition: all 0.4s ease-out;
+  transition: transform 0.2s ease-out;
 }
 
 .indicator {
@@ -15,8 +15,8 @@
   height: 1.5rem;
   vertical-align: middle;
   border-radius: 5rem;
-  background-color: var(--color-background);
-  transition: all 0.4s ease-out;
+  background-color: var(--color-filler);
+  transition: transform 0.2s ease-out;
 }
 
 .toggle.enabled {
@@ -24,6 +24,6 @@
 }
 
 .toggle.enabled .indicator {
-  background-color: var(--color-filler);
+  background-color: var(--white);
   transform: translateX(100%);
 }

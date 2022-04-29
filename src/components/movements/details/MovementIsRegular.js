@@ -41,7 +41,7 @@ const MovementIsRegular = (props) => {
   );
 
   return (
-    <BaseCard background="white">
+    <BaseCard background="filler">
       <BaseDropdown
         head={dropdownHead}
         hasToggle={true}
