@@ -1,12 +1,13 @@
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 2rem;
+  left: 2rem;
   width: 20rem;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   grid-template-rows: min-content 1fr min-content;
   padding: 1rem 2rem;
   background-color: var(--color-background);
+  border-radius: var(--border-radius);
   transform: translateX(-80%);
   /* animation: fade-in-from-left 0.4s ease-out forwards;*/
   transition: all 0.4s ease-out;

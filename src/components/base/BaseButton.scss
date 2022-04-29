@@ -1,6 +1,6 @@
 button {
   width: max-content;
-  color: hsla(100, 100%, 100%, 1);
+  color: var(--white);
   padding: 1rem;
   border: none;
   cursor: pointer;
@@ -33,7 +33,7 @@ button {
 
   &-button {
     &.base-button--priority-primary {
-      color: var(--color-filler);
+      color: var(--white);
       background-color: var(--color-accent);
     }
   }

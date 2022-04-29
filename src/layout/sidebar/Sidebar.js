@@ -5,7 +5,7 @@ import TheFooter from '../footer/TheFooter';
 import Tags from '../../components/tags/Tags';
 
 const Sidebar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true);
 
   const toggleSidebar = useCallback(() => {
     document.body.classList.toggle('with--sidebar');

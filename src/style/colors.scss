@@ -5,7 +5,9 @@
 */
 :root {
   --white: hsla(0, 0%, 100%);
+  --white-o-07: hsla(0, 0%, 100%, 0.7);
   --black: hsla(0, 0%, 0%);
+  --black-o-07: hsla(0, 0%, 0%, 0.7);
 
   --light-accent: rgb(0, 102, 204);
 
@@ -69,6 +71,7 @@
 
   --color-theme-contrary: var(--black);
   --color-filler: var(--white);
+  --color-filler-opacity: var(--white-o-07);
   --color-accent: var(--light-accent);
   --color-green: var(--light-green);
   --color-red: var(--light-red);
@@ -88,6 +91,7 @@
 
   --color-theme-contrary: var(--white);
   --color-filler: var(--black);
+  --color-filler-opacity: var(--black-o-07);
   --color-accent: var(--dark-accent);
   --color-green: var(--dark-green);
   --color-red: var(--dark-red);
@@ -126,4 +130,8 @@ html.dark {
 
 .dark--red {
   color: var(--dark-red);
+}
+
+.color--contrary {
+  color: var(--color-theme-contrary);
 }
